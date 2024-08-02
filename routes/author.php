@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\UserRoleController;
 use App\Http\Controllers\Backend\NoticeController;
 use App\Http\Controllers\Backend\WebsiteSettingsController;
 use App\Http\Controllers\Backend\SocialController;
+use App\Http\Controllers\Backend\SeoController;
 
 Route::get('/author', function () {
     return view('backend.layouts.main');
@@ -62,6 +63,15 @@ Route::group(['prefix' => 'setting'], function () {
             Route::get('/', 'Social_Section')->name('social.section');
             Route::post('/store', 'Social_Store')->name('social.store');
             Route::post('/update/{id}', 'Social_Update')->name('social.update');
+        });
+    });
+
+    // Seo Settings Role Section
+    Route::group(['prefix' => 'seo'], function () {
+        Route::controller(SeoController::class)->group(function () {
+            Route::get('/', 'Seo_Section')->name('seo.section');
+            Route::post('/store', 'Seo_Store')->name('seo.store');
+            Route::post('/update/{id}', 'Seo_Update')->name('seo.update');
         });
     });
 });

@@ -24,9 +24,9 @@ class NoticeController extends Controller
         $notice = DB::table($this->db_notice)->first();
 
         if ($notice == Null) {
-            return view('backend.notice.notice');
+            return view('backend.settings.notice.notice');
         } else {
-            return view('backend.notice.update_notice', compact('notice'));
+            return view('backend.settings.notice.update_notice', compact('notice'));
         }
     }
 

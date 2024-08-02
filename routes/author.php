@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\UserRoleController;
 use App\Http\Controllers\Backend\NoticeController;
+use App\Http\Controllers\Backend\WebsiteSettingsController;
 
 Route::get('/author', function () {
     return view('backend.layouts.main');
@@ -33,11 +34,24 @@ Route::group(['prefix' => 'manage-role'], function () {
     });
 });
 
-// Notice Role Section
-Route::group(['prefix' => 'notice'], function () {
-    Route::controller(NoticeController::class)->group(function () {
-        Route::get('/', 'Notice')->name('notice');
-        Route::post('/create', 'Notice_Create')->name('notice.create');
-        Route::post('/update/{id}', 'Notice_Update')->name('notice.update');
+
+Route::group(['prefix' => 'setting'], function () {
+
+    // Notice Role Section
+    Route::group(['prefix' => 'notice'], function () {
+        Route::controller(NoticeController::class)->group(function () {
+            Route::get('/', 'Notice')->name('notice');
+            Route::post('/create', 'Notice_Create')->name('notice.create');
+            Route::post('/update/{id}', 'Notice_Update')->name('notice.update');
+        });
+    });
+
+    // Website Settings Role Section
+    Route::group(['prefix' => 'website'], function () {
+        Route::controller(WebsiteSettingsController::class)->group(function () {
+            Route::get('/', 'Website_Settings')->name('website.setting');
+            Route::post('/store', 'Website_Setting_Store')->name('website_setting.store');
+            Route::post('/update/{id}', 'Website_Setting_Update')->name('website_setting.update');
+        });
     });
 });

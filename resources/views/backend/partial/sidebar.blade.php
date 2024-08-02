@@ -23,7 +23,7 @@
           <li><a><i class="fa fa-user"></i> Users <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="{{ route('user.create') }}">Add user</a></li>
-                <li><a href="#">Manage User</a></li>
+                <li><a href="{{ route('user.view') }}">Manage User</a></li>
               </ul>
           </li>
 

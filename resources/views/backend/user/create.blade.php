@@ -26,7 +26,7 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">User Name <span>*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="name" class="form-control col-md-7 col-xs-12" name="name" placeholder="User Name" required="required">
+                    <input type="text" id="name" class="form-control col-md-7 col-xs-12" name="name" placeholder="User Name" required="required" value="{{ old('name') }}">
                   </div>
                 </div>
 
@@ -34,7 +34,7 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Number <span>*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="number" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12" placeholder="01XXXXXXXXX">
+                    <input type="number" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12" placeholder="01XXXXXXXXX" value="{{ old('phone')}}">
                   </div>
                 </div>
 
@@ -42,7 +42,7 @@
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span>*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12" placeholder="example@gmail.com">
+                      <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12" placeholder="example@gmail.com" value="{{ old('email')}}">
                     </div>
                   </div>
                
@@ -52,18 +52,17 @@
                     <input id="password" type="password" name="password" class="form-control col-md-7 col-xs-12" required="required">
                   </div>
                 </div>
-                <div class="item form-group">
+                {{-- <div class="item form-group">
                   <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Confirm Password</label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input id="password2" type="password" name="confirm_password"  class="form-control col-md-7 col-xs-12" required="required" placeholder="Confirm Password">
+                    <input id="password2" type="password" name="confirmed"  class="form-control col-md-7 col-xs-12" required="required" placeholder="Confirm Password">
                   </div>
-                </div>
+                </div> --}}
                
                 <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Address <span>*</span>
-                  </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <textarea id="textarea" required="required" name="address" class="form-control col-md-7 col-xs-12">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Address <span>*</span> </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12" >
+                    <textarea id="textarea" required="required" name="address" class="form-control col-md-7 col-xs-12"  value="{{ old('address') }}">
                       
                     </textarea>
                   </div>

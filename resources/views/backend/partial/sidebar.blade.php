@@ -29,8 +29,7 @@
 
           <li><a><i class="fa fa-user"></i> Role <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
-                <li><a href="#">Add Role</a></li>
-                <li><a href="#">Manage Role</a></li>
+                <li><a href="{{ route('manage.role') }}">Manage Role</a></li>
               </ul>
           </li>
           

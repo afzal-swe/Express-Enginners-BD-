@@ -61,7 +61,7 @@
 
           <li><a><i class="fa fa-gear"></i> Settings <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="form.html">Notice</a></li>
+              <li><a href="{{ route('notice') }}">Notice</a></li>
               <li><a href="form.html">Page</a></li>
               <li><a href="form.html">Seo</a></li>
               <li><a href="#">Social Section</a></li>

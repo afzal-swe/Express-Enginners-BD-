@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\UserRoleController;
 use App\Http\Controllers\Backend\NoticeController;
 use App\Http\Controllers\Backend\WebsiteSettingsController;
+use App\Http\Controllers\Backend\SocialController;
 
 Route::get('/author', function () {
     return view('backend.layouts.main');
@@ -52,6 +53,15 @@ Route::group(['prefix' => 'setting'], function () {
             Route::get('/', 'Website_Settings')->name('website.setting');
             Route::post('/store', 'Website_Setting_Store')->name('website_setting.store');
             Route::post('/update/{id}', 'Website_Setting_Update')->name('website_setting.update');
+        });
+    });
+
+    // Social Settings Role Section
+    Route::group(['prefix' => 'social'], function () {
+        Route::controller(SocialController::class)->group(function () {
+            Route::get('/', 'Social_Section')->name('social.section');
+            Route::post('/store', 'Social_Store')->name('social.store');
+            Route::post('/update/{id}', 'Social_Update')->name('social.update');
         });
     });
 });

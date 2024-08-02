@@ -64,7 +64,7 @@
               <li><a href="{{ route('notice') }}">Notice</a></li>
               <li><a href="form.html">Page</a></li>
               <li><a href="form.html">Seo</a></li>
-              <li><a href="#">Social Section</a></li>
+              <li><a href="{{ route('social.section') }}">Social Section</a></li>
               <li><a href="{{ route('website.setting') }}">Website Setting</a></li>
              
             </ul>

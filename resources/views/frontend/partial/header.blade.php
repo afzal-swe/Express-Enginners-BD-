@@ -1,11 +1,20 @@
 
+@php
+  $settings = DB::table('website_settings')->first();
+@endphp
+
+
 <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="{{ route('home_page') }}" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>Express Engineers BD<span>.</span></h1>
+        @isset($settings)
+          <h1>{{ $settings->website_name }}<span>.</span></h1>
+        @endisset
+        
+        
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>

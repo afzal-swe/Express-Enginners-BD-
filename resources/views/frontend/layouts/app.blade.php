@@ -1,3 +1,10 @@
+
+@php
+    $seo = DB::table('seos')->first();
+    // @dd($seo);
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +12,24 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Express Engineers BD</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
+        
+        @isset($seo)
+            
+        
+        <meta property="og:type" content="Website">
+        <meta property="og:title" content="{{ $seo->meta_title }}">
+        <meta property="og:description" content="{{ $seo->meta_description }}">
+
+
+        <meta name="author" content="{{ $seo->meta_author }}">
+        <meta name="keyword" content="{{ $seo->meta_keyword }}">
+        <meta name="description" content="{{ $seo->meta_description }}">
+        <meta name="google-verification" content="{{ $seo->google_verification }}">
+        <meta name="google-analytics" content="{{ $seo->google_analytics }}">
+        <meta name="alexa-analytics" content="{{ $seo->alexa_analytics }}">
+        <title>{{ $seo->meta_title }}</title>
+        @endisset
 
   <!-- Favicons -->
   <link href="{{ asset('frontend/assets/img/favicon.png') }}" rel="icon">

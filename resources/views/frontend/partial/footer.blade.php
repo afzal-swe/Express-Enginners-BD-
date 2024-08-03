@@ -1,3 +1,9 @@
+
+@php
+  $settings = DB::table('website_settings')->first();
+  $socials = DB::table('socials')->first();
+@endphp
+
 <footer id="footer" class="footer">
 
     <div class="footer-content position-relative">
@@ -6,18 +12,19 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
-              <h3>Express Engineers BD</h3>
+              <h3>{{ $settings->website_name }}</h3>
               <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
+                {{ $settings->address }}<br>
+                <br>
+                <strong>Phone : </strong> {{ $settings->phone_one }}<br>
+                <strong>Email : </strong>{{ $settings->main_email }}<br>
               </p>
               <div class="social-links d-flex mt-3">
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
+                <a href="{{ $socials->twitter }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
+                <a href="{{ $socials->facebook }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
+                <a href="{{ $socials->instagram }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+                <a href="{{ $socials->linkedin }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
+                <a href="{{ $socials->youtube }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-youtube"></i></a>
               </div>
             </div>
           </div><!-- End footer info column-->

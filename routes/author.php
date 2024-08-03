@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\NoticeController;
 use App\Http\Controllers\Backend\WebsiteSettingsController;
 use App\Http\Controllers\Backend\SocialController;
 use App\Http\Controllers\Backend\SeoController;
+use App\Http\Controllers\Backend\PageContoller;
 
 Route::get('/author', function () {
     return view('backend.layouts.main');
@@ -33,6 +34,17 @@ Route::group(['prefix' => 'manage-role'], function () {
         Route::get('/edit/{slug}', 'Role_edit')->name('role.edit');
         Route::post('/update/{slug}', 'Role_Update')->name('role.update');
         Route::get('/delete/{slug}', 'Role_Delete')->name('role.delete');
+    });
+});
+
+// Manage Role Section
+Route::group(['prefix' => 'pages'], function () {
+    Route::controller(PageContoller::class)->group(function () {
+        Route::get('/', 'Manage_Page')->name('manage.page');
+        Route::post('/create', 'Create_Page')->name('page.create');
+        Route::get('/edit/{slug}', 'Page_Edit')->name('page.edit');
+        Route::post('/update/{slug}', 'Page_Update')->name('page.update');
+        Route::get('/delete/{slug}', 'Page_Delete')->name('page.delete');
     });
 });
 

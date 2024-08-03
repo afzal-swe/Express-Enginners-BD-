@@ -44,16 +44,9 @@
               </ul>
           </li>
 
-          <li><a><i class="fa fa-book"></i> Libraria <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-book"></i> Page <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
-                <li><a href="#">All Books</a></li>
-               
-                <li><a href="#">Pending Book</a></li>
-                <li><a href="#">History</a></li>
-                
-                <li><a href="#">Add Books</a></li>
-                <li><a href="#">Manage Books</a></li>
-              
+                <li><a href="{{ route('manage.page') }}">Manage Pages</a></li>
               </ul>
           </li>
 
@@ -62,7 +55,6 @@
           <li><a><i class="fa fa-gear"></i> Settings <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{ route('notice') }}">Notice</a></li>
-              <li><a href="form.html">Page</a></li>
               <li><a href="{{ route('seo.section') }}">Seo</a></li>
               <li><a href="{{ route('social.section') }}">Social Section</a></li>
               <li><a href="{{ route('website.setting') }}">Website Setting</a></li>

@@ -20,6 +20,13 @@
         <ul class="nav side-menu">
           
 
+          <li><a><i class="fa fa-bank"></i> Account <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li><a href="form.html">Project List</a></li>
+                <li><a href="form.html">Work Bill</a></li>
+            </ul>
+          </li>
+
           
           <li><a><i class="fa fa-user"></i> Users <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
@@ -33,17 +40,27 @@
                 <li><a href="{{ route('manage.role') }}">Manage Role</a></li>
               </ul>
           </li>
-          
 
-          <li><a><i class="fa fa-bank"></i> Account <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-user"></i> Banner Section <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
-                  <li><a href="form.html">My Account Info</a></li>
-                  
-                  <li><a href="form.html">Create account</a></li>
-                  <li><a href="form.html">Manage account</a></li>
-                  
+                <li><a href="{{ route('manage.banner') }}">Manage Banner</a></li>
               </ul>
           </li>
+
+          <li>
+            <a>
+              <i class="fa fa-user"></i>
+               Contact 
+               <span class="fa fa-chevron-down"></span>
+               <span class="badge badge-info right">6</span>
+            </a>
+            <ul class="nav child_menu">
+              <li><a href="#">Manage Contact</a></li>
+            </ul>
+          </li>
+          
+
+          
 
           <li><a><i class="fa fa-book"></i> Page <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">

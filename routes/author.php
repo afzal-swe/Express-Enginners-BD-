@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\PageContoller;
 use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\BannerController;
 
 // Route::get('/author', function () {
 //     return view('backend.layouts.main');
@@ -38,6 +39,18 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/edit/{slug}', 'User_Edit')->name('user.edit');
                 Route::post('/update/{slug}', 'User_Update')->name('user.update');
                 Route::get('/delete/{slug}', 'User_Delete')->name('user.delete');
+            });
+        });
+
+        // Banner Route Section
+        Route::group(['prefix' => 'banner'], function () {
+            Route::controller(BannerController::class)->group(function () {
+                Route::get('/', 'View_Banner')->name('manage.banner');
+                Route::post('/store', 'Banner_Store')->name('banner.store');
+                Route::get('/edit/{id}', 'Banner_Edit')->name('banner.edit');
+                Route::post('/update/{id}', 'Banner_Update')->name('banner.update');
+                Route::get('/status/{id}', 'Banner_Status')->name('banner.status');
+                Route::get('/delete/{id}', 'Banner_Delete')->name('banner.delete');
             });
         });
 

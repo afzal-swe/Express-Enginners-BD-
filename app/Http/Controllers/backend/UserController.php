@@ -51,7 +51,7 @@ class UserController extends Controller
 
         DB::table($this->db_user)->insert($data);
 
-        $notification = array('messege' => 'User Add Successfully !', 'alert-type' => 'error');
+        $notification = array('messege' => 'User Add Successfully !', 'alert-type' => 'success');
         return redirect()->route('user.view')->with($notification);
     }
 
@@ -94,7 +94,7 @@ class UserController extends Controller
 
         DB::table($this->db_user)->where('slug', $slug)->update($data);
 
-        $notification = array('messege' => 'User Update Successfully !', 'alert-type' => 'error');
+        $notification = array('messege' => 'User Update Successfully !', 'alert-type' => 'success');
         return redirect()->route('user.view')->with($notification);
     }
 

@@ -26,15 +26,19 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">User Name <span>*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="name" class="form-control col-md-7 col-xs-12" name="name" placeholder="User Name" required="required" value="{{ old('name') }}">
+                    <input type="text" class="form-control col-md-7 col-xs-12 @error('name') is-invalid @enderror " name="name" placeholder="User Name" value="{{ old('name') }}">
+                    @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
                   </div>
+                  
                 </div>
 
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Number <span>*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="number" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12" placeholder="01XXXXXXXXX" value="{{ old('phone')}}">
+                    <input type="number" name="phone" required="required" class="form-control col-md-7 col-xs-12" placeholder="01XXXXXXXXX" value="{{ old('phone')}}">
                   </div>
                 </div>
 
@@ -42,8 +46,13 @@
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span>*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12" placeholder="example@gmail.com" value="{{ old('email')}}">
+                      <input type="email" name="email" class="form-control col-md-7 col-xs-12  @error('email') is-invalid @enderror" placeholder="example@gmail.com" value="{{ old('email')}}">
+                      @error('email')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+
                     </div>
+                   
                   </div>
                
                 <div class="item form-group">

@@ -82,7 +82,7 @@
                         <td>
                             {{-- <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a> --}}
                             <a href="{{ route('user.edit',$row->slug) }}" class="btn btn-info btn-xs" ><i class="fa fa-pencil"></i></a>
-                            <a href="{{ route('user.delete',$row->slug) }}" class="btn btn-danger btn-xs" ><i class="fa fa-trash-o"></i></a>
+                            <a href="{{ route('user.delete',$row->slug) }}" class="btn btn-danger btn-xs" id="delete"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
                     @endforeach

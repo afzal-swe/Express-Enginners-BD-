@@ -1,8 +1,8 @@
 
 @php
   $settings = DB::table('website_settings')->first();
+  $banner = DB::table('banner')->where('status','1')->limit(5)->get();
 @endphp
-
 
 @extends('frontend.layouts.app')
 @section('containt')
@@ -25,11 +25,11 @@
 
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
 
-      <div class="carousel-item active" style="background-image: url(frontend/assets/img/hero-carousel/hero-carousel-1.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(frontend/assets/img/hero-carousel/hero-carousel-2.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(frontend/assets/img/hero-carousel/hero-carousel-3.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(frontend/assets/img/hero-carousel/hero-carousel-4.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(frontend/assets/img/hero-carousel/hero-carousel-5.jpg)"></div>
+      @foreach ($banner as $index => $item)
+      <div class="carousel-item {{ $index === 0 ? 'active' : '' }}" style="background-image: url({{ asset($item->banner) }})"></div>
+      @endforeach
+
+      
 
       <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>

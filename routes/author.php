@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\ProjectListController;
 
 // Route::get('/author', function () {
 //     return view('backend.layouts.main');
@@ -82,6 +83,18 @@ Route::middleware(['auth'])->group(function () {
             Route::controller(ContactController::class)->group(function () {
                 Route::get('/', 'Manage_Contact')->name('manage.contact');
                 Route::get('/delete/{id}', 'Message_Delete')->name('message.delete');
+            });
+        });
+
+        // Project List Role Section
+        Route::group(['prefix' => 'project'], function () {
+            Route::controller(ProjectListController::class)->group(function () {
+                Route::get('/list', 'Project_List')->name('project.list');
+                Route::post('/create', 'Project_Create')->name('project.create');
+                Route::get('/edit/{id}', 'Project_Edit')->name('project.edit');
+                Route::post('/update/{id}', 'Project_Update')->name('project.update');
+                Route::get('/status/{id}', 'Project_Status')->name('project.status');
+                Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
             });
         });
 

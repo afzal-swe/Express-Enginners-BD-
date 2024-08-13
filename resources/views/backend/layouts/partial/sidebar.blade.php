@@ -26,7 +26,7 @@
 
           <li><a><i class="fa fa-bank"></i> Account <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-                <li><a href="form.html">Project List</a></li>
+                <li><a href="{{ route('project.list') }}">Project List</a></li>
                 <li><a href="form.html">Work Bill</a></li>
             </ul>
           </li>

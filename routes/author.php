@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\PageContoller;
 use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\ContactController;
 
 // Route::get('/author', function () {
 //     return view('backend.layouts.main');
@@ -73,6 +74,14 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/edit/{slug}', 'Page_Edit')->name('page.edit');
                 Route::post('/update/{slug}', 'Page_Update')->name('page.update');
                 Route::get('/delete/{slug}', 'Page_Delete')->name('page.delete');
+            });
+        });
+
+        // Contact Role Section
+        Route::group(['prefix' => 'contact'], function () {
+            Route::controller(ContactController::class)->group(function () {
+                Route::get('/', 'Manage_Contact')->name('manage.contact');
+                Route::get('/delete/{id}', 'Message_Delete')->name('message.delete');
             });
         });
 

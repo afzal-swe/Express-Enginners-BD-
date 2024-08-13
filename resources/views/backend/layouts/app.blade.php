@@ -34,14 +34,14 @@
               <div class="col-md-3 left_col">
                   <div class="left_col scroll-view">
                   
-                 @include('backend.partial.sidebar')
+                 @include('backend.layouts.partial.sidebar')
                   <!-- /menu footer buttons -->
-                  @include('backend.partial.footer')
+                  @include('backend.layouts.partial.footer')
                   <!-- /menu footer buttons -->
                   </div>
               </div>
               <!-- top navigation -->
-              @include('backend.partial.topbar')
+              @include('backend.layouts.partial.topbar')
               <!-- /top navigation -->
           {{-- @endauth --}}
           

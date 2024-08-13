@@ -1,4 +1,8 @@
 
+@php
+  $contact = DB::table('contacts')->get();
+@endphp
+
 <div class="navbar nav_title" style="border: 0;">
     <a href="{{ route('dashboard') }}" class="site_title"><i class="fa fa-paw"></i> <span>EEBD</span></a>
   </div>
@@ -52,10 +56,10 @@
               <i class="fa fa-user"></i>
                Contact 
                <span class="fa fa-chevron-down"></span>
-               <span class="badge badge-info right">6</span>
+               <span class="badge badge-info right">{{ count($contact) }}</span>
             </a>
             <ul class="nav child_menu">
-              <li><a href="#">Manage Contact</a></li>
+              <li><a href="{{ route('manage.contact') }}">Manage Contact</a></li>
             </ul>
           </li>
           

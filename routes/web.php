@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
-use App\Http\Controllers\frontend\ContactSection;
 use App\Http\Controllers\frontend\AboutController;
 use App\Http\Controllers\frontend\ServicesController;
 use App\Http\Controllers\frontend\ProjectsController;
 use App\Http\Controllers\frontend\BlogController;
+use App\Http\Controllers\frontend\ContactController;
 
 
 Route::group(['prefix' => '/'], function () {
@@ -16,8 +16,9 @@ Route::group(['prefix' => '/'], function () {
 
     // Contact Page Route Section //
     Route::group(['prefix' => 'contact'], function () {
-        Route::controller(ContactSection::class)->group(function () {
+        Route::controller(ContactController::class)->group(function () {
             Route::get('/', 'Contact_Section')->name('Contact.section');
+            Route::post('/message', 'Message_Store')->name('message.store');
         });
     });
 

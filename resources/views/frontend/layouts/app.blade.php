@@ -82,6 +82,39 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 
+      <!-- Custom Theme Scripts -->
+      <script src="{{ asset('backend/build/js/custom.min.js') }}"></script>
+
+      <!-- Sweet alert init js-->
+    <script src="{{ asset('backend/dist/js/pages/sweet-alerts.init.js') }}"></script>
+  
+    {{-- Sweet Alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('backend/dist/js/code.js') }}"></script>
+  
+  
+  
+      <script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
+      <script>
+        @if (Session::has('messege'))
+        var type="{{Session::get('alert-type','info')}}"
+        switch(type){
+          case 'info':
+            toastr.info("{{ Session::get('messege') }}");
+            break;
+          case 'success':
+            toastr.success("{{ Session::get('messege') }}");
+            break;
+          case 'warning':
+            toastr.warning("{{ Session::get('messege') }}");
+            break;
+          case 'error':
+            toastr.error("{{ Session::get('messege') }}");
+            break;
+        }   
+        @endif
+      </script>
+
 </body>
 
 </html>

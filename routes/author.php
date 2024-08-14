@@ -14,6 +14,8 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\ProjectListController;
+use App\Http\Controllers\Backend\WorkBillController;
+use App\Http\Controllers\Backend\DalyStatementController;
 
 // Route::get('/author', function () {
 //     return view('backend.layouts.main');
@@ -95,6 +97,31 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('/update/{id}', 'Project_Update')->name('project.update');
                 Route::get('/status/{id}', 'Project_Status')->name('project.status');
                 Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
+            });
+        });
+
+
+        Route::group(['prefix' => 'account'], function () {
+
+            // Work Bill List Role Section
+            Route::group(['prefix' => 'work-bill'], function () {
+                Route::controller(WorkBillController::class)->group(function () {
+                    Route::get('/create', 'Work_Bill_Create')->name('work_bill.create');
+                    // Route::post('/create', 'Project_Create')->name('project.create');
+                    // Route::get('/edit/{id}', 'Project_Edit')->name('project.edit');
+                    // Route::post('/update/{id}', 'Project_Update')->name('project.update');
+                    // Route::get('/status/{id}', 'Project_Status')->name('project.status');
+                    // Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
+                });
+            });
+
+            // Daly Statement Role Section
+            Route::group(['prefix' => 'daly-statement'], function () {
+                Route::controller(DalyStatementController::class)->group(function () {
+                    Route::get('/', 'Statement_Form')->name('daly_statement.store');
+                    Route::post('/store-income', 'Income_Statement_Store')->name('income_statement.store');
+                    Route::post('/store-expense', 'Expense_Statement_Store')->name('expense_statement_store');
+                });
             });
         });
 

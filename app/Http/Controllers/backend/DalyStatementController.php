@@ -27,6 +27,15 @@ class DalyStatementController extends Controller
         return view('backend.account.daly_statement.create_daly');
     }
 
+    // All Statement View
+    public function Statement_All()
+    {
+        $income_statement = DB::table($this->db_daly_income_statement)->paginate(10);
+        $expense_statement = DB::table($this->db_daly_expense_statement)->paginate(10);
+
+        return view('backend.account.daly_statement.statement', compact('income_statement', 'expense_statement'));
+    }
+
 
     /// Income Statement Function and Section Start ////
 

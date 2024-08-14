@@ -64,7 +64,7 @@
                         
                         <td>
                             <a href="#" class="btn btn-primary btn-xs editbtn" title="Details"><i class="fa fa-eye"></i></a>
-                            <a href="#" class="btn btn-info btn-xs editbtn" title="All Info"><i class="fa fa-file"></i></a>
+                            <a href="{{ route('project.view',$row->id) }}" class="btn btn-info btn-xs editbtn" title="All Info"><i class="fa fa-file"></i></a>
                             <a href="{{ route('project.edit',$row->id) }}" class="btn btn-info btn-xs editbtn" title="Edit"><i class="fa fa-pencil"></i></a>
                             <a href="{{ route('project.delete',$row->id) }}" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o"></i></a>
                         </td>

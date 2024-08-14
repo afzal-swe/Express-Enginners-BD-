@@ -17,7 +17,7 @@
           <div class="x_panel">
             <div class="x_content">
 
-                <form action="#" method="post">
+                <form action="{{ route('work_bill.store') }}" method="post">
                     @csrf
     
                     <div class="card-body">
@@ -26,7 +26,7 @@
                             <div class="col col-lg-6 col-xl-6">
                                 <div class="form-group">
                                     <label for="">Project Ref : <span class="text-danger">*</span></label>
-                                    <input type="text" name="ref" class="form-control" value="{{ old('ref') }}" placeholder="EEBD/SNT/WB/1008" required>
+                                    <input type="text" name="ref" class="form-control" value="EEBD/SNT/WB/" placeholder="EEBD/SNT/WB/1008" required>
                                 </div>
                             </div>
                             <div class="col col-lg-6 col-xl-6">
@@ -51,41 +51,42 @@
                                     <input type="text" name="equipment_list" class="form-control" placeholder="Equipment Name" value="{{ old('equipment_list') }}" required> 
                                 </div>
                             </div>
-                            <div class="col col-lg-6 col-xl-6">
+
+                            <div class="col col-lg-2 col-xl-2">
                                 <div class="form-group">
                                     <label for="">Quantity <span class="text-danger">*</span></label>
                                     <input type="text" name="quantity" class="form-control" placeholder="Quantity" value="{{ old('quantity') }}" required>
                                 </div>
                             </div> 
-                        </div>
-    
-    
-                        <div class="row">
-                            <div class="col col-lg-6 col-xl-6">
+
+                            <div class="col col-lg-2 col-xl-2">
                                 <div class="form-group">
                                     <label for="">Unit Price <span class="text-danger">*</span></label>
                                     <input type="text" name="unit_price" class="form-control" placeholder="Unit Price" value="{{ old('unit_price') }}" required>
                                 </div>
                             </div>
-                            <div class="col col-lg-6 col-xl-6">
+                            <div class="col col-lg-2 col-xl-2">
                                 <div class="form-group">
                                     <label for="">Total Price <span class="text-danger">*</span></label>
                                     <input type="text" name="total_price" class="form-control" placeholder="Total Price" value="{{ old('total_price') }}" required>
                                 </div>
                             </div>
                         </div>
+    
+    
+                        
 
                         <div class="row">
                             <div class="col col-lg-6 col-xl-6">
                                 <div class="form-group">
                                     <label for="">Supply Date </label>
-                                    <input type="text" name="supply_date" class="form-control" placeholder="Supply Date" value="{{ old('supply_date') }}" >
+                                    <input type="text" name="supply_date" class="form-control" placeholder="Supply Date" >
                                 </div>
                             </div>
                             <div class="col col-lg-6 col-xl-6">
                                 <div class="form-group">
                                     <label for="">Worranty Expire Date</label>
-                                    <input type="text" name="expire_date" class="form-control" placeholder="Worranty Expire Date" value="{{ old('expire_date') }}">
+                                    <input type="text" name="expire_date" class="form-control" placeholder="Worranty Expire Date">
                                 </div>
                             </div>
                         </div>

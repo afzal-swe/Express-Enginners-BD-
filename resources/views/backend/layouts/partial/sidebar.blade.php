@@ -26,10 +26,23 @@
 
           <li><a><i class="fa fa-bank"></i> Account <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
+
                 <li><a href="{{ route('project.list') }}">Project List</a></li>
-                <li><a href="{{ route('work_bill.create') }}">Create Work Bill</a></li>
-                <li><a href="{{ route('daly_statement.store') }}">Daly Statement</a></li>
-                <li><a href="#">Monthly Statement</a></li>
+
+                <li><a>Billing Section <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{{ route('work_bill.create') }}">Create Work Bill</a></li>
+                    <li><a href="#">Create Monthly Bill</a></li>
+                  </ul>
+                </li>
+
+                <li><a>Statement Section <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{{ route('daly_statement.store') }}">Daly Statement Submit</a></li>
+                    <li><a href="{{ route('statement') }}">Statement</a></li>
+                    {{-- <li><a href="#">Statement</a></li> --}}
+                  </ul>
+                </li> 
             </ul>
           </li>
 

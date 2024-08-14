@@ -107,8 +107,10 @@ Route::middleware(['auth'])->group(function () {
             Route::group(['prefix' => 'work-bill'], function () {
                 Route::controller(WorkBillController::class)->group(function () {
                     Route::get('/create', 'Work_Bill_Create')->name('work_bill.create');
-                    // Route::post('/create', 'Project_Create')->name('project.create');
-                    // Route::get('/edit/{id}', 'Project_Edit')->name('project.edit');
+                    Route::post('/store', 'Work_Bill_Store')->name('work_bill.store');
+
+                    // Project Worije Biling Shoe
+                    Route::get('/project/{id}', 'Project_Bill_Show')->name('project.view');
                     // Route::post('/update/{id}', 'Project_Update')->name('project.update');
                     // Route::get('/status/{id}', 'Project_Status')->name('project.status');
                     // Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
@@ -116,9 +118,10 @@ Route::middleware(['auth'])->group(function () {
             });
 
             // Daly Statement Role Section
-            Route::group(['prefix' => 'daly-statement'], function () {
+            Route::group(['prefix' => 'statement'], function () {
                 Route::controller(DalyStatementController::class)->group(function () {
-                    Route::get('/', 'Statement_Form')->name('daly_statement.store');
+                    Route::get('/all', 'Statement_All')->name('statement');
+                    Route::get('/add', 'Statement_Form')->name('daly_statement.store');
                     Route::post('/store-income', 'Income_Statement_Store')->name('income_statement.store');
                     Route::post('/store-expense', 'Expense_Statement_Store')->name('expense_statement_store');
                 });

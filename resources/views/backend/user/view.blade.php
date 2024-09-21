@@ -41,7 +41,9 @@
                         <div class="card-header">
                           <h3 class="card-title">Roll List Here</h3>
                           <div class="x_title">
-                            <button type="button" class="btn btn-success btn-xs" style="float: right" data-toggle="modal" data-target="#modal-default">Add New Page</button>
+                            <a href="{{ route('user.create') }}">
+                              <button type="button" class="btn btn-success btn-xs" style="float: right" >Add New Page</button>
+                            </a>
                             <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"></a>
                             </li>

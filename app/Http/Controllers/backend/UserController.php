@@ -75,10 +75,6 @@ class UserController extends Controller
     public function User_Update(Request $request)
     {
 
-        $request->validate([
-            'name' => ['string', 'max:255', 'unique:users'],
-            'email' => ['string', 'email', 'max:255', 'unique:users'],
-        ]);
 
         $slug = $request->slug;
 

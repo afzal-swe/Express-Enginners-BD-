@@ -26,7 +26,7 @@ class WebsiteSettingsController extends Controller
 
         if ($website_setting == Null) {
 
-            return view('backend.settings.website_settings.create');
+            return view('backend.settings.website_settings.create', compact('website_setting'));
         } else {
 
             return view('backend.settings.website_settings.update', compact('website_setting'));
@@ -95,25 +95,26 @@ class WebsiteSettingsController extends Controller
 
         if ($favicon) {
 
+            $setting_favicon = DB::table($this->db_website_setting)->where('id', $id)->first();
+            $old_favicon = $setting_favicon->favicon;
+            unlink($old_favicon);
+
             $image_one = uniqid() . '.' . $favicon->getClientOriginalExtension();
             Image::make($favicon)->resize(16, 16)->save('backend/images/favicon/' . $image_one);
             $data['favicon'] = 'backend/images/favicon/' . $image_one;   // public/files/product/plus-point.jpg
 
-            // DB::table($this->db_website_setting)->where('id', $id)->update($data);
-            // unlink($oldfavicon);
         }
         if ($logo) {
 
+            $setting_icon = DB::table($this->db_website_setting)->where('id', $id)->first();
+            $old_logo = $setting_icon->logo;
+            unlink($old_logo);
+
             $image_one = uniqid() . '.' . $logo->getClientOriginalExtension();
-            Image::make($logo)->resize(250, 150)->save('backend/images/logo/' . $image_one);
+            Image::make($logo)->resize(800, 1000)->save('backend/images/logo/' . $image_one);
             $data['logo'] = 'backend/images/logo/' . $image_one;   // public/files/product/plus-point.jpg
 
-            // DB::table($this->db_website_setting)->where('id', $id)->update($data);
-            // unlink($oldlogo);
         }
-
-        // $data['favicon'] = $oldfavicon;
-        // $data['logo'] = $oldlogo;
 
         DB::table($this->db_website_setting)->where('id', $id)->update($data);
 

@@ -11,10 +11,14 @@ class ProjectListController extends Controller
 {
     //
     private $db_project_list;
+    private $db_work_bill;
+    private $db_monthly_bill;
 
     public function __construct()
     {
         $this->db_project_list = "project_list";
+        $this->db_work_bill = "work_bill";
+        $this->db_monthly_bill = "monthly_bill";
     }
 
     // View All Project List
@@ -108,5 +112,23 @@ class ProjectListController extends Controller
 
         $notification = array('messege' => 'Delete Successfully !', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
+    }
+
+
+
+    // Work Billing Section
+    public function Work_Billing(Request $request, $id)
+    {
+
+        $work_bill = DB::table($this->db_work_bill)->where('project_id', $id)->orderBy('id', 'DESC')->paginate(10);
+
+        return view('backend.account.project_work_bill.view_work_bill', compact('work_bill'));
+    }
+
+    // 
+    public function Monthly_Bill_View(Request $request, $id)
+    {
+        $monthly_bill = DB::table($this->db_monthly_bill)->where('project_id', $id)->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.account.project_work_bill.view_monthly_bill', compact('monthly_bill'));
     }
 }

@@ -1,92 +1,98 @@
+
 @extends('backend.layouts.app')
 @section('content')
-<div class="right_col" role="main">
-    <div class="">
-      <div class="page-title">
-        <div class="title_left">
-          <h3>Tables <small>View All Pages </small></h3>
-        </div>
 
-        {{-- <div class="title_right">
-          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
-            </div>
+
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>Tables <small>View All Pages </small></h3>
           </div>
-        </div> --}}
-      </div>
-
-      <div class="clearfix"></div>
-
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-            <div class="x_title">
-                <button type="button" class="btn btn-success btn-xs" style="float: right" data-toggle="modal" data-target="#modal-default">Add New Page</button>
-                <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"></a>
-                </li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-
-            <div class="x_content">
-                <div class="table-responsive">
-                <table class="table table-striped jambo_table bulk_action">
-                    <thead>
-                    <tr class="headings">
-                    
-                        <th class="column-title">No </th>
-                        <th class="column-title">Page Banner </th>
-                        <th class="column-title">Page Name </th>
-                        <th class="column-title">Page Title </th>
-                        <th class="column-title">Status </th>
-                        <th class="column-title no-link last"><span class="nobr">Action</span>
-                        </th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-
-                    @foreach ($pages as $key=>$row)
-                            
-                        
-                    <tr class="even pointer">
-                        <td class=" ">{{ ++$key }}</td>
-                        <td><img src="{{ asset($row->banner) }}" style="height: 70px; width:160px"></td>
-                        <td class=" ">{{ $row->page_name }}</td>
-                        <td class=" ">{{ $row->page_title }}</td>
-                        <td class=" ">
-                            @if ($row->status==1)
-                                <p class="text-success" >Active</p>
-                            @else
-                                <p class="text-primary" >Deactive</p>
-                            @endif
-                        </td>
-                        
-                        <td>
-                            {{-- <a href="#" class="btn btn-primary btn-xs" title="View"><i class="glyphicon glyphicon-eye-open"></i> </a> --}}
-                            <a href="{{ route('page.edit',$row->slug) }}" class="btn btn-info btn-xs editbtn" title="Edit"><i class="fa fa-pencil"></i></a>
-                            <a href="{{ route('page.delete',$row->slug) }}" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                    </tr>
-                    @endforeach
-
-                    </tbody>
-                </table>
-                </div>    
-            </div>
-            {{-- </div> --}}
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><- Go To Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
+          </div>
         </div>
-    </div>
-</div>
-</div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Message List Here</h3>
+                          <div class="x_title">
+                            <button type="button" class="btn btn-success btn-xs" style="float: right" data-toggle="modal" data-target="#modal-default">Add New Page</button>
+                            <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"></a>
+                            </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <table id="example1" class="table table-bordered table-striped table-sm">
+                            <thead>
+
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Page Banner</th>
+                                    <th>Page Name</th>
+                                    <th>Page Title</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+   
+                              @foreach ($pages as $key=>$row)
+                                    <tr>
+                                      <td>{{++$key}}</td>
+                                      <td><img src="{{ asset($row->banner) }}" style="height: 70px; width:160px"></td>
+                                      <td>{{ $row->page_name ?? '' }}</td>
+                                      <td>{{ $row->page_title ?? ""}}</td>
+                                      <td> 
+                                        @if ($row->status==1)
+                                          <p class="text-success" >Active</p>
+                                        @else
+                                          <p class="text-primary" >Deactive</p>
+                                        @endif
+                                      </td>
+                                      
+                                      <td>
+                                        <a href="{{ route('page.edit',$row->slug) }}" class="btn btn-info btn-xs editbtn " title="Edit"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('page.delete',$row->slug) }}" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                      </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
 
 
-<div class="modal fade" id="modal-default">
+
+
+
+
+  <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -159,5 +165,5 @@
   </div>
 
 
-
 @endsection
+

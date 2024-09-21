@@ -45,7 +45,7 @@ class NoticeController extends Controller
 
         DB::table($this->db_notice)->insert($data);
 
-        $notification = array('messege' => 'Create Successfully !', 'alert-type' => 'error');
+        $notification = array('messege' => 'Create Successfully !', 'alert-type' => 'success');
         return redirect()->route('notice')->with($notification);
     }
 
@@ -62,7 +62,7 @@ class NoticeController extends Controller
 
         DB::table($this->db_notice)->where('id', $id)->update($data);
 
-        $notification = array('messege' => 'Update Successfully !', 'alert-type' => 'error');
+        $notification = array('messege' => 'Update Successfully !', 'alert-type' => 'success');
         return redirect()->route('notice')->with($notification);
     }
 }

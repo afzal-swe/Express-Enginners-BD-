@@ -44,7 +44,7 @@ class SocialController extends Controller
 
         DB::table($this->db_social)->insert($data);
 
-        $notification = array('messege' => 'Social Added Successfully !', 'alert-type' => 'error');
+        $notification = array('messege' => 'Social Added Successfully !', 'alert-type' => 'success');
         return redirect()->route('social.section')->with($notification);
     }
 
@@ -62,7 +62,7 @@ class SocialController extends Controller
 
         DB::table($this->db_social)->where('id', $id)->update($data);
 
-        $notification = array('messege' => 'Social Update Successfully !', 'alert-type' => 'error');
+        $notification = array('messege' => 'Social Update Successfully !', 'alert-type' => 'success');
         return redirect()->route('social.section')->with($notification);
     }
 }

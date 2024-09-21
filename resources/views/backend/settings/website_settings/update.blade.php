@@ -1,127 +1,175 @@
+
+
 @extends('backend.layouts.app')
 @section('content')
 
 
- <!-- page content -->
- <div class="right_col" role="main">
-    <div class="">
-      <div class="page-title">
-        <div class="title_left">
-          <h3> Website Settings Update</h3>
-        </div>
-      </div>
-      <div class="clearfix"></div>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-            <div class="x_content">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-              <form class="form-horizontal form-label-left" action="{{ route('website_setting.update',$website_setting->id) }}" method="post" enctype="multipart/form-data">
-
-                @csrf
-               
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Website Title </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="website_name"   value="{{ $website_setting->website_name }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Main Number</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="number" name="phone_one" class="form-control col-md-7 col-xs-12" value="{{ $website_setting->phone_one }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Support Number</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="number" name="phone_two" class="form-control col-md-7 col-xs-12" value="{{ $website_setting->phone_two }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Main E-mail</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="email" name="main_email" class="form-control col-md-7 col-xs-12" value="{{ $website_setting->main_email }}">
-                    </div>
-                </div>
-
-                <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Support E-mail </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="email" name="support_email" class="form-control col-md-7 col-xs-12" value="{{ $website_setting->support_email }}">
-                    </div>
-                </div>
-            
-               
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Address</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12" >
-                    <textarea id="textarea" name="address" class="form-control col-md-7 col-xs-12" >
-                      {!!  $website_setting->address !!}
-                    </textarea>
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Description </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12" >
-                    <textarea id="textarea" name="description" class="form-control col-md-7 col-xs-12" >
-                        {!!  $website_setting->description !!}
-                    </textarea>
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Logo </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12" >
-                    <input type="file"  name="logo" class="form-control col-md-7 col-xs-12" >
-                  </div>
-                </div>
-                
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea"></label>
-                  <div class="col-md-6 col-sm-6 col-xs-12" >
-                    <img src="{{ asset($website_setting->logo) }}" alt="" style="height: 80px; width:190px;">
-                        <input type="hidden" name="oldlogo" value="{{ $website_setting->logo }}">
-                    
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Favicon </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12" >
-                    <input type="file"  name="favicon" class="form-control col-md-7 col-xs-12" >
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea"></label>
-                    <div class="col-md-6 col-sm-6 col-xs-12" >
-                      <img src="{{ asset($website_setting->favicon) }}" alt="" style="height: 30px; width:30px;">
-                          <input type="hidden" name="oldfavicon" value="{{ $website_setting->favicon }}">
-                      
-                    </div>
-                  </div>
-
-               
-                <div class="ln_solid"></div>
-                <div class="form-group">
-                  <div class="col-md-6 col-md-offset-3">
-                    <button id="send" type="submit" class="btn btn-success">Update</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1> Website Settings Update</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><- Go To Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
           </div>
         </div>
-      </div>
-    </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Website Modify</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Website info Update</h4>
+                                  {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button> --}}
+                                </div>
+                                <div class="modal-body">
+                                    <form  action="{{ route('website_setting.update',$website_setting->id) }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                    
+                                        <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label for="">Website Name</label>
+                                                <input type="text" name="website_name" class="form-control" value="{{ $website_setting->website_name }}">
+                                            </div>
+
+                                        
+                                            <div class="form-group">
+                                                <label for="">Main Number</label>
+                                                <input type="number" name="phone_one" class="form-control" value="{{ $website_setting->phone_one }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Support Number</label>
+                                                <input type="number" name="phone_two" class="form-control" value="{{ $website_setting->phone_two }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Main Email</label>
+                                                <input type="email" name="main_email" class="form-control" value="{{ $website_setting->main_email }}">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="">Support Email<span class="text-danger">*</span></label>
+                                                <input type="email" name="support_email" class="form-control" value="{{ $website_setting->support_email }}">
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label for="">Address</label>
+                                                <input type="text" name="address" class="form-control" value="{{ $website_setting->address }}">
+                                                
+                                            </div>
+
+                                           
+
+                                            <div class="form-group">
+                                                <label for="">Description</label>
+                                                <textarea name="description" id="summernote" cols="30" rows="10"  class="form-control">
+                                                  {!!  $website_setting->description !!}
+                                                </textarea>
+                                            </div>
+
+
+
+
+                                            <div class="row">
+
+                                              <div class="col sm-6">
+                                                <div class="form-group">
+                                                  <label for="">Website Logo</label>
+                                                  <input type="file" name="logo" id="logo" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3 row">
+                                                    <label for="example-text-input" class="col-form-label"> </label>
+                                                    <div class="col-sm-6">
+                                                        <img id="showLogo" class="rounded avatar-lg" src="{{ (!empty($website_setting->logo)) ? 
+                                                            url($website_setting->logo):url('image/No_Image_Available.jpg') }}" alt="Card image cap" style="width: 130px;">
+                                                    </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="col sm-6"> 
+                                                <div class="form-group">
+                                                    <label for="">Website Favicon</label>
+                                                    <input type="file" name="favicon" id="favicon" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3 row">
+                                                  <label for="example-text-input" class="col-form-label"> </label>
+                                                  <div class="col-sm-6">
+                                                      <img id="show_favicon" class="rounded avatar-lg" src="{{ (!empty($website_setting->favicon)) ? 
+                                                          url($website_setting->favicon):url('image/No_Image_Available.jpg') }}" alt="Card image cap" style="width: 32px; height:32px;">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary">Update Settings</button>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                              </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
   </div>
-  <!-- /page content -->
+
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('#logo').change(function(e){
+            var reader = new FileReader();
+            reader.onload=function(e){
+                $('#showLogo').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('#favicon').change(function(e){
+            var reader = new FileReader();
+            reader.onload=function(e){
+                $('#show_favicon').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
+          
 
 @endsection

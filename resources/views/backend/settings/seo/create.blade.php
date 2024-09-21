@@ -2,90 +2,102 @@
 @section('content')
 
 
- <!-- page content -->
- <div class="right_col" role="main">
-    <div class="">
-      <div class="page-title">
-        <div class="title_left">
-          <h3> Seo Settings Section</h3>
-        </div>
-      </div>
-      <div class="clearfix"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-            <div class="x_content">
-
-              <form class="form-horizontal form-label-left" action="{{ route('seo.store') }}" method="post">
-
-                @csrf
-               
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Meta Author</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="meta_author" placeholder="meta_author" value="{{ old('meta_author') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Meta Title</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="meta_title" placeholder="meta_title" value="{{ old('meta_title') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Meta Keyword</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="meta_keyword" placeholder="meta_keyword" value="{{ old('meta_keyword') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Google Analytics</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="google_analytics" placeholder="google_analytics" value="{{ old('google_analytics') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Google Verification</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="google_verification" placeholder="google_verification" value="{{ old('google_verification') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Alexa Analytics</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="alexa_analytics" placeholder="alexa_analytics" value="{{ old('alexa_analytics') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Meta Description </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12" >
-                      <textarea id="textarea" name="meta_description" class="form-control col-md-7 col-xs-12"  value="{{ old('meta_description') }}">
-                        
-                      </textarea>
-                    </div>
-                  </div>
-
-                <div class="ln_solid"></div>
-                <div class="form-group">
-                  <div class="col-md-6 col-md-offset-3">
-                    <button id="send" type="submit" class="btn btn-success">Submit</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>SEO Table</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><- Go To Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
           </div>
         </div>
-      </div>
-    </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">SEO Modify</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">SEO Section</h4>
+                                  {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button> --}}
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('seo.store') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                    
+                                        <div class="card-body">
+                    
+                                            <div class="form-group">
+                                                <label for="">Author</label>
+                                                <input type="text" name="meta_author" class="form-control" value="{{ old('meta_author') }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Meta Title</label>
+                                                <input type="text" name="meta_title" class="form-control" value="{{ old('meta_title') }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Meta Keyword</label>
+                                                <input type="text" name="meta_keyword" class="form-control" value="{{ old('meta_keyword') }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Meta Description</label>
+                                                <textarea id="textarea" name="meta_description" class="form-control col-md-7 col-xs-12" value="{{ old('meta_description') }}"> </textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Google Analytics</label>
+                                                <input type="text" name="google_analytics" class="form-control" value="{{ old('google_analytics') }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Google Verification</label>
+                                                <input type="text" name="google_verification" class="form-control" value="{{ old('google_verification') }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Alexa Analytics</label>
+                                                <input type="text" name="alexa_analytics" class="form-control" value="{{ old('alexa_analytics') }}">
+                                               
+                                            </div>
+        
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary">Create</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                              </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
   </div>
-  <!-- /page content -->
+
+
 
 @endsection

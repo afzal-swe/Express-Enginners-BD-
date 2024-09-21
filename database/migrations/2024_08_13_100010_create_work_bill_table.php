@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('quantity')->nullable();
             $table->string('general_terms')->nullable();
             $table->string('unit_price')->nullable();
+            $table->string('payable')->nullable();
             $table->string('total_price')->nullable();
             $table->timestamps();
         });

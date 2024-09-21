@@ -41,7 +41,6 @@ class PageContoller extends Controller
         $data['page_title'] = $request->page_title;
         $data['description'] = $request->description;
         $data['status'] = $request->status;
-        $data['status'] = $request->status;
         $data['created_at'] = Carbon::now();
         $data['slug'] = Str::of($request->page_name)->slug('-');
 

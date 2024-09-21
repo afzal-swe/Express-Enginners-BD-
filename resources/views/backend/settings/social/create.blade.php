@@ -2,74 +2,93 @@
 @section('content')
 
 
- <!-- page content -->
- <div class="right_col" role="main">
-    <div class="">
-      <div class="page-title">
-        <div class="title_left">
-          <h3> Socials Settings Section</h3>
-        </div>
-      </div>
-      <div class="clearfix"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-            <div class="x_content">
-
-              <form class="form-horizontal form-label-left" action="{{ route('social.store') }}" method="post">
-
-                @csrf
-               
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Facebook Link</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="facebook" placeholder="Facebook Link" value="{{ old('facebook') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Twitter Link</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="twitter" placeholder="Twitter Link" value="{{ old('twitter') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Youtube Link</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="youtube" placeholder="Youtube Link" value="{{ old('youtube') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Instagram Link</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="instagram" placeholder="Instagram Link" value="{{ old('instagram') }}">
-                  </div>
-                </div>
-
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Linkedin Link</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control col-md-7 col-xs-12" name="linkedin" placeholder="Linkedin Link" value="{{ old('linkedin') }}">
-                  </div>
-                </div>
-
-                <div class="ln_solid"></div>
-                <div class="form-group">
-                  <div class="col-md-6 col-md-offset-3">
-                    <button id="send" type="submit" class="btn btn-success">Submit</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Social Setting</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><- Go To Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
           </div>
         </div>
-      </div>
-    </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Social Modify</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Insert Social Link</h4>
+                                 
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('social.store') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                    
+                                        <div class="card-body">
+                    
+                                            <div class="form-group">
+                                                <label for="">Facebook Link</label>
+                                                <input type="text" name="facebook" class="form-control" placeholder="Facebook Link" value="{{ old('facebook') }}">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="">Twitter Link</label>
+                                                <input type="text" name="twitter" class="form-control" placeholder="Twitter Link" value="{{ old('twitter') }}">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="">Youtube Link</label>
+                                                <input type="text" name="youtube" class="form-control" placeholder="Youtube Link" value="{{ old('youtube') }}">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="">Instagram Link</label>
+                                                <input type="text" name="instagram" class="form-control" placeholder="Instagram Link" value="{{ old('instagram') }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Linkedin Link</label>
+                                                <input type="text" name="linkedin" class="form-control"  placeholder="Linkedin Link" value="{{ old('linkedin') }}">
+                                            </div>
+
+        
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary">Insert Links</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                              </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
   </div>
-  <!-- /page content -->
+
+
 
 @endsection

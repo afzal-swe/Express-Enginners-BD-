@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\ProjectListController;
 use App\Http\Controllers\Backend\WorkBillController;
 use App\Http\Controllers\Backend\DalyStatementController;
+use App\Http\Controllers\Backend\account\MonthlyBillController;
 
 // Route::get('/author', function () {
 //     return view('backend.layouts.main');
@@ -88,20 +89,25 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
-        // Project List Role Section
-        Route::group(['prefix' => 'project'], function () {
-            Route::controller(ProjectListController::class)->group(function () {
-                Route::get('/list', 'Project_List')->name('project.list');
-                Route::post('/create', 'Project_Create')->name('project.create');
-                Route::get('/edit/{id}', 'Project_Edit')->name('project.edit');
-                Route::post('/update/{id}', 'Project_Update')->name('project.update');
-                Route::get('/status/{id}', 'Project_Status')->name('project.status');
-                Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
-            });
-        });
 
 
         Route::group(['prefix' => 'account'], function () {
+
+            // Project List Role Section
+            Route::group(['prefix' => 'project'], function () {
+                Route::controller(ProjectListController::class)->group(function () {
+                    Route::get('/list', 'Project_List')->name('project.list');
+                    Route::post('/create', 'Project_Create')->name('project.create');
+                    Route::get('/edit/{id}', 'Project_Edit')->name('project.edit');
+                    Route::post('/update/{id}', 'Project_Update')->name('project.update');
+                    Route::get('/status/{id}', 'Project_Status')->name('project.status');
+                    Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
+                    // Billing route Section
+                    Route::get('/wori-billing/{id}', 'Work_Billing')->name('billing.view');
+                    Route::get('/monthly-billing/{id}', 'Monthly_Bill_View')->name('monthly_bill_view');
+                });
+            });
+
 
             // Work Bill List Role Section
             Route::group(['prefix' => 'work-bill'], function () {
@@ -109,11 +115,19 @@ Route::middleware(['auth'])->group(function () {
                     Route::get('/create', 'Work_Bill_Create')->name('work_bill.create');
                     Route::post('/store', 'Work_Bill_Store')->name('work_bill.store');
 
-                    // Project Worije Biling Shoe
+                    // Project Worije Biling Show
                     Route::get('/project/{id}', 'Project_Bill_Show')->name('project.view');
                     // Route::post('/update/{id}', 'Project_Update')->name('project.update');
                     // Route::get('/status/{id}', 'Project_Status')->name('project.status');
                     // Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
+                });
+            });
+
+            // Monthly Bill List Role Section
+            Route::group(['prefix' => 'monthly-bill'], function () {
+                Route::controller(MonthlyBillController::class)->group(function () {
+                    Route::get('/create', 'Monthly_Bill_Create')->name('monthly_bill.create');
+                    Route::post('/store', 'Monthly_Bill_Store')->name('monthly_bill.store');
                 });
             });
 

@@ -68,7 +68,7 @@ class SeoController extends Controller
 
         DB::table($this->db_seo)->where('id', $update)->update($data);
 
-        $notification = array('messege' => 'Update Successfully !', 'alert-type' => 'error');
+        $notification = array('messege' => 'Update Successfully !', 'alert-type' => 'success');
         return redirect()->route('seo.section')->with($notification);
     }
 }

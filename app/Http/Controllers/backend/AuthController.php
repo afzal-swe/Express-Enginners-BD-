@@ -24,6 +24,7 @@ class AuthController extends Controller
     public function Admin_logout()
     {
         Auth::logout();
+        $notification = array('messege' => 'Logout Successfully', 'alert-type' => 'success');
         return redirect()->to('/');
     }
 }

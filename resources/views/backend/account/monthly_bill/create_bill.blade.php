@@ -1,92 +1,130 @@
+
+
 @extends('backend.layouts.app')
 @section('content')
 
 
- <!-- page content -->
- <div class="right_col" role="main">
-    <div class="">
-      <div class="page-title">
-        <div class="title_left">
-          <h4>Monthly Bill</h4>
-        </div>
-      </div>
-      <div class="clearfix"></div>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-            <div class="x_content">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-                <form action="{{ route('monthly_bill.store') }}" method="post">
-                    @csrf
-    
-                    <div class="card-body">
-    
-                        <div class="row">
-                            <div class="col col-lg-6 col-xl-6">
-                                <div class="form-group">
-                                    <label for="">Billing ID : <span class="text-danger">*</span></label>
-                                    <input type="text" name="billing_id" class="form-control" value="EEBD/MB/" placeholder="Billing ID" required>
-                                </div>
-                            </div>
-                            <div class="col col-lg-6 col-xl-6">
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
-                                    <select name="project_id" class="form-control" required>
-                                        <option disabled selected><= Choose Project Name =></option>
-                                        @foreach ($project_list as $row)
-                                            
-                                        <option value="{{ $row->id }}" class="text-info">{{ $row->project_name }} | {{ $row->project_sl }}</option>
-                                        @endforeach
-                                       
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="row">
-                            <div class="col col-lg-6 col-xl-6">
-                                <div class="form-group">
-                                    <label for="">Lift Quanitiy</label>
-                                    <input type="text" name="lift_quanitiy" class="form-control" placeholder="Lift Quanitiy" >
-                                </div>
-                            </div>
-
-                            <div class="col col-lg-2 col-xl-2">
-                                <div class="form-group">
-                                    <label for="">Date<span class="text-danger">*</span></label>
-                                    <input type="text" name="date" class="form-control" placeholder="DD/MM/YYYY" value="{{ old('date') }}" required> 
-                                </div>
-                            </div> 
-
-                            <div class="col col-lg-2 col-xl-2">
-                                <div class="form-group">
-                                    <label for="">Month Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="month_name" class="form-control" placeholder="Month Name" value="{{ old('month_name') }}" required>
-                                </div>
-                            </div>
-                            <div class="col col-lg-2 col-xl-2">
-                                <div class="form-group">
-                                    <label for="">No Of Month <span class="text-danger">*</span></label>
-                                    <input type="text" name="no_month" class="form-control" placeholder="No Of Month" value="{{ old('no_month') }}" required>
-                                </div>
-                            </div>
-                        </div>
-    
-    
-                       <hr>
-                           
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>Monthly Bill</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><- Go To Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
           </div>
         </div>
-      </div>
-    </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title"> Add Monthly Bill</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="modal-content">
+                               
+                                <div class="modal-body">
+                                    <form action="{{ route('monthly_bill.store') }}" method="post">
+                                        @csrf
+                    
+                                        <div class="card-body">
+                    
+                                            <div class="row">
+                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
+                                                    <label for="">Billing ID : <span class="text-danger">*</span></label>
+                                                    <input type="text" name="billing_id" class="form-control" value="EEBD/MB/" placeholder="Billing ID" required>
+                                                </div>
+    
+                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
+                                                    <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
+                                                    <select name="project_id" class="form-control" required>
+                                                        <option disabled selected><= Choose Project Name =></option>
+                                                        @foreach ($project_list as $row)
+                                                            
+                                                        <option value="{{ $row->id }}" class="text-info">{{ $row->project_name }} | {{ $row->project_sl }}</option>
+                                                        @endforeach
+                                                       
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-12 col-lg-12 col-md-12">
+                                                <label for="">Description <span class="text-danger">*</span></label>
+                                                <textarea type="text" name="description" class="form-control" required> </textarea>
+                                            </div>
+
+
+                                           
+
+                                            <div class="row">
+
+                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="">Lift Quantity<span class="text-danger">*</span></label>
+                                                        <input type="text" name="lift_quanitiy" class="form-control" placeholder="lift_quantity" value="{{ old('lift_quantity') }}" required> 
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="">Date<span class="text-danger">*</span></label>
+                                                        <input type="date" name="date" class="form-control" placeholder="DD/MM/YYYY" value="{{ old('date') }}" required> 
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="">Month Name <span class="text-danger">*</span></label>
+                                                        <input type="text" name="month_name" class="form-control" placeholder="Month Name" value="{{ old('month_name') }}" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="">No Of Month <span class="text-danger">*</span></label>
+                                                        <input type="text" name="no_month" class="form-control" placeholder="No Of Month" value="{{ old('no_month') }}" required>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+                                            
+
+
+                                        <br><hr>
+
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                              </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
   </div>
-  <!-- /page content -->
 
 @endsection
+    
+
+    

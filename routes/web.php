@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\AboutController;
 use App\Http\Controllers\frontend\ServicesController;
@@ -50,3 +52,5 @@ Route::group(['prefix' => '/'], function () {
         });
     });
 });
+
+require __DIR__ . '/auth.php';

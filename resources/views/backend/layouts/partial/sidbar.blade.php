@@ -2,6 +2,7 @@
  
  @php
  $contact = DB::table('contacts')->get();
+ $setting = DB::table('website_settings')->first();
 @endphp
 
  
@@ -10,7 +11,7 @@
  <aside class="main-sidebar sidebar-white sidebar-light elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
-      <img src="{{ asset('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset($setting->favicon ?? 'backend/dist/img/AdminLTELogo.png') }}" alt="{{ $setting->website_name }}" class="brand-image img-circle elevation-3 p-2" style="opacity: .6">
       <span class="brand-text font-weight-light">EEBD</span>
     </a>
 
@@ -62,7 +63,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('work_bill.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Work Bill</p>
                 </a>
@@ -70,7 +71,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('monthly_bill.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Monthly Bill</p>
                 </a>
@@ -116,7 +117,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('daly_statement.store') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Daly Statement Submit</p>
                 </a>
@@ -124,7 +125,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('statement') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Statement</p>
                 </a>
@@ -324,7 +325,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a id="logout" href="#" class="nav-link">
+                <a id="logout" href="{{ route('logout') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Logout</p>
                 </a>

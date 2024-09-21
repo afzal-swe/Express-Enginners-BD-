@@ -9,7 +9,6 @@ use App\Http\Controllers\Backend\WebsiteSettingsController;
 use App\Http\Controllers\Backend\SocialController;
 use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\PageContoller;
-use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\ContactController;
@@ -22,8 +21,6 @@ use App\Http\Controllers\Backend\account\MonthlyBillController;
 //     return view('backend.layouts.main');
 // });
 
-Route::get('/login', [LoginController::class, 'login_from'])->name('admin_login');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'author'], function () {

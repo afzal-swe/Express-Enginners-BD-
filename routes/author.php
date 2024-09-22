@@ -15,6 +15,11 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\ProjectListController;
 use App\Http\Controllers\Backend\WorkBillController;
 use App\Http\Controllers\Backend\DalyStatementController;
+use App\Http\Controllers\Backend\ConstructionsController;
+
+
+
+
 use App\Http\Controllers\Backend\account\MonthlyBillController;
 
 // Route::get('/author', function () {
@@ -83,6 +88,15 @@ Route::middleware(['auth'])->group(function () {
             Route::controller(ContactController::class)->group(function () {
                 Route::get('/', 'Manage_Contact')->name('manage.contact');
                 Route::get('/delete/{id}', 'Message_Delete')->name('message.delete');
+            });
+        });
+
+        // Constructions Role Section
+        Route::group(['prefix' => 'constructions'], function () {
+            Route::controller(ConstructionsController::class)->group(function () {
+                Route::get('/', 'Manage_Constructions')->name('manage.constructions');
+                Route::post('/store', 'Store_Constructions')->name('store.constructions');
+                Route::get('/delete/{id}', 'Delete_Constructions')->name('delete.constructions');
             });
         });
 

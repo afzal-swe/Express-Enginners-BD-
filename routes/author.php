@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ProjectListController;
 use App\Http\Controllers\Backend\WorkBillController;
 use App\Http\Controllers\Backend\DalyStatementController;
 use App\Http\Controllers\Backend\ConstructionsController;
+use App\Http\Controllers\Backend\SercicesController;
 
 
 
@@ -96,7 +97,23 @@ Route::middleware(['auth'])->group(function () {
             Route::controller(ConstructionsController::class)->group(function () {
                 Route::get('/', 'Manage_Constructions')->name('manage.constructions');
                 Route::post('/store', 'Store_Constructions')->name('store.constructions');
+                Route::get('/status/{id}', 'Status_Constructions')->name('constructions.status');
+                Route::get('/edit/{id}', 'Edit_Constructions')->name('constructions.edit');
+                Route::post('/update/{id}', 'Update_Constructions')->name('constructions.update');
                 Route::get('/delete/{id}', 'Delete_Constructions')->name('delete.constructions');
+            });
+        });
+
+        // Sercices Role Section
+        Route::group(['prefix' => 'services'], function () {
+            Route::controller(SercicesController::class)->group(function () {
+                Route::get('/', 'Manage_Services')->name('manage.services');
+                Route::get('/create', 'Create_Constructions')->name('create.constructions');
+                Route::post('/store', 'Services_Store')->name('services.store');
+                Route::get('/status/{id}', 'Status_Services')->name('service.status');
+                Route::get('/edit/{id}', 'Services_Edit')->name('services.edit');
+                Route::post('/update/{id}', 'Services_Update')->name('services.update');
+                Route::get('/delete/{id}', 'Services_Delete')->name('services.delete');
             });
         });
 

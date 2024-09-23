@@ -39,6 +39,6 @@ class ContactController extends Controller
         DB::table($this->db_contacts)->insert($data);
 
         $notification = array('messege' => 'Send Successfully !', 'alert-type' => 'success');
-        return redirect()->route('Contact.section')->with($notification);
+        return redirect()->back()->with($notification);
     }
 }

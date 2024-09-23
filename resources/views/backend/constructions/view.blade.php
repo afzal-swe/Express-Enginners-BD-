@@ -68,14 +68,14 @@
                                     <td>{{ Str::of($row->title ?? '')->limit(20) }}</td>
                                     <td>
                                     @if ($row->status==1)
-                                        <a href="#" class="btn btn-success" style="width:100px;"> Active </a>
+                                        <a href="{{ route('constructions.status',$row->id) }}" class="btn btn-success" style="width:100px;"> Active </a>
                                     @else
-                                        <a href="#" class="btn btn-primary" style="width:100px;" >Deactive</a>
+                                        <a href="{{ route('constructions.status',$row->id) }}" class="btn btn-primary" style="width:100px;" >Deactive</a>
                                     @endif
                                     </td>
 
                                     <td >
-                                    <a href="#" class="btn btn-info btn-sm" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('constructions.edit',$row->id) }}" class="btn btn-info btn-sm" title="Edit Data"><i class="fas fa-edit"></i></a>
                                     <a href="{{ route('delete.constructions',$row->id) }}" id="delete" class="btn btn-danger btn-sm delete" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>

@@ -16,7 +16,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h2 data-aos="fade-down">Welcome to <span>{{ $settings->website_name }}</span></h2>
-            <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p data-aos="fade-up">Express Engineers BD ., was established in the year 2000 to import, installation and maintenance of quality lift and escalator. After enormous success in elevator business "Express engineers bd."  has developed its trading business.
+
+             </p>
             <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Get Started</a>
           </div>
         </div>
@@ -40,6 +42,58 @@
       </a>
 
     </div>
+      <!-- ======= Stats Counter Section ======= -->
+      <section id="stats-counter" class="stats-counter section-bg">
+        <div class="container">
+  
+          <div class="row gy-4">
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item d-flex align-items-center w-100 h-100">
+                {{-- <svg aria-hidden="true" class="e-font-icon-svg e-fas-power-off" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M400 54.1c63 45 104 118.6 104 201.9 0 136.8-110.8 247.7-247.5 248C120 504.3 8.2 393 8 256.4 7.9 173.1 48.9 99.3 111.8 54.2c11.7-8.3 28-4.8 35 7.7L162.6 90c5.9 10.5 3.1 23.8-6.6 31-41.5 30.8-68 79.6-68 134.9-.1 92.3 74.5 168.1 168 168.1 91.6 0 168.6-74.2 168-169.1-.3-51.8-24.7-101.8-68.1-134-9.7-7.2-12.4-20.5-6.5-30.9l15.8-28.1c7-12.4 23.2-16.1 34.8-7.8zM296 264V24c0-13.3-10.7-24-24-24h-32c-13.3 0-24 10.7-24 24v240c0 13.3 10.7 24 24 24h32c13.3 0 24-10.7 24-24z"></path></svg> --}}
+                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                <div>
+                  <h6 class="text-white">LIFT/ELEVATOR</h6>
+                  <p class="text-white">Importer</p>
+                </div>
+              </div>
+            </div><!-- End Stats Item -->
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item d-flex align-items-center w-100 h-100">
+                <i class="fa-solid fa-person-running"></i>
+                <div>
+                  <h6 class="text-white">Escalator</h6>
+                  <p class="text-white">Importer</p>
+                </div>
+              </div>
+            </div><!-- End Stats Item -->
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item d-flex align-items-center w-100 h-100">
+                <i class="fa-solid fa-power-off"></i>
+                <div>
+                  <h6 class="text-white">Generator</h6>
+                  <p class="text-white">Importer</p>
+                </div>
+              </div>
+            </div><!-- End Stats Item -->
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item d-flex align-items-center w-100 h-100">
+                <i class="fa-solid fa-recycle"></i>
+                <div>
+                  <h6 class="text-white">Servicing &</h6>
+                  <p class="text-white">Maintenance</p>
+                </div>
+              </div>
+            </div><!-- End Stats Item -->
+  
+          </div>
+  
+        </div>
+      </section><!-- End Stats Counter Section -->
+      <hr>
 
   </section><!-- End Hero Section -->
 
@@ -51,15 +105,16 @@
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
             <div class="content">
-              <h3>Minus hic non reiciendis ea possimus at quia.</h3>
+              <h3>Introduction.</h3>
               <p>Rem id rerum. Debitis deserunt quidem delectus expedita ducimus dolor. Aut iusto ipsa. Eos ipsum nobis ipsa soluta itaque perspiciatis fuga ipsum perspiciatis. Eum amet fugiat totam nisi possimus ut delectus dicta.
               <p>Aliquam velit deserunt autem. Inventore et saepe. Tenetur suscipit eligendi labore culpa eos. Deserunt porro magni qui necessitatibus dolorem at animi cupiditate.</p>
             </div>
           </div>
 
           <div class="col-lg-5" data-aos="fade">
-            <form action="forms/quote.php" method="post" class="php-email-form">
-              <h3>Get a quote</h3>
+            <form action="{{ route('message.store') }}" method="post" class="php-email-form">
+              @csrf
+              <h3>Send Message</h3>
               <p>Vel nobis odio laboriosam et hic voluptatem. Inventore vitae totam. Rerum repellendus enim linead sero park flows.</p>
               <div class="row gy-3">
 
@@ -72,11 +127,11 @@
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="phone" placeholder="Phone" required>
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
@@ -84,7 +139,7 @@
                   <div class="error-message"></div>
                   <div class="sent-message">Your quote request has been sent successfully. Thank you!</div>
 
-                  <button type="submit">Get a quote</button>
+                  <button type="submit">Send Message</button>
                 </div>
 
               </div>
@@ -94,7 +149,168 @@
         </div>
 
       </div>
+    
     </section><!-- End Get Started Section -->
+
+
+
+
+     <!-- ======= Our Projects Section ======= -->
+     <section id="projects" class="projects">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Trending Products</h2>
+        </div>
+
+        <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+          <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+              <div class="portfolio-content h-100">
+                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  
+                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
+                  
+                </div>
+              </div>
+            </div><!-- End Projects Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+              <div class="portfolio-content h-100">
+                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  
+                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
+                  
+                </div>
+              </div>
+            </div><!-- End Projects Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+              <div class="portfolio-content h-100">
+                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  
+                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
+                  
+                </div>
+              </div>
+            </div><!-- End Projects Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+              <div class="portfolio-content h-100">
+                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  
+                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
+                  
+                </div>
+              </div>
+            </div><!-- End Projects Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+              <div class="portfolio-content h-100">
+                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  
+                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
+                  
+                </div>
+              </div>
+            </div><!-- End Projects Item -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+              <div class="portfolio-content h-100">
+                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  
+                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
+                  
+                </div>
+              </div>
+            </div><!-- End Projects Item -->
+
+
+          </div><!-- End Projects Container -->
+
+        </div>
+
+      </div>
+    </section><!-- End Our Projects Section -->
+
+
+
+
+     <!-- ======= Recent Blog Posts Section ======= -->
+     <section id="recent-blog-posts" class="recent-blog-posts">
+      <div class="container" data-aos="fade-up"">
+
+    
+    
+      <div class=" section-header">
+            <h2>Best Selling Products</h2>
+          </div>
+
+          <div class="row gy-5">
+
+            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="post-item position-relative h-100">
+
+                <div class="post-img position-relative overflow-hidden">
+                  <img src="{{ asset('frontend/assets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="">
+                </div>
+
+                <div class="post-content d-flex flex-column">
+                  <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
+                  <hr>
+
+                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                </div>
+
+              </div>
+            </div><!-- End post item -->
+            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="post-item position-relative h-100">
+
+                <div class="post-img position-relative overflow-hidden">
+                  <img src="{{ asset('frontend/assets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="">
+                </div>
+
+                <div class="post-content d-flex flex-column">
+                  <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
+                  <hr>
+
+                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                </div>
+
+              </div>
+            </div><!-- End post item -->
+            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="post-item position-relative h-100">
+
+                <div class="post-img position-relative overflow-hidden">
+                  <img src="{{ asset('frontend/assets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="">
+                </div>
+
+                <div class="post-content d-flex flex-column">
+                  <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
+                  <hr>
+
+                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                </div>
+
+              </div>
+            </div><!-- End post item -->
+
+           
+          </div>
+
+          </div>
+    </section>
+    <!-- End Recent Blog Posts Section -->
+
+
+
+
+
 
     <!-- ======= Constructions Section ======= -->
     <section id="constructions" class="constructions">
@@ -176,7 +392,7 @@
       </div>
     </section><!-- End Constructions Section -->
 
-    <!-- ======= Services Section ======= -->
+    {{-- <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -256,7 +472,7 @@
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+    </section><!-- End Services Section --> --}}
 
     <!-- ======= Alt Services Section ======= -->
     <section id="alt-services" class="alt-services">
@@ -307,7 +523,7 @@
       </div>
     </section><!-- End Alt Services Section -->
 
-    <!-- ======= Features Section ======= -->
+    {{-- <!-- ======= Features Section ======= -->
     <section id="features" class="features section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -424,179 +640,9 @@
         </div>
 
       </div>
-    </section><!-- End Features Section -->
+    </section><!-- End Features Section --> --}}
 
-    <!-- ======= Our Projects Section ======= -->
-    <section id="projects" class="projects">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>Our Projects</h2>
-          <p>Consequatur libero assumenda est voluptatem est quidem illum et officia imilique qui vel architecto accusamus fugit aut qui distinctio</p>
-        </div>
-
-        <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
-
-          <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-remodeling">Remodeling</li>
-            <li data-filter=".filter-construction">Construction</li>
-            <li data-filter=".filter-repairs">Repairs</li>
-            <li data-filter=".filter-design">Design</li>
-          </ul><!-- End Projects Filters -->
-
-          <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Remodeling 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-construction">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/construction-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Construction 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/construction-1.jpg') }}" title="Construction 1" data-gallery="portfolio-gallery-construction" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-repairs">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/repairs-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Repairs 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/repairs-1.jpg') }}" title="Repairs 1" data-gallery="portfolio-gallery-repairs" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-design">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/design-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Design 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/design-1.jpg') }}" title="Repairs 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-2.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Remodeling 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-2.jpg') }}" title="Remodeling 2" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-construction">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/construction-2.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Construction 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/construction-2.jpg') }}" title="Construction 2" data-gallery="portfolio-gallery-construction" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-repairs">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/repairs-2.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Repairs 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/repairs-2.jpg') }}" title="Repairs 2" data-gallery="portfolio-gallery-repairs" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-design">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/design-2.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Design 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/design-2.jpg') }}" title="Repairs 2" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-3.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Remodeling 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-3.jpg') }}" title="Remodeling 3" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-construction">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/construction-3.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Construction 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/construction-3.jpg') }}" title="Construction 3" data-gallery="portfolio-gallery-construction" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-repairs">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/repairs-3.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Repairs 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/repairs-3.jpg') }}" title="Repairs 2" data-gallery="portfolio-gallery-repairs" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-design">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/design-3.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Design 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="{{ asset('frontend/assets/img/projects/design-3.jpg') }}" title="Repairs 3" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-
-          </div><!-- End Projects Container -->
-
-        </div>
-
-      </div>
-    </section><!-- End Our Projects Section -->
+   
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">
@@ -707,117 +753,7 @@
       </div>
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Recent Blog Posts Section ======= -->
-    <section id="recent-blog-posts" class="recent-blog-posts">
-      <div class="container" data-aos="fade-up"">
-
-    
-    
-  <div class=" section-header">
-        <h2>Recent Blog Posts</h2>
-        <p>In commodi voluptatem excepturi quaerat nihil error autem voluptate ut et officia consequuntu</p>
-      </div>
-
-      <div class="row gy-5">
-
-        <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="post-item position-relative h-100">
-
-            <div class="post-img position-relative overflow-hidden">
-              <img src="{{ asset('frontend/assets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="">
-              <span class="post-date">December 12</span>
-            </div>
-
-            <div class="post-content d-flex flex-column">
-
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-
-              <div class="meta d-flex align-items-center">
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
-                </div>
-              </div>
-
-              <hr>
-
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
-            </div>
-
-          </div>
-        </div><!-- End post item -->
-
-        <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="post-item position-relative h-100">
-
-            <div class="post-img position-relative overflow-hidden">
-              <img src="{{ asset('frontend/assets/img/blog/blog-2.jpg') }}" class="img-fluid" alt="">
-              <span class="post-date">July 17</span>
-            </div>
-
-            <div class="post-content d-flex flex-column">
-
-              <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
-
-              <div class="meta d-flex align-items-center">
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Mario Douglas</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
-                </div>
-              </div>
-
-              <hr>
-
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
-            </div>
-
-          </div>
-        </div><!-- End post item -->
-
-        <div class="col-xl-4 col-md-6">
-          <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="300">
-
-            <div class="post-img position-relative overflow-hidden">
-              <img src="{{ asset('frontend/assets/img/blog/blog-3.jpg') }}" class="img-fluid" alt="">
-              <span class="post-date">September 05</span>
-            </div>
-
-            <div class="post-content d-flex flex-column">
-
-              <h3 class="post-title">Quia assumenda est et veritati tirana ploder</h3>
-
-              <div class="meta d-flex align-items-center">
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Lisa Hunter</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
-                </div>
-              </div>
-
-              <hr>
-
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
-            </div>
-
-          </div>
-        </div><!-- End post item -->
-
-      </div>
-
-      </div>
-    </section>
-    <!-- End Recent Blog Posts Section -->
+   
 
   </main><!-- End #main -->
 @endsection

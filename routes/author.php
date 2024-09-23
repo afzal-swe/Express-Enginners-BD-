@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\WorkBillController;
 use App\Http\Controllers\Backend\DalyStatementController;
 use App\Http\Controllers\Backend\ConstructionsController;
 use App\Http\Controllers\Backend\SercicesController;
+use App\Http\Controllers\Backend\TrendingProductsController;
 
 
 
@@ -114,6 +115,16 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/edit/{id}', 'Services_Edit')->name('services.edit');
                 Route::post('/update/{id}', 'Services_Update')->name('services.update');
                 Route::get('/delete/{id}', 'Services_Delete')->name('services.delete');
+            });
+        });
+
+        // Trending Products Role Section
+        Route::group(['prefix' => 'trending-products'], function () {
+            Route::controller(TrendingProductsController::class)->group(function () {
+                Route::get('/', 'Manage_Trending_Products')->name('manage.trending_products');
+                Route::post('/store', 'Trending_Product_Store')->name('trending_product.store');
+                Route::get('/status/{id}', 'Trending_Product_Status')->name('trending_product.status');
+                Route::get('/delete/{id}', 'Trending_Product_Delete')->name('trending_product.delete');
             });
         });
 

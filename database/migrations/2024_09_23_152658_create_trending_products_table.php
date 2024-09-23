@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('trending_products', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

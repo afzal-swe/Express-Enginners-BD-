@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\DalyStatementController;
 use App\Http\Controllers\Backend\ConstructionsController;
 use App\Http\Controllers\Backend\SercicesController;
 use App\Http\Controllers\Backend\TrendingProductsController;
+use App\Http\Controllers\Backend\SellingProductsController;
 
 
 
@@ -125,6 +126,19 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('/store', 'Trending_Product_Store')->name('trending_product.store');
                 Route::get('/status/{id}', 'Trending_Product_Status')->name('trending_product.status');
                 Route::get('/delete/{id}', 'Trending_Product_Delete')->name('trending_product.delete');
+            });
+        });
+
+        // Selling Products Role Section
+        Route::group(['prefix' => 'selling-products'], function () {
+            Route::controller(SellingProductsController::class)->group(function () {
+                Route::get('/', 'Selling_Products_Manamge')->name('selling_products.manamge');
+                Route::get('/create', 'Selling_Products_Create')->name('selling_products.create');
+                Route::post('/store', 'Selling_Products_Store')->name('selling_products.store');
+                Route::get('/edit/{id}', 'Selling_Products_Edit')->name('selling_products.edit');
+                Route::post('/update/{id}', 'Selling_Products_Update')->name('selling_products.update');
+                Route::get('/status/{id}', 'Selling_Products_Status')->name('selling_products.status');
+                Route::get('/delete/{id}', 'Selling_Products_Delete')->name('selling_products.delete');
             });
         });
 

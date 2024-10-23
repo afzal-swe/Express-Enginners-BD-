@@ -8,7 +8,7 @@
  
  
  <!-- Main Sidebar Container -->
- <aside class="main-sidebar sidebar-white sidebar-light elevation-4">
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
       <img src="{{ asset($setting->favicon ?? 'backend/dist/img/AdminLTELogo.png') }}" alt="{{ $setting->website_name }}" class="brand-image img-circle elevation-3 p-2" style="opacity: .6">

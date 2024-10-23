@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h2 data-aos="fade-down">Welcome to <span>{{ $settings->website_name }}</span></h2>
-            <p data-aos="fade-up">Express Engineers BD ., was established in the year 2000 to import, installation and maintenance of quality lift and escalator. After enormous success in elevator business "Express engineers bd."  has developed its trading business.
+            <p data-aos="fade-up">Express Engineers BD, was established in the year 2000 to import, installation and maintenance of quality lift and escalator. After enormous success in elevator business "Express engineers bd."  has developed its trading business.
 
              </p>
             <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Get Started</a>
@@ -103,48 +103,18 @@
 
         <div class="row justify-content-between gy-4">
 
-          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
+          <div class="col-lg-12 d-flex align-items-center" data-aos="fade-up">
             <div class="content">
-              <h3>Introduction.</h3>
-              <p>Rem id rerum. Debitis deserunt quidem delectus expedita ducimus dolor. Aut iusto ipsa. Eos ipsum nobis ipsa soluta itaque perspiciatis fuga ipsum perspiciatis. Eum amet fugiat totam nisi possimus ut delectus dicta.
-              <p>Aliquam velit deserunt autem. Inventore et saepe. Tenetur suscipit eligendi labore culpa eos. Deserunt porro magni qui necessitatibus dolorem at animi cupiditate.</p>
+            
+              <h2 class="text-center text-bg-info p-3 text-white">Express Engineers BD.</h2>
+              <h3>Description </h3>
+              <p> <a href="https://expressengineersbd.com/" class="text-info">Express Engineers BD</a> was founded in 2000. Aftab ahamed  Managing Director with experience of 26(twenty six) years in lift installation, renovation and maintenance and supply . He has surrounded himself with individuals who are long time professionals in their field of expertise. management experience in different reputed company.   <a href="https://expressengineersbd.com/" class="text-info">Express Engineers BD</a>   key focuses are on providing the quality elevator and escalator at a competitive price within the confines of the elevator and escalator safety code. Over the years Express Engineers BD has continually increased quality and efficiency.  <a href="https://expressengineersbd.com/" class="text-info">Express Engineers BD</a> with the commitment of everyone in the organization has the regard for quality, the safety of our employees and client satisfaction.<br><br> <a href="https://expressengineersbd.com/" class="text-info">Express Engineers BD</a> business principles are based on a code of ethics, commitment to its employees and a pursuit for perfection
+                <a href="https://expressengineersbd.com/" class="text-info">Express Engineers BD</a> is committed to reducing the environmental footprint caused from the means and material of quality elevator and escalator. We provide new lift and escalator as well as renovations or upgrades. We are fully dedicated to serving our valuable customer by providing quality finishing and durable parts. We understand that time is always valuable when an elevator or escalator is shut down; therefore our in-house teams strive to provide solutions in a timely manner to minimize down time.</p>
+              
             </div>
           </div>
 
-          <div class="col-lg-5" data-aos="fade">
-            <form action="{{ route('message.store') }}" method="post" class="php-email-form">
-              @csrf
-              <h3>Send Message</h3>
-              <p>Vel nobis odio laboriosam et hic voluptatem. Inventore vitae totam. Rerum repellendus enim linead sero park flows.</p>
-              <div class="row gy-3">
-
-                <div class="col-md-12">
-                  <input type="text" name="name" class="form-control" placeholder="Name" required>
-                </div>
-
-                <div class="col-md-12 ">
-                  <input type="email" class="form-control" name="email" placeholder="Email" required>
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your quote request has been sent successfully. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Quote Form -->
+         
 
         </div>
 
@@ -167,68 +137,22 @@
 
           <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
+            @php
+              $trending_product = DB::table('trending_products')->where('status',1)->orderBy('id', 'DESC')->get();
+              // @dd($trending_product)
+            @endphp
+
+            @foreach ($trending_product as $row)
+           
             <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
               <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
-                  
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
-                  
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
-                  
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
-                  
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
-                  
-                </div>
-              </div>
-            </div><!-- End Projects Item -->
-            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-              <div class="portfolio-content h-100">
-                <img src="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  
-                  <a href="{{ asset('frontend/assets/img/projects/remodeling-1.jpg') }}" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"></a>
-                  
-                </div>
+                <img src="{{ asset($row->image ?? '') }}" class="img-fluid" alt="">
+
               </div>
             </div><!-- End Projects Item -->
 
-
+            @endforeach
+          
           </div><!-- End Projects Container -->
 
         </div>
@@ -241,69 +165,44 @@
 
      <!-- ======= Recent Blog Posts Section ======= -->
      <section id="recent-blog-posts" class="recent-blog-posts">
-      <div class="container" data-aos="fade-up"">
+      <div class="container" data-aos="fade-up">
 
     
     
       <div class=" section-header">
             <h2>Best Selling Products</h2>
-          </div>
+      </div>
 
-          <div class="row gy-5">
+        <div class="row gy-5">
+          @php
+            $selling_product = DB::table('selling_products')->where('status',1)->orderBy('id', 'DESC')->get();
+          @endphp
 
-            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="post-item position-relative h-100">
 
-                <div class="post-img position-relative overflow-hidden">
-                  <img src="{{ asset('frontend/assets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="">
-                </div>
+          @foreach ($selling_product as $row)
+            
+          
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="post-item position-relative h-100">
 
-                <div class="post-content d-flex flex-column">
-                  <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-                  <hr>
-
-                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                </div>
-
+              <div class="post-img position-relative overflow-hidden">
+                <img src="{{ asset($row->image ?? 'frontend/assets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="{{ $row->title }}">
               </div>
-            </div><!-- End post item -->
-            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="post-item position-relative h-100">
 
-                <div class="post-img position-relative overflow-hidden">
-                  <img src="{{ asset('frontend/assets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="">
-                </div>
+              <div class="post-content d-flex flex-column">
+                <h3 class="post-title">{{ $row->title ?? '' }}</h3>
+                <hr>
 
-                <div class="post-content d-flex flex-column">
-                  <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-                  <hr>
-
-                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                </div>
-
+                <a href="#" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
               </div>
-            </div><!-- End post item -->
-            <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="post-item position-relative h-100">
 
-                <div class="post-img position-relative overflow-hidden">
-                  <img src="{{ asset('frontend/assets/img/blog/blog-1.jpg') }}" class="img-fluid" alt="">
-                </div>
+            </div>
+          </div><!-- End post item -->
 
-                <div class="post-content d-flex flex-column">
-                  <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-                  <hr>
+          @endforeach
+          
 
-                  <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-                </div>
-
-              </div>
-            </div><!-- End post item -->
-
-           
-          </div>
-
-          </div>
+        </div>
     </section>
     <!-- End Recent Blog Posts Section -->
 

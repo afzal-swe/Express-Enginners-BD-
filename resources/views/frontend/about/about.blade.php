@@ -22,25 +22,66 @@
 
         <div class="row position-relative">
 
-          <div class="col-lg-7 about-img" style="background-image: url(frontend/assets/img/about.jpg);"></div>
-
-          <div class="col-lg-7">
-            <h2>Consequatur eius et magnam</h2>
+          <div class="col-lg-12">
+            <h2 class="text-info">Express Enginners BD</h2>
             <div class="our-story">
-              <h4>Est 1988</h4>
+              <h4>Year of Establish: 2000</h4>
               <h3>Our Story</h3>
-              <p>Inventore aliquam beatae at et id alias. Ipsa dolores amet consequuntur minima quia maxime autem. Quidem id sed ratione. Tenetur provident autem in reiciendis rerum at dolor. Aliquam consectetur laudantium temporibus dicta minus dolor.</p>
-              <ul>
-                <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commo</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea</span></li>
-              </ul>
-              <p>Vitae autem velit excepturi fugit. Animi ad non. Eligendi et non nesciunt suscipit repellendus porro in quo eveniet. Molestias in maxime doloremque.</p>
 
-              <div class="watch-video d-flex align-items-center position-relative">
-                <i class="bi bi-play-circle"></i>
-                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox stretched-link">Watch Video</a>
-              </div>
+              
+
+              <p>Inventore aliquam beatae at et id alias. Ipsa dolores amet consequuntur minima quia maxime autem. Quidem id sed ratione. Tenetur provident autem in reiciendis rerum at dolor. Aliquam consectetur laudantium temporibus dicta minus dolor.</p>
+              
+              <br><br>
+              <h4>Business Information</h4><hr>
+              <p><i class="bi bi-check-circle"></i> Business Name : <a href="https://expressengineersbd.com/" class="text-info">Express Engineers Bd. </a></p>
+              <p><i class="bi bi-check-circle"></i> Type of Company : Private  Company Joint lift  sector Act , 2000</p>
+              <p><i class="bi bi-check-circle"></i> Year of Establish : 2000</p>
+              <p><i class="bi bi-check-circle"></i> Register Office : Suite 907. Resourceful Paltan City (8th Floor). 51-51/A
+                Paltan Dhaka-1000 Bangladesh.</p>
+              <p><i class="bi bi-check-circle"></i> Corporate office :- House # 215/217, Road # 6/B, Block # E, banasree, Dhaka-1212, Bangladesh.</p>
+              <p><i class="bi bi-check-circle"></i> Phone : +8801764130103, +8801755055991, +880 1638-070374</p>
+              <p><i class="bi bi-check-circle"></i> Mobile: +8801764130103</p>
+              <p><i class="bi bi-check-circle"></i> Email : expressengineersbd@gmail.com</p>
+              <p><i class="bi bi-check-circle"></i> Website : <a href="https://expressengineersbd.com/" class="text-info" target="blanck">www.expressengineersbd.con</a></p><br>
+              <h6>Bank Details :-</h6>
+              <p><span>Bank Name :</span> Islami bank Limited. </p>
+              <p><span>Account Name :</span> Expressengineersbd. </p>
+              <p><span>Branch :</span> sab banasree. </p><br><br>
+
+
+              <h4>Management Directory:</h4><hr>
+              <h6 class="text-primary"># Managing Director</h6>
+              <p>� Aftab ahamed</p>
+
+              <h6 class="text-primary"># Director ( Marketing )</h6>
+              <p>� Sahed ahamed sakil </p>
+
+              <h6 class="text-primary"># Director ( Mechanical )</h6>
+              <p>� Mahabub</p>
+
+              <h6 class="text-primary"># Director ( Maintenance )</h6>
+              <p>� Nayeem ahamed  </p><br>
+
+
+              <h4>General Business Activities:</h4><hr>
+              <h6>� Import & Trading</h6>
+              <h6>� Supply, Installation and Maintenance of Elevator and Escalator</h6>
+              <h6>� Steel structure Supply, Installation.</h6>
+              <h6>� Macanical all work sab contact.</h6><br><br>
+              
+
+              
+
+              <h6>Register office :-</h6>
+              <p>Suite 907. Resourceful Paltan City (8th Floor). 51-51/A
+                Paltan Dhaka-1000 Bangladesh.</p>
+
+              <h6>Corporate office :-</h6>
+              <p>House # 215/217, Road # 6/B, Block # E, banasree, Dhaka-1212, Bangladesh.</p>
+
+              <h6>Total number of Employees :- 50+</h6>
+            
             </div>
           </div>
 
@@ -105,102 +146,6 @@
 
 </section><!-- End Hero Section --><!-- End Stats Counter Section -->
 
-    <!-- ======= Alt Services Section ======= -->
-    <section id="alt-services" class="alt-services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row justify-content-around gy-4">
-          <div class="col-lg-6 img-bg" style="background-image: url(frontend/assets/img/alt-services.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
-
-          <div class="col-lg-5 d-flex flex-column justify-content-center">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi</p>
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
-              <i class="bi bi-easel flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-patch-check flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Dine Pad</a></h4>
-                <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Tride clov</a></h4>
-                <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit non aspernatur odit amet. Et eligendi</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Alt Services Section -->
-
-    <!-- ======= Alt Services Section 2 ======= -->
-    <section id="alt-services-2" class="alt-services section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row justify-content-around gy-4">
-          <div class="col-lg-5 d-flex flex-column justify-content-center">
-            <h3>Non quasi officia eum nobis et rerum epudiandae rem voluptatem</h3>
-            <p>Maxime quia dolorum alias perspiciatis. Earum voluptatem sint at non. Ducimus maxime minima iste magni sit praesentium assumenda minus. Amet rerum saepe tempora vero.</p>
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
-              <i class="bi bi-easel flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-patch-check flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Dine Pad</a></h4>
-                <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
-              </div>
-            </div><!-- End Icon Box -->
-
-            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-brightness-high flex-shrink-0"></i>
-              <div>
-                <h4><a href="" class="stretched-link">Tride clov</a></h4>
-                <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit non aspernatur odit amet. Et eligendi</p>
-              </div>
-            </div><!-- End Icon Box -->
-          </div>
-
-          <div class="col-lg-6 img-bg" style="background-image: url(frontend/assets/img/alt-services-2.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
-        </div>
-
-      </div>
-    </section><!-- End Alt Services Section 2 -->
 
     <!-- ======= Our Team Section ======= -->
     <section id="team" class="team">

@@ -87,8 +87,8 @@
                                         </td>
                                         
                                         <td>
-                                            <a href="#" class="btn btn-primary btn-xs editbtn" title="Details"><i class="fa fa-eye"></i></a>
-                                            <a href="{{ route('project.view',$row->id) }}" class="btn btn-info btn-xs editbtn" title="All Info"><i class="fa fa-file"></i></a>
+                                            <a href="{{ route('project.view',$row->id) }}" class="btn btn-primary btn-xs editbtn" title="Details"><i class="fa fa-eye"></i></a>
+                                            {{-- <a href="{{ route('project.view',$row->id) }}" class="btn btn-info btn-xs editbtn" title="All Info"><i class="fa fa-file"></i></a> --}}
                                             <a href="{{ route('project.edit',$row->id) }}" class="btn btn-info btn-xs editbtn" title="Edit"><i class="fa fa-edit"></i></a>
                                             <a href="{{ route('project.delete',$row->id) }}" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                         </td>
@@ -173,19 +173,26 @@
 
                         <div class="col col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label for="">Unit</label>
-                                <input type="text" name="unit" class="form-control" placeholder="Number Of Unit" value="{{ old('unit')}}">
+                                <label for="">Lift Qty <samp class="text-danger" >*</samp></label>
+                                <input type="text" name="lift_qty" class="form-control" placeholder="Lift Qty" value="{{ old('lift_qty')}}">
                                 
                             </div>
+                            @error('lift_qty')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
+
                         <div class="col col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label for="">Total Bill (৳)</label>
-                                <input type="text" name="monthly_bill" class="form-control" placeholder="Monthly Bill" value="{{ old('monthly_bill')}}">
+                                <label for="">Unit Price <samp class="text-danger" >*</samp></label>
+                                <input type="text" name="unit" class="form-control" placeholder="Unit Price" value="{{ old('unit')}}">
                                 
                             </div>
+                            @error('unit')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                         
+                     
                     </div>
 
                     <div class="col col-lg-12 col-xl-12">

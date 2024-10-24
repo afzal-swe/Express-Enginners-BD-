@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{{ asset('backend/plugins/jqvmap/jqvmap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend/dist/css/styles.css') }}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Daterange picker -->
@@ -55,6 +56,10 @@
   <link rel="stylesheet" href="{{ asset ('backend/plugins/bs-stepper/css/bs-stepper.min.css')}}">
   <!-- dropzonejs -->
   <link rel="stylesheet" href="{{ asset ('backend/plugins/dropzone/min/dropzone.min.css')}}">
+
+
+  {{-- Date Format --}}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -70,7 +75,7 @@
   </aside>
   <!-- /.control-sidebar -->
 
-  @include('backend.layouts.partial.footer')
+  {{-- @include('backend.layouts.partial.footer') --}}
 </div>
 <!-- ./wrapper -->
 
@@ -152,6 +157,9 @@
   <script src="{{ asset('backend/dist/js/code.js') }}"></script>
 
 
+ 
+
+
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -169,6 +177,17 @@
     });
   });
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+$(document).ready(function () {
+  $('.date').datetimepicker({
+    format: 'MM/DD/YYYY',
+    locale: 'en'
+  });
+</script>
+
 
 {{-- before logout showing alert message --}}
 

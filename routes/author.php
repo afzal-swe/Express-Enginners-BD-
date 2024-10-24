@@ -190,6 +190,8 @@ Route::middleware(['auth'])->group(function () {
                 Route::controller(MonthlyBillController::class)->group(function () {
                     Route::get('/create', 'Monthly_Bill_Create')->name('monthly_bill.create');
                     Route::post('/store', 'Monthly_Bill_Store')->name('monthly_bill.store');
+                    Route::post('/session-store', 'Add_Session_Data_For_Monthly_Bill')->name('add_session_data.store');
+                    Route::get('/view', 'Monthly_Bill_View')->name('view.submit');
                 });
             });
 

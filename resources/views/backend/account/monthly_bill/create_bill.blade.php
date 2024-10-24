@@ -39,7 +39,7 @@
                             <div class="modal-content">
                                
                                 <div class="modal-body">
-                                    <form action="{{ route('monthly_bill.store') }}" method="post">
+                                    <form action="{{ route('add_session_data.store') }}" method="post">
                                         @csrf
                     
                                         <div class="card-body">
@@ -53,7 +53,7 @@
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <div class="form-group">
                                                         <label for="">Date<span class="text-danger">*</span></label>
-                                                        <input type="date" name="date" class="form-control" placeholder="DD/MM/YYYY" value="{{ old('date') }}" required> 
+                                                        <input type="date" name="date" id="date" class="form-control" placeholder="DD/MM/YYYY" value="{{ old('date') }}" required> 
                                                     </div>
                                                 </div>
 
@@ -105,7 +105,7 @@
                                         <br><hr>
 
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Ok</button>
                                             </div>
                                         </div>
                                     </form>

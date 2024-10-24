@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class MonthlyBillController extends Controller
 {
@@ -21,11 +22,35 @@ class MonthlyBillController extends Controller
     }
 
     //
+
     public function Monthly_Bill_Create()
     {
         $project_list = DB::table($this->db_project_list)->get();
         return view('backend.account.monthly_bill.create_bill', compact('project_list'));
     }
+
+    public function Add_Session_Data_For_Monthly_Bill(Request $request)
+    {
+
+        $project_amount = DB::table($this->db_project_list)->where('id', $request->project_id)->first();
+
+        $request->session()->put('billData', $request->all());
+        $request->session()->put('project_data', $project_amount);
+
+
+        $notification = array('messege' => 'Submit Ok !', 'alert-type' => 'success');
+        return redirect()->route('view.submit')->with($notification);
+    }
+
+    public function Monthly_Bill_View()
+    {
+        // dd(session()->all());
+        // $bill_data = session()->all();
+        // dd($bill_data);
+
+        return view('backend.account.monthly_bill.print');
+    }
+
 
     // Monthly Bill Store Function
     public function Monthly_Bill_Store(Request $request)

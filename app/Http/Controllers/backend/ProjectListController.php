@@ -42,6 +42,8 @@ class ProjectListController extends Controller
         $data['project_sl'] = $request->project_sl;
         $data['address'] = $request->address;
         $data['phone'] = $request->phone;
+        $data['unit'] = $request->unit;
+        $data['in_word'] = $request->in_word;
         $data['monthly_bill'] = $request->monthly_bill;
         $data['status'] = $request->status;
         $data['created_at'] = Carbon::now();
@@ -70,6 +72,8 @@ class ProjectListController extends Controller
         $data['project_sl'] = $request->project_sl;
         $data['address'] = $request->address;
         $data['phone'] = $request->phone;
+        $data['unit'] = $request->unit;
+        $data['in_word'] = $request->in_word;
         $data['monthly_bill'] = $request->monthly_bill;
         $data['status'] = $request->status;
         $data['updated_at'] = Carbon::now();

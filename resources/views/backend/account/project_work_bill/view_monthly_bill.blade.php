@@ -55,6 +55,7 @@
                                   <th>No Of Month</th>
                                   <th>Lift Quantity</th>
                                   <th>Total Price</th>
+                                  <th>Print</th>
                                   {{-- <th class="column-title no-link last"><span class="nobr">Action</span> --}}
                                 </tr>
                             </thead>
@@ -72,8 +73,12 @@
                                       
                                       <td>{{ $row->lift_quanitiy ?? '' }}</td>
                                       <td>{{ $row->total_price ?? '' }}</td>
-                                    </tr>
-                                    </tr>
+                                      
+                                      <td>
+                                        <a href="#" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-print"></i></a>
+                                        {{-- <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o"></i></a> --}}
+                                    </td>
+                                  </tr>
                               @endforeach
                                
 

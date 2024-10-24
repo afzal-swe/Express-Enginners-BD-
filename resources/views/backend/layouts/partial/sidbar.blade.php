@@ -140,6 +140,27 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
+                Our Team Manage
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+           
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('manage.team') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Team</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
                 Users
                 <i class="fas fa-angle-left right"></i>
                 
@@ -317,18 +338,7 @@
          
           
           <li class="nav-header">EXAMPLES</li>
-          <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
-              <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
-          
-          
-         
+        
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -337,14 +347,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pages Category</p>
-                </a>
-              </li>
-            </ul>
+            
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('manage.page') }}" class="nav-link">

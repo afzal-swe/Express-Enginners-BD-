@@ -43,6 +43,38 @@
                                         @csrf
                     
                                         <div class="card-body">
+
+
+
+                                            <div class="row">
+
+                                                
+                                                
+                                                <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">Date<span class="text-danger">*</span></label>
+                                                        <input type="date" name="date" class="form-control" placeholder="DD/MM/YYYY" value="{{ old('date') }}" required> 
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">Month Name <span class="text-danger">*</span></label>
+                                                        <input type="text" name="month_name" class="form-control" placeholder="Month Name" value="{{ old('month_name') }}" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">No Of Month <span class="text-danger">*</span></label>
+                                                        <input type="text" name="no_month" class="form-control" placeholder="No Of Month" value="{{ old('no_month') }}" required>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+
+
                     
                                             <div class="row">
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
@@ -65,45 +97,9 @@
 
                                             <div class="form-group col-sm-12 col-lg-12 col-md-12">
                                                 <label for="">Description <span class="text-danger">*</span></label>
-                                                <textarea type="text" name="description" class="form-control" required> </textarea>
+                                                <input type="text" name="description" class="form-control" value="Lift Maintenance & Servicing Charge For" readonly> </input>
                                             </div>
 
-
-                                           
-
-                                            <div class="row">
-
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Lift Quantity<span class="text-danger">*</span></label>
-                                                        <input type="text" name="lift_quanitiy" class="form-control" placeholder="lift_quantity" value="{{ old('lift_quantity') }}" required> 
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="">Date<span class="text-danger">*</span></label>
-                                                        <input type="date" name="date" class="form-control" placeholder="DD/MM/YYYY" value="{{ old('date') }}" required> 
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="">Month Name <span class="text-danger">*</span></label>
-                                                        <input type="text" name="month_name" class="form-control" placeholder="Month Name" value="{{ old('month_name') }}" required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="">No Of Month <span class="text-danger">*</span></label>
-                                                        <input type="text" name="no_month" class="form-control" placeholder="No Of Month" value="{{ old('no_month') }}" required>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-
-                                            
 
 
                                         <br><hr>

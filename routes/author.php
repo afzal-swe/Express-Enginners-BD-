@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\ConstructionsController;
 use App\Http\Controllers\Backend\SercicesController;
 use App\Http\Controllers\Backend\TrendingProductsController;
 use App\Http\Controllers\Backend\SellingProductsController;
+use App\Http\Controllers\Backend\OurTeamController;
 
 
 
@@ -49,6 +50,14 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/edit/{slug}', 'User_Edit')->name('user.edit');
                 Route::post('/update/{slug}', 'User_Update')->name('user.update');
                 Route::get('/delete/{slug}', 'User_Delete')->name('user.delete');
+            });
+        });
+
+        // User Route Section
+        Route::group(['prefix' => 'team'], function () {
+            Route::controller(OurTeamController::class)->group(function () {
+                Route::get('/', 'Manage_Team')->name('manage.team');
+                Route::post('/create', 'Add_Member')->name('add.member');
             });
         });
 

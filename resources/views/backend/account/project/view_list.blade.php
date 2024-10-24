@@ -51,6 +51,7 @@
                                     <th>Project SL</th>
                                     <th>Name</th>
                                     <th>Phone</th>
+                                    <th>Unit</th>
                                     <th>Monthly Bill (৳)</th>
                                     <th>Monthly</th>
                                     <th>Work</th>
@@ -68,6 +69,7 @@
                                         <td class=" ">{{ Str::of($row->project_name)->limit(24) }}</td>
                                         {{-- <td class=" ">{{ Str::of($row->address)->limit(24) }}</td> --}}
                                         <td class=" ">{{ $row->phone }}</td>
+                                        <td class=" ">{{ $row->unit }}</td>
                                         <td class=" ">{{ $row->monthly_bill }} ৳</td>
                                         <td class=" ">
                                             <a href="{{ route('monthly_bill_view',$row->id) }}" class="btn btn-info btn-xs" style="width:100px;">Billing </a>
@@ -168,13 +170,34 @@
 
 
                     <div class="row">
+
                         <div class="col col-lg-6 col-xl-6">
                             <div class="form-group">
-                                <label for="">Monthly Bill (৳)</label>
+                                <label for="">Unit</label>
+                                <input type="text" name="unit" class="form-control" placeholder="Number Of Unit" value="{{ old('unit')}}">
+                                
+                            </div>
+                        </div>
+                        <div class="col col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label for="">Total Bill (৳)</label>
                                 <input type="text" name="monthly_bill" class="form-control" placeholder="Monthly Bill" value="{{ old('monthly_bill')}}">
                                 
                             </div>
                         </div>
+                         
+                    </div>
+
+                    <div class="col col-lg-12 col-xl-12">
+                      <div class="form-group">
+                          <label for="">In Word</label>
+                          <input type="text" name="in_word" class="form-control" placeholder="In Word" value="{{ old('in_word')}}">
+                          
+                      </div>
+                  </div>
+
+                    <div class="row">
+                        
                         <div class="col col-lg-6 col-xl-6">
                             <div class="form-group">
                                 <label for="exampleInputFile">Publication</label>

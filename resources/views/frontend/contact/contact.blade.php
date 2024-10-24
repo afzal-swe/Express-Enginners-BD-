@@ -57,7 +57,97 @@
         <div class="row gy-4 mt-1">
 
           <div class="col-lg-6 ">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+
+
+
+            <!DOCTYPE html>
+
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+    
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <style type="text/css">
+
+        #map {
+
+          height: 400px;
+
+        }
+
+    </style>
+
+</head>
+
+    
+
+<body>
+
+    <div class="container mt-5">
+
+        <div id="map"></div>
+
+    </div>
+
+  
+
+    <script type="text/javascript">
+
+        function initMap() {
+
+          const myLatLng = { lat: 22.2734719, lng: 70.7512559 };
+
+          const map = new google.maps.Map(document.getElementById("map"), {
+
+            zoom: 5,
+
+            center: myLatLng,
+
+          });
+
+  
+
+          new google.maps.Marker({
+
+            position: myLatLng,
+
+            map,
+
+            title: "Hello Rajkot!",
+
+          });
+
+        }
+
+  
+
+        window.initMap = initMap;
+
+    </script>
+
+  
+
+    <script type="text/javascript"
+
+        src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
+
+  
+
+</body>
+
+</html>
+
+
+
+
+            {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe> --}}
           </div><!-- End Google Maps -->
 
           <div class="col-lg-6">

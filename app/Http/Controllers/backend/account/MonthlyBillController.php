@@ -46,7 +46,7 @@ class MonthlyBillController extends Controller
         $data['description'] = $request->description;
         $data['month_name'] = $request->month_name;
         $data['no_month'] = $request->no_month;
-        $data['lift_quanitiy'] = $request->lift_quanitiy;
+        $data['lift_quanitiy'] = $project_amount->unit;
         $data['total_price'] = $project_amount->monthly_bill;
         $data['created_at'] = Carbon::now();
 

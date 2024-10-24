@@ -51,35 +51,56 @@
                     
                                         <div class="card-body">
                     
-                                            <div class="form-group">
-                                              <label>Project Name </label>
-                                                <input type="text" name="project_name" class="form-control col-md-12 col-xs-12" value="{{ $project_edit->project_name ?? "" }}">
+                                          <div class="row">
+
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label>Project Name </label>
+                                                  <input type="text" name="project_name" class="form-control col-md-12 col-xs-12" value="{{ $project_edit->project_name ?? "" }}">
+                                              </div>
                                             </div>
 
-                                            <div class="form-group">
-                                              <label>Project SL/Number (4) </label>
-                                              <input type="text" name="project_sl" class="form-control col-md-12 col-xs-12" value="{{ $project_edit->project_sl ?? "" }}" readonly>
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label>Project SL/Number (4) </label>
+                                                <input type="text" name="project_sl" class="form-control col-md-12 col-xs-12" value="{{ $project_edit->project_sl ?? "" }}" readonly>
+                                              </div>
                                             </div>
 
-                                            <div class="form-group">
-                                              <label>Phone Number </label>
-                                              <input type="text" name="phone" class="form-control col-md-12 col-xs-12" value="{{ $project_edit->phone ?? "" }}"> 
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                              <label>Address </label>
-                                              <input type="text" name="address" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->address ?? "" }}">
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label>Phone Number </label>
+                                                <input type="text" name="phone" class="form-control col-md-12 col-xs-12" value="{{ $project_edit->phone ?? "" }}"> 
+                                              </div>
                                             </div>
 
-                                            <div class="form-group">
-                                              <label>Monthly Bill (৳) </label>
-                                              <input type="text" name="monthly_bill" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->monthly_bill ?? "" }} ">
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label>Address </label>
+                                                <input type="text" name="address" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->address ?? "" }}">
+                                              </div>
                                             </div>
 
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label>Unit </label>
+                                                <input type="text" name="unit" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->unit ?? "" }} ">
+                                              </div>
+                                            </div>
 
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label>Monthly Bill (৳) </label>
+                                                <input type="text" name="monthly_bill" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->monthly_bill ?? "" }} ">
+                                              </div>
+                                            </div>
+
+                                          </div>
                                            
-                                           
-                                            
+                                            <div class="form-group">
+                                              <label>In Word </label>
+                                              <input type="text" name="in_word" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->in_word ?? "" }} ">
+                                            </div>
 
                                             <div class="item form-group">
                                               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Status</label>

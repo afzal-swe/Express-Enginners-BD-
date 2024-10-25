@@ -52,10 +52,10 @@
                                   <th>Equipment List</th>
                                   <th>Date</th>
                                   <th>Month</th>
-                                  <th>No Of Month</th>
+                                  <th>Quantity</th>
                                   <th>Lift Quantity</th>
                                   <th>Total Price</th>
-                                  <th>Print</th>
+                                  <th>Action</th>
                                   {{-- <th class="column-title no-link last"><span class="nobr">Action</span> --}}
                                 </tr>
                             </thead>
@@ -76,8 +76,8 @@
                                       
                                       <td>
                                           <a href="#" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-print"></i></a>
-                                          {{-- <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o"></i></a> --}}
-                                      </td>
+                                          <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash"></i></a>
+                                      {{-- </td> --}}
                                     </tr>
                                     
                               @endforeach

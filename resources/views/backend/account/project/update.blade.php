@@ -81,19 +81,22 @@
                                               </div>
                                             </div>
 
+
                                             <div class="col-sm-6">
                                               <div class="form-group">
-                                                <label>Unit </label>
-                                                <input type="text" name="unit" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->unit ?? "" }} ">
+                                                <label>Lift Qty </label>
+                                                <input type="text" name="lift_quanitiy" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->lift_quanitiy ?? "" }} ">
                                               </div>
                                             </div>
 
                                             <div class="col-sm-6">
                                               <div class="form-group">
-                                                <label>Monthly Bill (৳) </label>
-                                                <input type="text" name="monthly_bill" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->monthly_bill ?? "" }} ">
+                                                <label>Unit Price</label>
+                                                <input type="text" name="unit_price" class="form-control  col-md-12 col-xs-12" value="{{ $project_edit->unit_price ?? "" }} ">
                                               </div>
                                             </div>
+
+                                           
 
                                           </div>
                                            

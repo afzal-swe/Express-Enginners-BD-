@@ -17,7 +17,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <a class="btn btn-primary mr-1" href="#">Save</a>
+              <a class="btn btn-primary mr-1" href="{{ route('monthly_bill.store') }}">Save</a>
               <a class="btn btn-info" href="#">Print</a>
               
             </ol>
@@ -66,38 +66,24 @@
                                     </thead>
                                     <tbody>
 
-                                      
                                         <tr>
                                             <td>{{ $billData['description'].' '.$billData['month_name'].'-'.date("Y", strtotime($billData['date']))  }}</td>
                                             <td>{{ $billData['no_month'] }}</td>
-                                            
-                                            
-                                            <td>{{ $project_data->unit }}</td>
-                                            {{-- <td>1,800/-</td> --}}
-                                            <td>1,800/-</td>
-                                            <td>1,800/-</td>
-                                            
+                                            <td>{{ $project_data->lift_quanitiy }}</td>
+                                            <td>{{ $project_data->unit_price }} /-</td>
+                                            <td>{{ $project_data->monthly_bill }} /-</td>
                                         </tr>
-                                       
-                                           
                                         <tr>
-                                            
                                             <td colspan="4" >Total amount : </td>
-                                            <td colspan="1"><strong>1,800/-</strong></td>
+                                            <td colspan="1"><strong>{{ $project_data->monthly_bill }} /-</strong></td>
                                         </tr>
-
-                                       
-                                       
-                                  
-
-                                        
 
                                     </tbody>
                                 </table>
                         
                                 <div class="total">
                                     
-                                    <p>In word: (Taka one thousand eight hundred only).</p>
+                                    <p>In word: ({{ $project_data->in_word }}).</p>
                                 </div>
                         
                                 <p>We are assuring you of our best attention and services at all times.</p>

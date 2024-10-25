@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('monthly_bill', function (Blueprint $table) {
             $table->id();
+            // $table->string('project_id')->nullable();
+            $table->foreignId('project_id')->constrained('project_list')->cascadeOnDelete();
             $table->string('billing_id')->nullable();
-            $table->string('project_id')->nullable();
             $table->string('date')->nullable();
             $table->string('description')->nullable();
             $table->string('month_name')->nullable();

@@ -50,7 +50,8 @@
                             <div class="modal-content">
                                
                                 <div class="modal-body">
-                                    <form action="{{ route('work_bill.store') }}" method="post">
+                                    {{-- <form action="{{ route('work_bill.store') }}" method="post"> --}}
+                                    <form action="{{ route('work_bill_Session.store') }}" method="post">
                                         @csrf
                     
                                         <div class="card-body">
@@ -76,32 +77,22 @@
                                             </div>
 
 
-                                            <div class="row">
+                                            
 
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                    <label for="">Equipment Name <span class="text-danger">*</span></label>
-                                                    <input type="text" name="equipment_list" class="form-control" placeholder="Equipment Name" value="{{ old('equipment_list') }}" required> 
-                                                </div>
+
+                                            <div class="row">
 
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                     <label for="">Quantity <span class="text-danger">*</span></label>
                                                     <input type="text" name="quantity" class="form-control" placeholder="Quantity" value="{{ old('quantity') }}" required>
                                                 </div>
 
-                                            </div>
-
-
-                                            <div class="row">
-
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                     <label for="">Unit Price <span class="text-danger">*</span></label>
                                                     <input type="text" name="unit_price" class="form-control" placeholder="Unit Price" value="{{ old('unit_price') }}" required>
                                                 </div>
 
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                    <label for="">Total Price <span class="text-danger">*</span></label>
-                                                    <input type="text" name="total_price" class="form-control" placeholder="Total Price" value="{{ old('total_price') }}" required>
-                                                </div>
+                                                
 
                                             </div>
 
@@ -135,6 +126,17 @@
                                                 
                                             </div>
 
+                                            <div class="row">
+                                                <div class="form-group col-sm-10 col-lg-10 col-md-10">
+                                                    <label for="">Equipment Name <span class="text-danger">*</span></label>
+                                                    <input type="text" name="equipment_list" class="form-control" placeholder="Equipment Name" value="{{ old('equipment_list') }}" required> 
+                                                </div>
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                                                    <label for="">Add Column </label><br>
+                                                    <button class="text-bg-info p-2 text-info">Add</button>
+                                                </div>
+                                            </div>
+
                                             <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                 <label for="exampleInputFile">General Terms & Conditions : <span class="text-danger">*</span></label>
                                                 <select name="general_terms" class="form-control" required>
@@ -143,6 +145,10 @@
                                                     <option value="3">Warranty Expire Date : </option>
                                                 </select>
                                             </div>
+
+                                           
+
+                                            
 
 
                                        <br><hr>

@@ -39,6 +39,7 @@
                             <div class="modal-content">
                                
                                 <div class="modal-body">
+                                    
                                     <form action="{{ route('add_session_data.store') }}" method="post">
                                         @csrf
                     

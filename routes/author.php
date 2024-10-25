@@ -176,6 +176,8 @@ Route::middleware(['auth'])->group(function () {
                 Route::controller(WorkBillController::class)->group(function () {
                     Route::get('/create', 'Work_Bill_Create')->name('work_bill.create');
                     Route::post('/store', 'Work_Bill_Store')->name('work_bill.store');
+                    Route::post('/store-session', 'Work_Bill_Session_Store')->name('work_bill_Session.store');
+                    Route::get('/view', 'Work_Bill_View')->name('work_bill.view');
 
                     // Project Worije Biling Show
                     Route::get('/project/{id}', 'Project_Bill_Show')->name('project.view');
@@ -189,9 +191,10 @@ Route::middleware(['auth'])->group(function () {
             Route::group(['prefix' => 'monthly-bill'], function () {
                 Route::controller(MonthlyBillController::class)->group(function () {
                     Route::get('/create', 'Monthly_Bill_Create')->name('monthly_bill.create');
-                    Route::post('/store', 'Monthly_Bill_Store')->name('monthly_bill.store');
+                    Route::get('/store', 'Monthly_Bill_Store')->name('monthly_bill.store');
                     Route::post('/session-store', 'Add_Session_Data_For_Monthly_Bill')->name('add_session_data.store');
                     Route::get('/view', 'Monthly_Bill_View')->name('view.submit');
+                    Route::get('/delete/{id}', 'Monthly_Bill_Delete')->name('monthly_bill.delete');
                 });
             });
 

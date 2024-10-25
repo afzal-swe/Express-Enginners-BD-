@@ -28,6 +28,29 @@ class WorkBillController extends Controller
         return view('backend.account.work_bill.create_work_bill', compact('project_list'));
     }
 
+    public function Work_Bill_Session_Store(Request $request)
+    {
+
+        $project_info = DB::table($this->db_project_list)->where('id', $request->project_id)->first();
+
+        $request->session()->put('workBill', $request->all());
+        $request->session()->put('project_info', $project_info);
+
+        // dd(session()->all());
+
+        $notification = array('messege' => 'Submit Ok !', 'alert-type' => 'success');
+        return redirect()->route('work_bill.view')->with($notification);
+    }
+
+
+
+
+
+    public function Work_Bill_View()
+    {
+        return view('backend.account.work_bill.print');
+    }
+
     // Work Bill Store Function
     public function Work_Bill_Store(Request $request)
     {
@@ -44,7 +67,7 @@ class WorkBillController extends Controller
         $data['equipment_list'] = $request->equipment_list;
         $data['quantity'] = $request->quantity;
         $data['unit_price'] = $request->unit_price;
-        $data['total_price'] = $request->total_price;
+        $data['total_price'] = $request->quantity * $request->unit_price;
         $data['date'] = date('d-m-Y');
         $data['month'] = date('F');
         $data['created_at'] = Carbon::now();

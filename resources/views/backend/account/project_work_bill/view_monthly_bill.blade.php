@@ -53,9 +53,10 @@
                                   <th>Date</th>
                                   <th>Month</th>
                                   <th>No Of Month</th>
-                                  <th>Lift Quantity</th>
+                                  <th>Lift Qty</th>
+                                  <th>Unit Price</th>
                                   <th>Total Price</th>
-                                  <th>Print</th>
+                                  <th>Action</th>
                                   {{-- <th class="column-title no-link last"><span class="nobr">Action</span> --}}
                                 </tr>
                             </thead>
@@ -72,11 +73,12 @@
                                       <td>{{ $row->no_month ?? '' }}</td>
                                       
                                       <td>{{ $row->lift_quanitiy ?? '' }}</td>
+                                      <td>{{ $row->unit_price ?? '' }}</td>
                                       <td>{{ $row->total_price ?? '' }}</td>
                                       
                                       <td>
                                         <a href="#" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-print"></i></a>
-                                        {{-- <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o"></i></a> --}}
+                                        <a href="{{ route('monthly_bill.delete',$row->id) }}" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>
                               @endforeach

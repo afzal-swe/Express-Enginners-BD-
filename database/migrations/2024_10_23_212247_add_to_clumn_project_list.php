@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('project_list', function (Blueprint $table) {
-            $table->string('unit')->nullable()->after('address');
-            $table->string('in_word')->nullable()->after('unit');
+            $table->string('lift_quanitiy')->nullable()->after('phone');
+            $table->string('unit_price')->nullable()->after('lift_quanitiy');
+            $table->string('in_word')->nullable()->after('status');
         });
     }
 

@@ -48,11 +48,11 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Project SL</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Unit</th>
-                                    <th>Monthly Bill (৳)</th>
+                                    <th>P-SL</th>
+                                    <th>P-Name</th>
+                                    <th>Lift Qty</th>
+                                    <th>Unit Price</th>
+                                    <th>Total (৳)</th>
                                     <th>Monthly</th>
                                     <th>Work</th>
                                     <th>Status</th>
@@ -67,10 +67,9 @@
                                         <td class=" ">{{ ++$key }}</td>
                                         <td class=" ">{{ $row->project_sl }}</td>
                                         <td class=" ">{{ Str::of($row->project_name)->limit(24) }}</td>
-                                        {{-- <td class=" ">{{ Str::of($row->address)->limit(24) }}</td> --}}
-                                        <td class=" ">{{ $row->phone }}</td>
-                                        <td class=" ">{{ $row->unit }}</td>
-                                        <td class=" ">{{ $row->monthly_bill }} ৳</td>
+                                        <td class=" ">{{ $row->lift_quanitiy }}</td>
+                                        <td class=" ">{{ $row->unit_price }}</td>
+                                        <td class=" ">{{ $row->monthly_bill }}</td>
                                         <td class=" ">
                                             <a href="{{ route('monthly_bill_view',$row->id) }}" class="btn btn-info btn-xs" style="width:100px;">Billing </a>
                                         </td>
@@ -174,10 +173,10 @@
                         <div class="col col-lg-6 col-xl-6">
                             <div class="form-group">
                                 <label for="">Lift Qty <samp class="text-danger" >*</samp></label>
-                                <input type="text" name="lift_qty" class="form-control" placeholder="Lift Qty" value="{{ old('lift_qty')}}">
+                                <input type="text" name="lift_quanitiy" class="form-control" placeholder="Lift Qty" value="{{ old('lift_quanitiy')}}">
                                 
                             </div>
-                            @error('lift_qty')
+                            @error('lift_quanitiy')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -185,10 +184,10 @@
                         <div class="col col-lg-6 col-xl-6">
                             <div class="form-group">
                                 <label for="">Unit Price <samp class="text-danger" >*</samp></label>
-                                <input type="text" name="unit" class="form-control" placeholder="Unit Price" value="{{ old('unit')}}">
+                                <input type="text" name="unit_price" class="form-control" placeholder="Unit Price" value="{{ old('unit_price')}}">
                                 
                             </div>
-                            @error('unit')
+                            @error('unit_price')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>

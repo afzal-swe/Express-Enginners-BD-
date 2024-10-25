@@ -42,42 +42,56 @@ class MonthlyBillController extends Controller
         return redirect()->route('view.submit')->with($notification);
     }
 
+
+
+
+
     public function Monthly_Bill_View()
     {
-        // dd(session()->all());
-        // $bill_data = session()->all();
-        // dd($bill_data);
 
         return view('backend.account.monthly_bill.print');
     }
 
 
     // Monthly Bill Store Function
-    public function Monthly_Bill_Store(Request $request)
+    public function Monthly_Bill_Store()
     {
 
-        $project_amount = DB::table($this->db_project_list)->where('id', $request->project_id)->first();
-        // Validation
-        $request->validate([
-            "project_id" => "required",
-        ]);
+        $bill_info = session()->get('billData');
+        $project_info = session()->get('project_data');
+        // dd(session()->all());
 
-        // Prepare data
+
 
         $data = array();
-        $data['project_id'] = $request->project_id;
-        $data['billing_id'] = $request->billing_id;
-        $data['date'] = $request->date;
-        $data['description'] = $request->description;
-        $data['month_name'] = $request->month_name;
-        $data['no_month'] = $request->no_month;
-        $data['lift_quanitiy'] = $project_amount->unit;
-        $data['total_price'] = $project_amount->monthly_bill;
+        $data['project_id'] = $bill_info['project_id'];
+        $data['billing_id'] = $bill_info['billing_id'];
+        $data['date'] = $bill_info['date'];
+        $data['description'] = $bill_info['description'];
+        $data['month_name'] = $bill_info['month_name'];
+        $data['no_month'] = $bill_info['no_month'];
+        $data['lift_quanitiy'] = $project_info->lift_quanitiy;
+        $data['unit_price'] = $project_info->unit_price;
+        $data['total_price'] = $project_info->monthly_bill;
         $data['created_at'] = Carbon::now();
+        // dd($data);
 
         DB::table($this->db_monthly_bill)->insert($data);
 
+        session()->forget('billData');
+        session()->forget('project_data');
+
         $notification = array('messege' => 'Monthly Bill Create Successfully !', 'alert-type' => 'success');
+        return redirect()->route('project.list')->with($notification);
+    }
+
+
+    public function Monthly_Bill_Delete($id)
+    {
+
+        DB::table($this->db_monthly_bill)->where('id', $id)->delete();
+
+        $notification = array('messege' => 'Monthly Bill Delete Successfully !', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
 }

@@ -17,14 +17,17 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->constrained('project_list')->cascadeOnDelete();
             $table->string('ref')->nullable();
-            $table->string('date')->nullable();
-            $table->string('month')->nullable();
+            $table->date('billing_date')->nullable();
             $table->string('equipment_list')->nullable();
             $table->string('quantity')->nullable();
-            $table->string('general_terms')->nullable();
             $table->string('unit_price')->nullable();
-            $table->string('payable')->nullable();
+            $table->string('sub_price')->nullable();
             $table->string('total_price')->nullable();
+            $table->string('in_word')->nullable();
+            $table->string('payable')->nullable();
+            $table->string('general_terms')->nullable();
+            $table->date('supply_date')->nullable();
+            $table->date('expire_date')->nullable();
             $table->timestamps();
         });
     }

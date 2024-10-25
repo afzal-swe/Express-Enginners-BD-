@@ -90,7 +90,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('work_bill_submit') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Submit Work Bill</p>
                 </a>
@@ -98,7 +98,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('monthly_bill_submit') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Submit Monthly Bill</p>
                 </a>

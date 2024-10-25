@@ -16,9 +16,9 @@
             <h3>Work Bill</h3>
           </div>
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <a class="btn btn-primary mr-1" href="#">Save</a>
-              <a class="btn btn-info" href="#">Print</a>
+            <ol class="breadcrumb float-sm-right" >
+              <a class="btn btn-primary mr-1" href="#"  >Save</a>
+              <a class="btn btn-info" href="#" >Print</a>
               
             </ol>
           </div>
@@ -46,11 +46,11 @@
                             <div class="container">
                                 <div class="header">
                                     <p>Ref: <strong>{{ $workBill['ref'] }}</strong></p>
-                                    <p>Date: 19 October 2024</p>
+                                    <p>Date: {{ date("d-m-Y", strtotime($workBill['billing_date'])) }}</p>
                                 </div>
                         
                                 <div class="recipient">
-                                    <p>To,<br>The President/Secretary<br><strong>{{ $project_info->project_name }}</strong><br>Dhaka</p>
+                                    <p>To,<br>The President/Secretary<br><strong>{{ $project_info->project_name }}</strong><br>{{ $project_info->address }}</p>
                                 </div>
                         
                                 <h2>Bill</h2>
@@ -66,36 +66,38 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
+                                        @foreach(session('workBill.equipment_list') as $index => $equipment)
                                         <tr>
-                                            <td >1</td>
-                                            <td >{{ $workBill['equipment_list'] }}</td>
-                                            <td>{{ $workBill['quantity'] }}</td>
-                                            <td>{{ $workBill['unit_price'] }}</td>
-                                            <td>0</td>
-                                           
+                                            <td>{{ $index + 1 }}</td>
+                                            <td style="text-align: left;">{{ $equipment }}</td>
+                                            <td >{{ session('workBill.quantity')[$index] ?? '' }} </td>
+                                            <td>{{ session('workBill.unit_price')[$index] ?? '' }} /-</td>
+                                            <td>{{ session('workBill.sub_price')[$index] ?? '' }} /-</td>
                                         </tr>
+                                    @endforeach
                                         
                                         <tr>
                                             <td colspan="4" >Total amount : </td>
-                                            <td colspan="1"><strong>0 /-</strong></td>
+                                            <td colspan="1"><strong>{{ $workBill['total_price'] }} /-</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
                         
                                 <div class="total">
                                     
-                                    <p>In word: (0).</p>
+                                    <p>In word: ({{ $workBill['in_word'] }}).</p>
                                 </div>
                         
                                 <p style="margin-top: 35px;">General Terms & Conditions :</p>
 
+                                <p style="margin-left: 25px; font-weight:bold;">01. Excluded Local VAT & TAX.</p>
 
-                                @if ($workBill['general_terms'] == 1)
-                                    <p style="margin-left: 25px; font-weight:bold;">01. Excluded Local VAT & TAX.</p>
-                                @elseif ($workBill['general_terms'] == 2)
-                                    <p style="margin-left: 25px; font-weight:bold;">01. Supply Date : {{ date("d-m-Y", strtotime($workBill['supply_date'])) }} </p>
-                                @elseif ($workBill['general_terms'] == 3)
-                                    <p style="margin-left: 25px; font-weight:bold;">01. Warranty Expire Date : {{ date("d-m-Y", strtotime($workBill['expire_date'])) }}</p>    
+                                @if ($workBill['general_terms'] == 0)
+                                    <p style="margin-left: 25px; font-weight:bold;"></p>
+                                @elseif ($workBill['general_terms'] == 1)
+                                    <p style="margin-left: 25px; font-weight:bold;">02. Supply Date : {{ date("d-m-Y", strtotime($workBill['supply_date'])) }} </p>
+                                    <p style="margin-left: 25px; font-weight:bold;">03. Warranty Expire Date : {{ date("d-m-Y", strtotime($workBill['expire_date'])) }}</p>
                                 @endif
 
                                 

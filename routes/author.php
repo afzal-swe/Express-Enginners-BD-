@@ -23,7 +23,6 @@ use App\Http\Controllers\Backend\OurTeamController;
 
 
 
-
 use App\Http\Controllers\Backend\account\MonthlyBillController;
 
 // Route::get('/author', function () {
@@ -58,6 +57,8 @@ Route::middleware(['auth'])->group(function () {
             Route::controller(OurTeamController::class)->group(function () {
                 Route::get('/', 'Manage_Team')->name('manage.team');
                 Route::post('/create', 'Add_Member')->name('add.member');
+                Route::get('/status/{id}', 'Manage_Status')->name('manage.status');
+                Route::get('/delete/{id}', 'Member_Delete')->name('member.delete');
             });
         });
 
@@ -178,6 +179,7 @@ Route::middleware(['auth'])->group(function () {
                     Route::post('/store', 'Work_Bill_Store')->name('work_bill.store');
                     Route::post('/store-session', 'Work_Bill_Session_Store')->name('work_bill_Session.store');
                     Route::get('/view', 'Work_Bill_View')->name('work_bill.view');
+                    Route::get('/submit', 'Work_Bill_Submit')->name('work_bill_submit');
 
                     // Project Worije Biling Show
                     Route::get('/project/{id}', 'Project_Bill_Show')->name('project.view');
@@ -187,6 +189,7 @@ Route::middleware(['auth'])->group(function () {
                 });
             });
 
+
             // Monthly Bill List Role Section
             Route::group(['prefix' => 'monthly-bill'], function () {
                 Route::controller(MonthlyBillController::class)->group(function () {
@@ -195,6 +198,7 @@ Route::middleware(['auth'])->group(function () {
                     Route::post('/session-store', 'Add_Session_Data_For_Monthly_Bill')->name('add_session_data.store');
                     Route::get('/view', 'Monthly_Bill_View')->name('view.submit');
                     Route::get('/delete/{id}', 'Monthly_Bill_Delete')->name('monthly_bill.delete');
+                    Route::get('/submit', 'Monthly_Bill_Submit')->name('monthly_bill_submit');
                 });
             });
 

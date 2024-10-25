@@ -98,4 +98,14 @@ class WorkBillController extends Controller
         // dd($p_work_bill);
         return view('backend.account.project_work_bill.view', compact('p_work_bill'));
     }
+
+
+
+
+    // Work Bill Submit Section //
+    public function Work_Bill_Submit()
+    {
+        $project_list = DB::table($this->db_project_list)->where('status', '1')->get();
+        return view('backend.account.submit_billing.submit_work_bill', compact('project_list'));
+    }
 }

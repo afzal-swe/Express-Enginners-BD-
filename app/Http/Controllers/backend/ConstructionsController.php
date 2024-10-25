@@ -37,6 +37,7 @@ class ConstructionsController extends Controller
 
         $validate = $request->validate([
             'title' => 'required',
+            'image' => 'required',
         ]);
 
         $data = array();

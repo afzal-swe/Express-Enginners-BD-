@@ -24,7 +24,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3>Work Bill</h3>
+            <h3> Work Bill</h3>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -43,7 +43,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                          <h3 class="card-title"> Add Work Bill</h3>
+                          <h3 class="card-title"> Submit Work Bill</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -51,7 +51,7 @@
                                
                                 <div class="modal-body">
                                     {{-- <form action="{{ route('work_bill.store') }}" method="post"> --}}
-                                    <form action="{{ route('work_bill_Session.store') }}" method="post">
+                                    <form action="#" method="post">
                                         @csrf
                     
                                         <div class="card-body">
@@ -155,7 +155,7 @@
                                        <br><hr>
 
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary">Ok</button>
+                                                <button type="submit" class="btn btn-primary" disabled>Submit</button>
                                             </div>
                                         </div>
                                     </form>

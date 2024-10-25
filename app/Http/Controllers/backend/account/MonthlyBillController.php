@@ -94,4 +94,12 @@ class MonthlyBillController extends Controller
         $notification = array('messege' => 'Monthly Bill Delete Successfully !', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+
+
+    public function Monthly_Bill_Submit()
+    {
+        $project_list = DB::table($this->db_project_list)->get();
+        return view('backend.account.submit_billing.submit_monthly_bill', compact('project_list'));
+    }
 }

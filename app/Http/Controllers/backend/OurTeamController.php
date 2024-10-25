@@ -58,4 +58,46 @@ class OurTeamController extends Controller
         $notification = array('messege' => 'Create Successfully!', 'alert-type' => 'success');
         return redirect()->route('manage.team')->with($notification);
     }
+
+    public function Manage_Status($id)
+    {
+        $check_status = DB::table($this->db_our_team)->where('id', $id)->first();
+
+        $data = array();
+        if ($check_status->status == "1") {
+            $data['status'] = "0";
+            DB::table($this->db_our_team)->where('id', $id)->update($data);
+
+            $notification = array('messege' => 'Status Deactive Successfully !', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        } else {
+            $data['status'] = "1";
+
+            DB::table($this->db_our_team)->where('id', $id)->update($data);
+
+            $notification = array('messege' => 'Status Active Successfully !', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        }
+    }
+
+
+    public function Member_Delete($id)
+    {
+        $image = DB::table($this->db_our_team)->where('id', $id)->first();
+
+
+        if ($image) {
+            $image_old = $image->image;
+            unlink($image_old);
+
+            DB::table($this->db_our_team)->where('id', $id)->delete();
+
+            $notification = array('messege' => 'Delete Successfully !', 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        }
+        DB::table($this->db_our_team)->where('id', $id)->delete();
+
+        $notification = array('messege' => 'Delete Successfully !', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
+    }
 }

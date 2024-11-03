@@ -30,7 +30,7 @@ use App\Http\Controllers\Backend\account\MonthlyBillController;
 // });
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['Supper_Admin'])->group(function () {
     Route::group(['prefix' => 'author'], function () {
 
         Route::controller(AuthController::class)->group(function () {
@@ -177,6 +177,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::controller(WorkBillController::class)->group(function () {
                     Route::get('/create', 'Work_Bill_Create')->name('work_bill.create');
                     Route::post('/store', 'Work_Bill_Store')->name('work_bill.store');
+                    Route::get('/work-store', 'Session_Data_Store')->name('session_data_store');
                     Route::post('/store-session', 'Work_Bill_Session_Store')->name('work_bill_Session.store');
                     Route::get('/view', 'Work_Bill_View')->name('work_bill.view');
                     Route::get('/submit', 'Work_Bill_Submit')->name('work_bill_submit');
@@ -185,7 +186,7 @@ Route::middleware(['auth'])->group(function () {
                     Route::get('/project/{id}', 'Project_Bill_Show')->name('project.view');
                     // Route::post('/update/{id}', 'Project_Update')->name('project.update');
                     // Route::get('/status/{id}', 'Project_Status')->name('project.status');
-                    // Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
+                    Route::get('/delete/{id}', 'work_bill_delete')->name('work_bill_delete');
                 });
             });
 

@@ -12,7 +12,7 @@ class AuthController extends Controller
     // Admin Dashboard
     public function Admin_dashboard()
     {
-        if (Auth::check()) {
+        if (Auth::user()->parmission == 1) {
 
             return view('backend.layouts.main');
         } else {

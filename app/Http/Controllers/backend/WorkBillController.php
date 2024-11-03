@@ -52,38 +52,37 @@ class WorkBillController extends Controller
     }
 
     // Work Bill Store Function
-    public function Work_Bill_Store(Request $request)
+    public function Session_Data_Store()
     {
-        // Validation
-        $request->validate([
-            "project_id" => "required",
-        ]);
 
-        // Prepare data
+        $work_bill_info = session()->get('workBill');
+        $project_info = session()->get('project_info');
+        // dd(session()->all());
 
         $data = array();
-        $data['project_id'] = $request->project_id;
-        $data['ref'] = $request->ref;
-        $data['equipment_list'] = $request->equipment_list;
-        $data['quantity'] = $request->quantity;
-        $data['unit_price'] = $request->unit_price;
-        $data['total_price'] = $request->quantity * $request->unit_price;
-        $data['date'] = date('d-m-Y');
-        $data['month'] = date('F');
+        $data['project_id'] = $work_bill_info['project_id'];
+        $data['ref'] = $work_bill_info['ref'];
+        $data['billing_date'] = $work_bill_info['billing_date'];
+        $data['equipment_list'] = json_encode($work_bill_info['equipment_list']);
+        $data['quantity'] = json_encode($work_bill_info['quantity']);
+        $data['unit_price'] = json_encode($work_bill_info['unit_price']);
+        $data['sub_price'] = json_encode($work_bill_info['sub_price']);
+        $data['total_price'] = $work_bill_info['total_price'];
+        $data['in_word'] = $work_bill_info['in_word'];
+        // $data['payable'] = $work_bill_info['general_terms'];
+        $data['general_terms'] =  $work_bill_info['general_terms'];
+        $data['supply_date'] = $work_bill_info['supply_date'];
+        $data['expire_date'] = $work_bill_info['expire_date'];
         $data['created_at'] = Carbon::now();
 
-        if ($request->general_terms == "2") {
-            $data['general_terms'] = $request->general_terms . $request->supply_date;
-        } elseif ($request->general_terms == "3") {
-            $data['general_terms'] = $request->general_terms . $request->expire_date;
-        } else {
-            $data['general_terms'] = $request->general_terms;
-        }
 
         DB::table($this->db_work_bill)->insert($data);
 
+        session()->forget('workBill');
+        session()->forget('project_info');
+
         $notification = array('messege' => 'Work Bill Create Successfully !', 'alert-type' => 'success');
-        return redirect()->back()->with($notification);
+        return redirect()->route('project.list')->with($notification);
     }
 
     // Project Working Bill Show
@@ -107,5 +106,15 @@ class WorkBillController extends Controller
     {
         $project_list = DB::table($this->db_project_list)->where('status', '1')->get();
         return view('backend.account.submit_billing.submit_work_bill', compact('project_list'));
+    }
+
+    public function work_bill_delete($id)
+    {
+
+
+        DB::table($this->db_work_bill)->where('id', $id)->delete();
+
+        $notification = array('messege' => 'Monthly Bill Delete Successfully !', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
     }
 }

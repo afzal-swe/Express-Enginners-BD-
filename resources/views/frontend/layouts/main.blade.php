@@ -11,6 +11,13 @@
       <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
 
+    <div class="whatrsapp_float">
+
+      <a href="http://facebook.com" target="_blank">
+        <img src="{{ asset('frontend/image/whatsapp.png') }}" alt="" width="55px;">
+      </a>
+    </div>
+
     <div class="info d-flex align-items-center">
       <div class="container">
         <div class="row justify-content-center">

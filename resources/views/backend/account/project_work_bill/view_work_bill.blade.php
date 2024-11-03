@@ -49,11 +49,11 @@
                                 <tr>
                                   <th>No </th>
                                   <th>Billing ID</th>
-                                  <th>Equipment List</th>
                                   <th>Date</th>
-                                  <th>Month</th>
+                                  <th>Equipment List</th>
                                   <th>Quantity</th>
-                                  <th>Lift Quantity</th>
+                                  <th>Unit Price</th>
+                                  <th>Sub Price</th>
                                   <th>Total Price</th>
                                   <th>Action</th>
                                   {{-- <th class="column-title no-link last"><span class="nobr">Action</span> --}}
@@ -63,21 +63,25 @@
 
                                 
                               @foreach ($work_bill as $key=>$row)
+                              {{-- @dd($row); --}}
                                     <tr>
+                                     
                                       <td>{{ ++$key }}</td>
                                       <td>{{ $row->ref }}</td>
-                                      <td>{{ $row->equipment_list }}</td>
-                                      <td>{{ $row->date }}</td>
-                                      <td>{{ $row->month }}</td>
+                                      <td>{{ $row->billing_date }}</td>
+                                      <td>{{ Str::of($row->equipment_list)->limit(15) }}</td>
                                       <td>{{ $row->quantity }}</td>
-                                      
                                       <td>{{ $row->unit_price }}</td>
+                                      <td>{{ $row->sub_price }}</td>
+                                      
                                       <td>{{ $row->total_price }} ৳</td>
+                                      
                                       
                                       <td>
                                           <a href="#" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-print"></i></a>
-                                          <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash"></i></a>
-                                      {{-- </td> --}}
+                                          <a href="#" class="btn btn-info btn-xs" title="Delete"><i class="fa fa-eye"></i></a>
+                                          <a href="{{ route('work_bill_delete',$row->id) }}" class="btn btn-danger btn-xs " id="delete" title="Delete"><i class="fa fa-trash"></i></a>
+                                      </td>
                                     </tr>
                                     
                               @endforeach

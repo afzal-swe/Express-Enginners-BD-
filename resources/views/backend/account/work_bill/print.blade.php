@@ -17,7 +17,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right" >
-              <a class="btn btn-primary mr-1" href="#"  >Save</a>
+              <a class="btn btn-primary mr-1" href="{{ route('session_data_store') }}"  >Save</a>
               <a class="btn btn-info" href="#" >Print</a>
               
             </ol>

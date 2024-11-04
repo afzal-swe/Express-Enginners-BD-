@@ -125,7 +125,7 @@
                                         <div class="">
                                           <label class="control-label col-md-12 col-sm-12 col-xs-12">Expense Date <span class="text-danger">*</span></label>
                                           <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="date" class="form-control" name="expense_date" value="{{ old('expense_date') }}" required>
+                                            <input type="date" class="form-control date" name="expense_date" value="{{ old('expense_date') }}" required>
                                           </div>
                                         </div>
 

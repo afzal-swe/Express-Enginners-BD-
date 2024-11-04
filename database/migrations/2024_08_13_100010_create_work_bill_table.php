@@ -22,12 +22,14 @@ return new class extends Migration
             $table->string('quantity')->nullable();
             $table->string('unit_price')->nullable();
             $table->string('sub_price')->nullable();
-            $table->string('total_price')->nullable();
             $table->string('in_word')->nullable();
-            $table->string('payable')->nullable();
             $table->string('general_terms')->nullable();
             $table->date('supply_date')->nullable();
             $table->date('expire_date')->nullable();
+            $table->string('price')->nullable();
+            $table->string('debit')->nullable();
+            $table->string('credit')->nullable();
+            $table->string('total_price')->nullable();
             $table->timestamps();
         });
     }

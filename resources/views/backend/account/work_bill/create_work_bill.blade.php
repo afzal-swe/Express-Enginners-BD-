@@ -65,7 +65,10 @@
 
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <label for="">Project Ref : <span class="text-danger">*</span></label>
-                                                    <input type="text" name="ref" class="form-control" value="EEBD/WB/{{ mt_rand(0, 100) }}" placeholder="EEBD/SNT/WB/1008" required>
+                                                    <input type="text" name="ref" class="form-control @error('ref') is-invalid @enderror" value="EEBD/WB/{{ mt_rand(0, 100) }}">
+                                                    @error('ref')
+                                                    <samp class="text-danger">{{ $message }}</samp>
+                                                @enderror
                                                 </div>
     
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">

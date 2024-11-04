@@ -91,6 +91,9 @@
                                 <div class="signature">
                                     <p>Sincerely Thanks From</p>
                                     <p><strong>EXPRESS ENGINEERS BD</strong></p>
+                                    <div class="signuter_image mb-2">
+                                        <img src="{{ asset('backend/images/signature/unnamed.png') }}" alt="" style="width:152px;">
+                                    </div>
                                     <p>Sahed Ahamed Sakil</p>
                                     <p>B.Sc. Engr. Of EEE</p>
                                     <p>Marketing & Finance Director</p>

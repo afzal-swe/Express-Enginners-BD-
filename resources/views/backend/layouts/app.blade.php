@@ -185,7 +185,7 @@
 <script>
 $(document).ready(function () {
   $('.date').datetimepicker({
-    format: 'MM/DD/YYYY',
+    format: 'DD/MM/YYYY',
     locale: 'en'
   });
 </script>

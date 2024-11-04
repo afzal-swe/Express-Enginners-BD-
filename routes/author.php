@@ -210,6 +210,9 @@ Route::middleware(['Supper_Admin'])->group(function () {
                     Route::get('/add', 'Statement_Form')->name('daly_statement.store');
                     Route::post('/store-income', 'Income_Statement_Store')->name('income_statement.store');
                     Route::post('/store-expense', 'Expense_Statement_Store')->name('expense_statement_store');
+
+                    Route::get('/search', 'statements_searech')->name('statements_searech');
+                    Route::get('/single-search', 'Single_Statement_Search')->name('single_statement.search');
                 });
             });
         });

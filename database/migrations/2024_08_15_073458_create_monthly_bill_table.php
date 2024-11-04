@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('no_month')->nullable();
             $table->string('lift_quanitiy')->nullable();
             $table->string('unit_price')->nullable();
+            $table->string('price')->nullable();
+            $table->string('debit')->nullable();
+            $table->string('credit')->nullable();
             $table->string('total_price')->nullable();
             $table->timestamps();
         });

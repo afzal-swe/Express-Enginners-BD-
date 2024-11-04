@@ -50,11 +50,10 @@
                                   <th>No </th>
                                   <th>Billing ID</th>
                                   <th>Date</th>
-                                  <th>Equipment List</th>
-                                  <th>Quantity</th>
-                                  <th>Unit Price</th>
-                                  <th>Sub Price</th>
-                                  <th>Total Price</th>
+                                  <th>Price</th>
+                                  <th>Credit</th>
+                                  <th>Debit</th>
+                                  <th>Total</th>
                                   <th>Action</th>
                                   {{-- <th class="column-title no-link last"><span class="nobr">Action</span> --}}
                                 </tr>
@@ -69,17 +68,20 @@
                                       <td>{{ ++$key }}</td>
                                       <td>{{ $row->ref }}</td>
                                       <td>{{ $row->billing_date }}</td>
-                                      <td>{{ Str::of($row->equipment_list)->limit(15) }}</td>
-                                      <td>{{ $row->quantity }}</td>
-                                      <td>{{ $row->unit_price }}</td>
-                                      <td>{{ $row->sub_price }}</td>
+                                      <td>{{ $row->price ?? '' }}</td>
+                                      <td>{{ $row->credit ?? '' }}</td>
+                                      @if ($row->debit == 0)
+                                        <td class="text-success">{{ $row->debit ?? '' }}</td>
+                                      @else
+                                        <td class="text-danger">{{ $row->debit ?? '' }}</td>
+                                      @endif
                                       
-                                      <td>{{ $row->total_price }} ৳</td>
+                                      <td>{{ $row->total_price ?? '' }}</td>
                                       
                                       
                                       <td>
-                                          <a href="#" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-print"></i></a>
-                                          <a href="#" class="btn btn-info btn-xs" title="Delete"><i class="fa fa-eye"></i></a>
+                                          <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a>
+                                          <a href="#" class="btn btn-info btn-xs" title="View"><i class="fa fa-eye"></i></a>
                                           <a href="{{ route('work_bill_delete',$row->id) }}" class="btn btn-danger btn-xs " id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                       </td>
                                     </tr>

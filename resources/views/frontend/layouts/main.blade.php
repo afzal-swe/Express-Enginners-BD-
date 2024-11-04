@@ -13,7 +13,7 @@
 
     <div class="whatrsapp_float">
 
-      <a href="http://facebook.com" target="_blank">
+      <a href="https://wa.me/+8801764130103" target="_blank">
         <img src="{{ asset('frontend/image/whatsapp.png') }}" alt="" width="55px;">
       </a>
     </div>

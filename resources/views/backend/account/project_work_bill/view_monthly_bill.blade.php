@@ -49,15 +49,13 @@
                                 <tr>
                                   <th>No </th>
                                   <th>Billing ID</th>
-                                  {{-- <th class="column-title">Description</th> --}}
                                   <th>Date</th>
                                   <th>Month</th>
-                                  <th>No Of Month</th>
-                                  <th>Lift Qty</th>
-                                  <th>Unit Price</th>
-                                  <th>Total Price</th>
+                                  <th>Price</th>
+                                  <th>Credit</th>
+                                  <th>Debit</th>
+                                  <th>Total</th>
                                   <th>Action</th>
-                                  {{-- <th class="column-title no-link last"><span class="nobr">Action</span> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,14 +68,19 @@
                                       {{-- <td class=" ">{{ $row->description }}</td> --}}
                                       <td>{{ $row->date ?? '' }}</td>
                                       <td>{{ $row->month_name ?? '' }}</td>
-                                      <td>{{ $row->no_month ?? '' }}</td>
+                                      <td>{{ $row->price ?? '' }}</td>
+                                      <td>{{ $row->credit ?? '' }}</td>
+                                      @if ($row->debit == 0)
+                                        <td class="text-success">{{ $row->debit ?? '' }}</td>
+                                      @else
+                                        <td class="text-danger">{{ $row->debit ?? '' }}</td>
+                                      @endif
                                       
-                                      <td>{{ $row->lift_quanitiy ?? '' }}</td>
-                                      <td>{{ $row->unit_price ?? '' }}</td>
                                       <td>{{ $row->total_price ?? '' }}</td>
-                                      
+                          
                                       <td>
-                                        <a href="#" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-print"></i></a>
+                                        <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a>
+                                        <a href="#" class="btn btn-info btn-xs" title="View"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('monthly_bill.delete',$row->id) }}" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>

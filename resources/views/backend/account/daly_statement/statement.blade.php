@@ -28,17 +28,17 @@
 
       <div class="row">
         <div class="col col-sm-12 col-md-12 col-lg-12">
-          <form action="#" method="GET" class="mb-3">
-            {{-- <form action="{{ route('statements.index') }}" method="GET" class="mb-3"> --}}
+          
+            <form action="{{ route('single_statement.search') }}" method="GET" class="mb-3">
               <div class="row">
 
               <div class="col-sm-2 mt-2">
-                <input type="date" name="search" class="form-control" value="{{ request()->query('search') }}">
+                <input type="date" name="search" class="form-control">
             
               </div>
              
               <div class="col-sm-2 mb-2">
-                <button type="submit" class="btn btn-primary mt-2" disabled>Search</button>
+                <button type="submit" class="btn btn-primary mt-2">Search</button>
            
             
               </div>
@@ -48,21 +48,21 @@
         <h5 style="margin-left: 15px;">Or</h5>
         
         <div class="col col-sm-12 col-md-12 col-lg-12">
-          <form action="#" method="GET" class="mb-3">
-            {{-- <form action="{{ route('statements.index') }}" method="GET" class="mb-3"> --}}
+          {{-- <form action="#" method="GET" class="mb-3"> --}}
+            <form action="{{ route('statements_searech') }}" method="GET" class="mb-3">
               <div class="row">
 
                 <div class="col-sm-2 mt-2">
-                  <input type="date" name="search" class="form-control" value="{{ request()->query('search') }}">
+                  <input type="date" name="start_date" class="form-control" >
               
                 </div><a class="mt-3">To</a>
                 <div class="col-sm-2 mt-2">
-                  <input type="date" name="search" class="form-control" value="{{ request()->query('search') }}">
+                  <input type="date" name="end_date" class="form-control" >
              
               
                 </div>
                 <div class="col-sm-2 mb-2">
-                  <button type="submit" class="btn btn-primary mt-2" disabled>Search</button>
+                  <button type="submit" class="btn btn-primary mt-2">Search</button>
              
               
                 </div>
@@ -98,18 +98,20 @@
                             <tbody>
 
                                 
-                              @foreach ($income_statement as $key=>$row)
-                                    <tr>
-                                      <th scope="row">{{ ++$key }}</th>
-                                      <td>{{ date('d-m-Y',strtotime($row->income_date)) }}</td>
-                                      
-                                      <td>{{ $row->income_particulars }}</td>
-                                      <td>{{ $row->income_reason }}</td>
-                                      <td>{{ $row->income_amount }}</td>
-                                      <td>{{ $row->income_total }}</td>
-                                    </tr>
-                                    </tr>
-                                  @endforeach
+                              @isset($income_statement)
+                                @foreach ($income_statement as $key=>$row)
+                                  <tr>
+                                    <th scope="row">{{ ++$key }}</th>
+                                    <td>{{ date('d-m-Y',strtotime($row->income_date)) }}</td>
+                                    
+                                    <td>{{ $row->income_particulars }}</td>
+                                    <td>{{ $row->income_reason }}</td>
+                                    <td>{{ $row->income_amount }}</td>
+                                    <td>{{ $row->income_total }}</td>
+                                  </tr>
+                                  </tr>
+                                @endforeach
+                              @endisset
                                
 
                             </tbody>
@@ -140,23 +142,28 @@
                                   <th>Total</th>
                                 </tr>
                             </thead>
-                            <tbody>
 
-                                
-                              @foreach ($expense_statement as $key=>$row)
-                                    <tr>
-                                      <th scope="row">{{ ++$key }}</th>
-                                      <td>{{ date('d-m-Y',strtotime($row->expense_date)) }}</td>
-                                      <td>{{ $row->expense_particulars }}</td>
-                                      <td>{{ $row->expense_reason }}</td>
-                                      <td>{{ $row->expense_amount }}</td>
-                                      <td>{{ $row->expense_total }}</td>
-                                    </tr>
-                                    </tr>
-                                  @endforeach
-                               
+                           
+                           @isset($expense_statement)
+                           <tbody>  
+                            @foreach ($expense_statement as $key=>$row)
+                                  <tr>
+                                    <th scope="row">{{ ++$key }}</th>
+                                    <td>{{ date('d-m-Y',strtotime($row->expense_date)) }}</td>
+                                    <td>{{ $row->expense_particulars }}</td>
+                                    <td>{{ $row->expense_reason }}</td>
+                                    <td>{{ $row->expense_amount }}</td>
+                                    <td>{{ $row->expense_total }}</td>
+                                  </tr>
+                                  </tr>
+                                @endforeach
+                          </tbody>
+                           @endisset
+                            
+                            
 
-                            </tbody>
+                          
+
                           </table>
                         </div>
                         <!-- /.card-body -->

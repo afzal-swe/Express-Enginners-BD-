@@ -32,6 +32,10 @@ class MonthlyBillController extends Controller
     public function Add_Session_Data_For_Monthly_Bill(Request $request)
     {
 
+        $request->validate([
+            'billing_id' => ['required', 'string', 'max:255', 'unique:monthly_bill'],
+
+        ]);
         $project_amount = DB::table($this->db_project_list)->where('id', $request->project_id)->first();
 
         $request->session()->put('billData', $request->all());
@@ -72,6 +76,9 @@ class MonthlyBillController extends Controller
         $data['no_month'] = $bill_info['no_month'];
         $data['lift_quanitiy'] = $project_info->lift_quanitiy;
         $data['unit_price'] = $project_info->unit_price;
+        $data['price'] = $project_info->monthly_bill;
+        $data['credit'] = '0';
+        $data['debit'] = $project_info->monthly_bill;
         $data['total_price'] = $project_info->monthly_bill;
         $data['created_at'] = Carbon::now();
         // dd($data);

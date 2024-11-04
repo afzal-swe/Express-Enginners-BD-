@@ -80,7 +80,11 @@
                                             <div class="row">
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                     <label for="">Billing ID : <span class="text-danger">*</span></label>
-                                                    <input type="text" name="billing_id" class="form-control" value="EEBD/MB/" placeholder="Billing ID" required>
+                                                    <input type="text" name="billing_id" class="form-control @error('billing_id') is-invalid @enderror " value="EEBD/MB/" placeholder="Billing ID">
+                                                
+                                                    @error('billing_id')
+                                                        <samp class="text-danger">{{ $message }}</samp>
+                                                    @enderror
                                                 </div>
     
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">

@@ -30,10 +30,10 @@ class DalyStatementController extends Controller
     // All Statement View
     public function Statement_All()
     {
-        $income_statement = DB::table($this->db_daly_income_statement)->paginate(10);
-        $expense_statement = DB::table($this->db_daly_expense_statement)->paginate(10);
+        // $income_statement = DB::table($this->db_daly_income_statement)->paginate(10);
+        // $expense_statement = DB::table($this->db_daly_expense_statement)->paginate(10);
 
-        return view('backend.account.daly_statement.statement', compact('income_statement', 'expense_statement'));
+        return view('backend.account.daly_statement.statement');
     }
 
 
@@ -55,7 +55,7 @@ class DalyStatementController extends Controller
 
         // Prepare data
         $data = [
-            'income_date' => $request->income_date,
+            'income_date' => date('d-m-Y', strtotime($request->income_date)),
             'income_particulars' => $request->income_particulars,
             'income_reason' => $request->income_reason,
             'income_amount' => $request->income_amount,
@@ -95,7 +95,7 @@ class DalyStatementController extends Controller
 
         // Prepare data
         $data = [
-            'expense_date' => $request->expense_date,
+            'expense_date' => date('d-m-Y', strtotime($request->expense_date)),
             'expense_particulars' => $request->expense_particulars,
             'expense_reason' => $request->expense_reason,
             'expense_amount' => $request->expense_amount,
@@ -114,5 +114,36 @@ class DalyStatementController extends Controller
 
         $notification = array('messege' => 'Added Expense Statement Successfully !', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
+    }
+
+
+    public function Single_Statement_Search(Request $request)
+    {
+
+        $income_statement = DB::table($this->db_daly_income_statement)
+            ->where('income_date', date('d-m-Y', strtotime($request->search)))
+            ->get();
+
+        $expense_statement = DB::table($this->db_daly_expense_statement)
+            ->where('expense_date', date('d-m-Y', strtotime($request->search)))
+            ->get();
+
+        return view('backend.account.daly_statement.statement', compact('expense_statement', 'income_statement'));
+    }
+
+    public function statements_searech(Request $request)
+    {
+        $start_date = date('d-m-Y', strtotime($request->start_date));
+        $end_date = date('d-m-Y', strtotime($request->end_date));
+
+        $income_statement = DB::table($this->db_daly_income_statement)
+            ->whereBetween('income_date', [$start_date, $end_date])
+            ->get();
+
+        $expense_statement = DB::table($this->db_daly_expense_statement)
+            ->whereBetween('expense_date', [$start_date, $end_date])
+            ->get();
+
+        return view('backend.account.daly_statement.statement', compact('expense_statement', 'income_statement'));
     }
 }

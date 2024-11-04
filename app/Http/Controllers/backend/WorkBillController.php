@@ -31,6 +31,11 @@ class WorkBillController extends Controller
     public function Work_Bill_Session_Store(Request $request)
     {
 
+        $request->validate([
+            'ref' => ['required', 'string', 'max:255', 'unique:work_bill'],
+
+        ]);
+
         $project_info = DB::table($this->db_project_list)->where('id', $request->project_id)->first();
 
         $request->session()->put('workBill', $request->all());
@@ -67,12 +72,14 @@ class WorkBillController extends Controller
         $data['quantity'] = json_encode($work_bill_info['quantity']);
         $data['unit_price'] = json_encode($work_bill_info['unit_price']);
         $data['sub_price'] = json_encode($work_bill_info['sub_price']);
-        $data['total_price'] = $work_bill_info['total_price'];
         $data['in_word'] = $work_bill_info['in_word'];
-        // $data['payable'] = $work_bill_info['general_terms'];
         $data['general_terms'] =  $work_bill_info['general_terms'];
         $data['supply_date'] = $work_bill_info['supply_date'];
         $data['expire_date'] = $work_bill_info['expire_date'];
+        $data['price'] = $work_bill_info['total_price'];
+        $data['credit'] = '0';
+        $data['debit'] = $work_bill_info['total_price'];
+        $data['total_price'] = $work_bill_info['total_price'];
         $data['created_at'] = Carbon::now();
 
 

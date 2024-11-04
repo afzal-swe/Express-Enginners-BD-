@@ -35,7 +35,7 @@ Route::middleware(['Supper_Admin'])->group(function () {
     Route::group(['prefix' => 'author'], function () {
 
         Route::controller(AdminController::class)->group(function () {
-            Route::get('/dashboard', 'Admin_dashboard')->name('dashboard');
+            Route::get('/', 'Admin_dashboard')->name('dashboard');
             Route::get('/logout', 'Admin_logout')->name('logout');
             // Route::get('/password-change', 'password_change')->name('admin.password_change');
             // Route::post('/password-update', 'update_change')->name('pass.update');

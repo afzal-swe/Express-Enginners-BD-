@@ -124,4 +124,44 @@ class WorkBillController extends Controller
         $notification = array('messege' => 'Monthly Bill Delete Successfully !', 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+
+    public function Submit_Work_Bill_Update(Request $request)
+    {
+        $request->validate([
+            'ref' => ['required', 'string', 'max:255'],
+
+        ]);
+
+        // dd($request->all());
+        $work_bill = DB::table($this->db_work_bill)->where('ref', $request->ref)->first();
+
+        if ($work_bill) {
+            $data = array();
+            $data['project_id'] = $work_bill->project_id;
+            $data['ref'] = $request->ref;
+            $data['billing_date'] = $request->billing_date;
+            $data['equipment_list'] = json_encode($work_bill->equipment_list);
+            $data['quantity'] = json_encode($work_bill->quantity);
+            $data['unit_price'] = json_encode($work_bill->unit_price);
+            $data['sub_price'] = json_encode($work_bill->sub_price);
+            $data['in_word'] = $request->in_word;
+            $data['general_terms'] =  $work_bill->general_terms;
+            $data['supply_date'] = $work_bill->supply_date;
+            $data['expire_date'] = $work_bill->expire_date;
+
+            $data['price'] = $work_bill->total_price;
+            $data['credit'] = $request->total_price;
+            $data['debit'] = $work_bill->debit - $request->total_price;
+            $data['total_price'] = $work_bill->credit + $work_bill->debit;
+            $data['created_at'] = Carbon::now();
+
+            DB::table($this->db_work_bill)->insert($data);
+
+            $notification = array('messege' => 'Work Bill Create Successfully !', 'alert-type' => 'success');
+            return redirect()->route('project.list')->with($notification);
+        } else {
+            $notification = array('messege' => 'Work Bill Create Successfully !', 'alert-type' => 'success');
+            return redirect()->route('work_bill_submit')->with($notification);
+        }
+    }
 }

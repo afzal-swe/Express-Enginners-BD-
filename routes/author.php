@@ -181,6 +181,7 @@ Route::middleware(['Supper_Admin'])->group(function () {
                     Route::post('/store-session', 'Work_Bill_Session_Store')->name('work_bill_Session.store');
                     Route::get('/view', 'Work_Bill_View')->name('work_bill.view');
                     Route::get('/submit', 'Work_Bill_Submit')->name('work_bill_submit');
+                    Route::post('/submit-workbill', 'Submit_Work_Bill_Update')->name('submit_work_bill.update');
 
                     // Project Worije Biling Show
                     Route::get('/project/{id}', 'Project_Bill_Show')->name('project.view');

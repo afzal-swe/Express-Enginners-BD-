@@ -50,8 +50,8 @@
                             <div class="modal-content">
                                
                                 <div class="modal-body">
-                                    {{-- <form action="{{ route('work_bill.store') }}" method="post"> --}}
-                                    <form action="#" method="post">
+                                    <form action="{{ route('submit_work_bill.update') }}" method="post">
+                                    {{-- <form action="#" method="post"> --}}
                                         @csrf
                     
                                         <div class="card-body">
@@ -65,10 +65,13 @@
 
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <label for="">Project Ref : <span class="text-danger">*</span></label>
-                                                    <input type="text" name="ref" class="form-control" value="EEBD/WB/{{ mt_rand(0, 100) }}" placeholder="EEBD/SNT/WB/1008" required>
+                                                    <input type="text" name="ref" class="form-control @error('ref') is-invalid @enderror" value="EEBD/WB/">
+                                                    @error('ref')
+                                                        <samp class="text-danger">{{ $message }}</samp>
+                                                    @enderror
                                                 </div>
-    
-                                                <div class="form-group col-sm-4 col-lg-4 col-md-4">
+
+                                                {{-- <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
                                                     <select name="project_id" class="form-control" required>
                                                         <option disabled selected><= Choose Project Name =></option>
@@ -79,10 +82,12 @@
                                                        
                                                     </select>
                                                     
-                                                </div>
+                                                </div> --}}
+    
+                                                
                                             </div>
 
-                                            <div id="dynamic_field">
+                                            {{-- <div id="dynamic_field">
                                                 <div class="row">
                                                     <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                         <label>Equipment Name <span class="text-danger">*</span></label>
@@ -109,7 +114,7 @@
                                                         <button type="button" class="btn btn-info add">Add</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             
 
                                             <div class="row">
@@ -127,14 +132,14 @@
                                           
                                             </div>
 
-                                            <div class="form-group col-sm-6 col-lg-6 col-md-6">
+                                            {{-- <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                 <label for="exampleInputFile">General Terms & Conditions : <span class="text-danger">*</span></label>
                                                 <select name="general_terms" class="form-control" id="general_terms" required>
                                                     <option disabled selected>== Choose Option ==</option>
                                                     <option value="0">No</option>
                                                     <option value="1">Yes</option>
                                                 </select>
-                                            </div>
+                                            </div> --}}
 
 
                                             <div class="row" id="date" style="display: none">
@@ -155,7 +160,7 @@
                                        <br><hr>
 
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary" disabled>Submit</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
                                     </form>

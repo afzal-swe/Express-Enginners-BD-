@@ -40,7 +40,7 @@
                                
                                 <div class="modal-body">
                                     
-                                    <form action="{{ route('add_session_data.store') }}" method="post">
+                                    <form action="{{ route('submit_monthly_billing') }}" method="post">
                                         @csrf
                     
                                         <div class="card-body">
@@ -59,29 +59,37 @@
                                                 </div>
 
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="">Month Name <span class="text-danger">*</span></label>
-                                                        <input type="text" name="month_name" class="form-control" placeholder="Month Name" value="{{ old('month_name') }}" required>
-                                                    </div>
+                                                    <label for="">Billing ID : <span class="text-danger">*</span></label>
+                                                    <input type="text" name="billing_id" class="form-control" value="EEBD/MB/" placeholder="Billing ID" required>
                                                 </div>
 
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <div class="form-group">
+                                                        <label for="">Amount <span class="text-danger">*</span></label>
+                                                        <input type="text" name="amount" class="form-control" placeholder="Amount" value="{{ old('amount') }}" required>
+                                                    </div>
+                                                </div>
+                                                {{-- <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="">Month Name <span class="text-danger">*</span></label>
+                                                        <input type="text" name="month_name" class="form-control" placeholder="Month Name" value="{{ old('month_name') }}" required>
+                                                    </div>
+                                                </div> --}}
+
+                                                {{-- <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                                                    <div class="form-group">
                                                         <label for="">No Of Month <span class="text-danger">*</span></label>
                                                         <input type="text" name="no_month" class="form-control" placeholder="No Of Month" value="{{ old('no_month') }}" required>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 
                                             </div>
 
 
 
                     
-                                            <div class="row">
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                    <label for="">Billing ID : <span class="text-danger">*</span></label>
-                                                    <input type="text" name="billing_id" class="form-control" value="EEBD/MB/" placeholder="Billing ID" required>
-                                                </div>
+                                            {{-- <div class="row">
+                                               
     
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                     <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
@@ -94,7 +102,7 @@
                                                        
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="form-group col-sm-12 col-lg-12 col-md-12">
                                                 <label for="">Description <span class="text-danger">*</span></label>
@@ -106,7 +114,7 @@
                                         <br><hr>
 
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary" disabled>Submit</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
                                     </form>

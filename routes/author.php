@@ -9,7 +9,7 @@ use App\Http\Controllers\Backend\WebsiteSettingsController;
 use App\Http\Controllers\Backend\SocialController;
 use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\PageContoller;
-use App\Http\Controllers\Backend\AuthController;
+// use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\ProjectListController;
@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\SercicesController;
 use App\Http\Controllers\Backend\TrendingProductsController;
 use App\Http\Controllers\Backend\SellingProductsController;
 use App\Http\Controllers\Backend\OurTeamController;
+use App\Http\Controllers\Backend\AdminController;
 
 
 
@@ -33,7 +34,7 @@ use App\Http\Controllers\Backend\account\MonthlyBillController;
 Route::middleware(['Supper_Admin'])->group(function () {
     Route::group(['prefix' => 'author'], function () {
 
-        Route::controller(AuthController::class)->group(function () {
+        Route::controller(AdminController::class)->group(function () {
             Route::get('/dashboard', 'Admin_dashboard')->name('dashboard');
             Route::get('/logout', 'Admin_logout')->name('logout');
             // Route::get('/password-change', 'password_change')->name('admin.password_change');
@@ -201,6 +202,7 @@ Route::middleware(['Supper_Admin'])->group(function () {
                     Route::get('/view', 'Monthly_Bill_View')->name('view.submit');
                     Route::get('/delete/{id}', 'Monthly_Bill_Delete')->name('monthly_bill.delete');
                     Route::get('/submit', 'Monthly_Bill_Submit')->name('monthly_bill_submit');
+                    Route::post('/monthly-submit', 'Submit_Monthly_Billing')->name('submit_monthly_billing');
                 });
             });
 

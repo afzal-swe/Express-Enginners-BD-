@@ -109,4 +109,38 @@ class MonthlyBillController extends Controller
         $project_list = DB::table($this->db_project_list)->get();
         return view('backend.account.submit_billing.submit_monthly_bill', compact('project_list'));
     }
+
+    public function Submit_Monthly_Billing(Request $request)
+    {
+
+        $monthly_bill = DB::table($this->db_monthly_bill)->where('billing_id', $request->billing_id)->first();
+        // dd($monthly_bill);
+
+        if ($monthly_bill) {
+            $data = array();
+            $data['project_id'] = $monthly_bill->project_id;
+            $data['billing_id'] = $request->billing_id;
+            $data['date'] = $request->date;
+            $data['description'] = $monthly_bill->description;
+            $data['month_name'] = $monthly_bill->month_name;
+            $data['no_month'] = $monthly_bill->no_month;
+            $data['lift_quanitiy'] = $monthly_bill->lift_quanitiy;
+            $data['unit_price'] = $monthly_bill->unit_price;
+
+            $data['price'] = $monthly_bill->total_price;
+            $data['credit'] = $request->amount;
+            $data['debit'] = $monthly_bill->debit - $request->amount;
+            $data['total_price'] = $monthly_bill->credit + $monthly_bill->debit;
+            $data['created_at'] = Carbon::now();
+
+            DB::table($this->db_monthly_bill)->insert($data);
+
+            $notification = array('messege' => 'Monthly Bill Create Successfully !', 'alert-type' => 'success');
+            return redirect()->route('project.list')->with($notification);
+        } else {
+
+            $notification = array('messege' => 'Monthly Bill Create Successfully !', 'alert-type' => 'success');
+            return redirect()->route('monthly_bill_submit')->with($notification);
+        }
+    }
 }

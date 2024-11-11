@@ -31,7 +31,7 @@ use App\Http\Controllers\Backend\account\MonthlyBillController;
 // });
 
 
-Route::middleware(['Supper_Admin'])->group(function () {
+Route::middleware(['Supper_Admin', 'auth'])->group(function () {
     Route::group(['prefix' => 'author'], function () {
 
         Route::controller(AdminController::class)->group(function () {

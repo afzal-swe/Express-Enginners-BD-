@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,12 +11,7 @@ class AdminController extends Controller
     // Admin Dashboard
     public function Admin_dashboard()
     {
-        if (Auth::user()->parmission == 1) {
-
-            return view('backend.layouts.main');
-        } else {
-            return redirect()->route('admin_login');
-        }
+        return view('backend.layouts.main');
     }
 
     // Logout Section

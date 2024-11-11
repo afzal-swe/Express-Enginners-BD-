@@ -16,21 +16,20 @@ class SupperAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    // public function handle(Request $request, Closure $next)
-    // {
-    //     if (Auth()->user()->parmission == 1) {
-    //         return $next($request);
-    //     } else {
-    //         return redirect()->route('admin_login');
-    //     }
-    // }
-
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->permission === 1) {
+        // if (Auth()->user()->parmission == 1) {
+        //     return $next($request);
+        // } else {
+        //     return redirect()->route('admin_login');
+        // }
+
+        // Check if the user is authenticated and an admin
+        if (Auth::check() && Auth::user()->parmission == 1) {
             return $next($request);
         }
 
-        return redirect()->route('admin_login')->withErrors(['access_denied' => 'You do not have the necessary permissions.']);
+        // Redirect non-admins to the home page or another appropriate route
+        return redirect()->route('login');
     }
 }

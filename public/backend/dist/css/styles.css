@@ -24,16 +24,24 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2px;
-    margin-top: 200px;
+    margin-top: 130px;
 }
 
 .recipient {
-    margin-bottom: 20px;
+    margin-bottom: 2px;
 }
 
-h2 {
+/* h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
+} */
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+p {
+    margin-bottom: 2px;
 }
 
 .bill-table {
@@ -43,7 +51,7 @@ h2 {
 }
 
 .bill-table th, .bill-table td {
-    border: 1px solid #ddd;
+    border: 1px solid black;
     padding: 10px;
     text-align: center;
 }
@@ -54,7 +62,7 @@ h2 {
 }
 
 .signature {
-    margin-top: 40px;
+    margin-top: 15px;
     margin-bottom: 150px;
 }
 
@@ -97,7 +105,7 @@ h2 {
     }
 
     .bill-table th, .bill-table td {
-        font-size: 12px;
+        font-size: 18px;
     }
 
     .total {

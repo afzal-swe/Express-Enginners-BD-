@@ -152,7 +152,7 @@ class WorkBillController extends Controller
             $data['price'] = $work_bill->total_price;
             $data['credit'] = $request->total_price;
             $data['debit'] = $work_bill->debit - $request->total_price;
-            $data['total_price'] = $work_bill->credit + $work_bill->debit;
+            $data['total_price'] = $request->total_price;
             $data['created_at'] = Carbon::now();
 
             DB::table($this->db_work_bill)->insert($data);

@@ -79,24 +79,26 @@
                     
                                             <div class="row">
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                    <label for="">Billing ID : <span class="text-danger">*</span></label>
-                                                    <input type="text" name="billing_id" class="form-control @error('billing_id') is-invalid @enderror " value="EEBD/MB/" placeholder="Billing ID">
-                                                
-                                                    @error('billing_id')
-                                                        <samp class="text-danger">{{ $message }}</samp>
-                                                    @enderror
+                                                    <div class="form-group">
+                                                        <label for="">Billing ID : <span class="text-danger">*</span></label>
+                                                        <input type="text" name="billing_id" class="form-control" value="EEBD/MB/{{ mt_rand(0, 100) }}" placeholder="Billing ID" required>
+                                                    </div>
                                                 </div>
+                                                
+                                                   
     
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                    <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
-                                                    <select name="project_id" class="form-control" required>
-                                                        <option disabled selected><= Choose Project Name =></option>
-                                                        @foreach ($project_list as $row)
-                                                            
-                                                        <option value="{{ $row->id }}" class="text-info">{{ $row->project_name }} | {{ $row->project_sl }}</option>
-                                                        @endforeach
-                                                       
-                                                    </select>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
+                                                        <select name="project_id" class="form-control" required>
+                                                            <option disabled selected ><= Choose Project Name =></option>
+                                                            @foreach ($project_list as $row)
+                                                                
+                                                            <option value="{{ $row->id }}" class="text-info">{{ $row->project_name }} | {{ $row->project_sl }}</option>
+                                                            @endforeach
+                                                        
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
 

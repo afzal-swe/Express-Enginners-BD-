@@ -34,6 +34,7 @@ class MonthlyBillController extends Controller
 
         $request->validate([
             'billing_id' => ['required', 'string', 'max:255', 'unique:monthly_bill'],
+            'project_id' => ['required'],
 
         ]);
         $project_amount = DB::table($this->db_project_list)->where('id', $request->project_id)->first();
@@ -130,7 +131,7 @@ class MonthlyBillController extends Controller
             $data['price'] = $monthly_bill->total_price;
             $data['credit'] = $request->amount;
             $data['debit'] = $monthly_bill->debit - $request->amount;
-            $data['total_price'] = $monthly_bill->credit + $monthly_bill->debit;
+            $data['total_price'] = $monthly_bill->credit;
             $data['created_at'] = Carbon::now();
 
             DB::table($this->db_monthly_bill)->insert($data);

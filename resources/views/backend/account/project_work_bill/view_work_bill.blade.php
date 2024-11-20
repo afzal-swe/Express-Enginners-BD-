@@ -50,7 +50,7 @@
                                   <th>No </th>
                                   <th>Billing ID</th>
                                   <th>Date</th>
-                                  <th>Price</th>
+                                  {{-- <th>Price</th> --}}
                                   <th>Credit</th>
                                   <th>Debit</th>
                                   <th>Total</th>
@@ -68,7 +68,7 @@
                                       <td>{{ ++$key }}</td>
                                       <td>{{ $row->ref }}</td>
                                       <td>{{ $row->billing_date }}</td>
-                                      <td>{{ $row->price ?? '' }}</td>
+                                      {{-- <td>{{ $row->price ?? '' }}</td> --}}
                                       <td>{{ $row->credit ?? '' }}</td>
                                       @if ($row->debit == 0)
                                         <td class="text-success">{{ $row->debit ?? '' }}</td>

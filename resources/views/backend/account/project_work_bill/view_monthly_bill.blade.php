@@ -51,7 +51,7 @@
                                   <th>Billing ID</th>
                                   <th>Date</th>
                                   <th>Month</th>
-                                  <th>Price</th>
+                                  {{-- <th>Price</th> --}}
                                   <th>Credit</th>
                                   <th>Debit</th>
                                   <th>Total</th>
@@ -68,7 +68,7 @@
                                       {{-- <td class=" ">{{ $row->description }}</td> --}}
                                       <td>{{ $row->date ?? '' }}</td>
                                       <td>{{ $row->month_name ?? '' }}</td>
-                                      <td>{{ $row->price ?? '' }}</td>
+                                      {{-- <td>{{ $row->price ?? '' }}</td> --}}
                                       <td>{{ $row->credit ?? '' }}</td>
                                       @if ($row->debit == 0)
                                         <td class="text-success">{{ $row->debit ?? '' }}</td>

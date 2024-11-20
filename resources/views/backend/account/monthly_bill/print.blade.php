@@ -52,7 +52,7 @@
                                     <p>To,<br>The President/Secretary<br><strong>{{ $project_data->project_name }}</strong><br>Dhaka</p>
                                 </div>
                         
-                                <h2>Bill</h2>
+                                <h1>Bill</h1>
                         
                                 <table class="bill-table">
                                     <thead>
@@ -90,11 +90,11 @@
                         
                                 <div class="signature">
                                     <p>Sincerely Thanks From</p>
-                                    <p><strong>EXPRESS ENGINEERS BD</strong></p>
+                                    <h4><strong>EXPRESS ENGINEERS BD</strong></h4>
                                     <div class="signuter_image mb-2">
                                         <img src="{{ asset('backend/images/signature/unnamed.png') }}" alt="" style="width:152px;">
                                     </div>
-                                    <p>Sahed Ahamed Sakil</p>
+                                    <h5><strong>Sahed Ahamed Sakil</strong></h5>
                                     <p>B.Sc. Engr. Of EEE</p>
                                     <p>Marketing & Finance Director</p>
                                     <p>Cell: 01764-130103</p>

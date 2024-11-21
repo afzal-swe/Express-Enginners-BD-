@@ -21,6 +21,8 @@ use App\Http\Controllers\Backend\TrendingProductsController;
 use App\Http\Controllers\Backend\SellingProductsController;
 use App\Http\Controllers\Backend\OurTeamController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\account\EmployeeController;
+use App\Http\Controllers\Backend\account\EmployeeBillController;
 
 
 
@@ -169,6 +171,29 @@ Route::middleware(['Supper_Admin', 'auth'])->group(function () {
                     // Billing route Section
                     Route::get('/wori-billing/{id}', 'Work_Billing')->name('billing.view');
                     Route::get('/monthly-billing/{id}', 'Monthly_Bill_View')->name('monthly_bill_view');
+                });
+            });
+
+
+
+            // Employee List Role Section
+            Route::group(['prefix' => 'employee'], function () {
+                Route::controller(EmployeeController::class)->group(function () {
+                    Route::get('/list', 'Employee_List')->name('employee.list');
+                    Route::post('/create', 'Employee_Store')->name('employee.store');
+                    // Route::get('/edit/{id}', 'Project_Edit')->name('project.edit');
+                    // Route::post('/update/{id}', 'Project_Update')->name('project.update');
+                    Route::get('/status/{id}', 'Employee_Status')->name('employee.status');
+                    Route::get('/delete/{id}', 'Employee_Delete')->name('employee.delete');
+                });
+            });
+
+            // Employee Bill List Role Section
+            Route::group(['prefix' => 'employee-bill'], function () {
+                Route::controller(EmployeeBillController::class)->group(function () {
+                    Route::get('/create', 'Employee_Bill')->name('employee.bill');
+                    Route::post('/store', 'Employee_Bill_Store')->name('employee_bill.store');
+                    Route::get('/details/{e_id_number}', 'Employee_Bill_Details')->name('employee_bill.details');
                 });
             });
 

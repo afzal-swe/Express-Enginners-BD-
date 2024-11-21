@@ -53,6 +53,18 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{ route('employee.list') }}" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Employee List
+                {{-- <i class="fas fa-angle-left right"></i> --}}
+                
+              </p>
+            </a>
+           
+          </li>
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -69,11 +81,21 @@
                 </a>
               </li>
             </ul>
+           
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('monthly_bill.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Monthly Bill</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('employee.bill') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Employee Bill</p>
                 </a>
               </li>
             </ul>

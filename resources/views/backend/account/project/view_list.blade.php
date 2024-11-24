@@ -146,24 +146,34 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        
-                    </div>
 
-                    <div class="row">
-                        <div class="col col-lg-6 col-xl-6">
-                            <div class="form-group">
-                                <label for="">Phone</label>
-                                <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone')}}">
-                                
-                            </div>
-                        </div>
-                        <div class="col col-lg-6 col-xl-6">
+                        <div class="col col-lg-12 col-xl-12">
                             <div class="form-group">
                                 <label for="">Address</label>
                                 <input type="text" name="address" class="form-control" placeholder="Address" value="{{ old('address')}}">
                                 
                             </div>
                         </div>
+                        
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name')}}">
+                                
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label for="">Phone</label>
+                                <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone')}}">
+                                
+                            </div>
+                        </div> 
                         
                     </div>
 
@@ -190,6 +200,34 @@
                             @error('unit_price')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
+                        </div>
+                     
+                    </div>
+
+                    <div class="form-group col-sm-12 col-lg-12 col-md-12">
+                        <label for="exampleInputFile">Generator : <span class="text-danger">*</span></label>
+                        <select name="generator_status" class="form-control" id="generator_status" required>
+                            <option disabled selected>== Choose Option ==</option>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="row" id="date" style="display: none">
+
+                        <div class="col col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label for="">Generator Qty</label>
+                                <input type="text" name="generator_quanitiy" class="form-control" placeholder="Generator Qty" value="{{ old('generator_quanitiy')}}">
+                                
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label for="">Unit Price</label>
+                                <input type="text" name="generator_unit_price" class="form-control" placeholder="Unit Price" value="{{ old('generator_unit_price')}}">  
+                            </div>
                         </div>
                      
                     </div>
@@ -233,6 +271,23 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
+
+
+
+<script type="text/javascript">
+
+    // General Terams Yes or No Code Start
+    $(document).ready(function() {
+        $('#generator_status').on('change', function() {
+            if (this.value === '1') { // 'Yes' selected
+                $('#date').show();
+            } else { // 'No' selected or default
+                $('#date').hide();
+            }
+        });
+    });// General Terams Yes or No Code End
+
+</script>
 
 
 

@@ -37,6 +37,7 @@ class MonthlyBillController extends Controller
             'project_id' => ['required'],
 
         ]);
+        // dd($request->all());
         $project_amount = DB::table($this->db_project_list)->where('id', $request->project_id)->first();
 
         $request->session()->put('billData', $request->all());
@@ -80,7 +81,7 @@ class MonthlyBillController extends Controller
         $data['price'] = $project_info->monthly_bill;
         $data['credit'] = '0';
         $data['debit'] = $project_info->monthly_bill;
-        $data['total_price'] = $project_info->monthly_bill;
+        $data['total_price'] = '0';
         $data['created_at'] = Carbon::now();
         // dd($data);
 

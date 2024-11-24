@@ -66,6 +66,8 @@
                                     </thead>
                                     <tbody>
 
+                                       
+                                        @if ($billData['generator_status'] == 1)
                                         <tr>
                                             <td>{{ $billData['description'].' '.$billData['month_name'].'-'.date("Y", strtotime($billData['date']))  }}</td>
                                             <td>{{ $billData['no_month'] }}</td>
@@ -74,9 +76,33 @@
                                             <td>{{ $project_data->monthly_bill }} /-</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" >Total amount : </td>
-                                            <td colspan="1"><strong>{{ $project_data->monthly_bill }} /-</strong></td>
+                                            <td>{{ $billData['generator_description']  }}</td>
+                                            <td>{{ $billData['no_month'] }}</td>
+                                            <td>{{ $project_data->generator_quanitiy }}</td>
+                                            <td>{{ $project_data->generator_unit_price }} /-</td>
+                                            <td>{{ $project_data->generator_total_price }} /-</td>
                                         </tr>
+
+                                        <tr>
+                                            <td colspan="4" >Total amount : </td>
+                                            <td colspan="1"><strong>{{ $project_data->monthly_bill + $project_data->generator_total_price }} /-</strong></td>
+                                        </tr>
+                                        @else
+                                        <tr>
+                                            <td>{{ $billData['description'].' '.$billData['month_name'].'-'.date("Y", strtotime($billData['date']))  }}</td>
+                                            <td>{{ $billData['no_month'] }}</td>
+                                            <td>{{ $project_data->lift_quanitiy }}</td>
+                                            <td>{{ $project_data->unit_price }} /-</td>
+                                            <td>{{ $project_data->monthly_bill }} /-</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="4" >Total amount : </td>
+                                            <td colspan="1"><strong>{{ $project_data->monthly_bill}} /-</strong></td>
+                                        </tr>
+                                        @endif
+                                       
+                                      
 
                                     </tbody>
                                 </table>

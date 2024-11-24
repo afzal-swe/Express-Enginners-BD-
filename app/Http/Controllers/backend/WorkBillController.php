@@ -79,7 +79,7 @@ class WorkBillController extends Controller
         $data['price'] = $work_bill_info['total_price'];
         $data['credit'] = '0';
         $data['debit'] = $work_bill_info['total_price'];
-        $data['total_price'] = $work_bill_info['total_price'];
+        $data['total_price'] = '0';
         $data['created_at'] = Carbon::now();
 
 

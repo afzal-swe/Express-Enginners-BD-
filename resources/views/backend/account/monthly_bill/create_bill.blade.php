@@ -54,7 +54,7 @@
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <div class="form-group">
                                                         <label for="">Date<span class="text-danger">*</span></label>
-                                                        <input type="date" name="date" id="date" class="form-control" placeholder="DD/MM/YYYY" value="{{ old('date') }}" required> 
+                                                        <input type="date" name="date" class="form-control" placeholder="DD/MM/YYYY" value="{{ old('date') }}" required> 
                                                     </div>
                                                 </div>
 
@@ -78,16 +78,14 @@
 
                     
                                             <div class="row">
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
+                                                <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <div class="form-group">
                                                         <label for="">Billing ID : <span class="text-danger">*</span></label>
                                                         <input type="text" name="billing_id" class="form-control" value="EEBD/MB/{{ mt_rand(0, 100) }}" placeholder="Billing ID" required>
                                                     </div>
                                                 </div>
-                                                
-                                                   
-    
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
+                                            
+                                                <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <div class="form-group">
                                                         <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
                                                         <select name="project_id" class="form-control" required>
@@ -100,11 +98,27 @@
                                                         </select>
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                                                    <label for="exampleInputFile">Generator Bill :</label>
+                                                    <select name="generator_status" class="form-control" id="generator_status">
+                                                        <option disabled selected>== Choose Option ==</option>
+                                                        <option value="0">No</option>
+                                                        <option value="1">Yes</option>
+                                                    </select>
+                                                </div>
                                             </div>
 
-                                            <div class="form-group col-sm-12 col-lg-12 col-md-12">
-                                                <label for="">Description <span class="text-danger">*</span></label>
-                                                <input type="text" name="description" class="form-control" value="Lift Maintenance & Servicing Charge For" readonly> </input>
+                                            <div class="row">
+                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
+                                                    <label for="">Description <span class="text-danger">*</span></label>
+                                                    <input type="text" name="description" class="form-control" value="Lift Maintenance & Servicing Charge For" readonly> </input>
+                                                </div>
+
+                                                <div class="form-group col-sm-6 col-lg-6 col-md-6" id="date" style="display: none">
+                                                    <label for="">Generator Description</label>
+                                                    <input type="text" name="generator_description" class="form-control" value="Generator Maintenance & Servicing Charge For" readonly> </input>
+                                                </div>
                                             </div>
 
 
@@ -126,6 +140,22 @@
         </div>
     </section>
   </div>
+
+
+  <script type="text/javascript">
+
+    // General Terams Yes or No Code Start
+    $(document).ready(function() {
+        $('#generator_status').on('change', function() {
+            if (this.value === '1') { // 'Yes' selected
+                $('#date').show();
+            } else { // 'No' selected or default
+                $('#date').hide();
+            }
+        });
+    });// General Terams Yes or No Code End
+
+</script>
 
 @endsection
     

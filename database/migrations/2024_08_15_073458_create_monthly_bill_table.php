@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('month_name')->nullable();
             $table->string('no_month')->nullable();
+            $table->string('generator_status')->nullable()->default(0);
+            $table->string('generator_description')->nullable();
             $table->string('lift_quanitiy')->nullable();
             $table->string('unit_price')->nullable();
             $table->string('price')->nullable();

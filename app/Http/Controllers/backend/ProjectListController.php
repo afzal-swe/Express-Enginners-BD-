@@ -37,10 +37,13 @@ class ProjectListController extends Controller
             "project_sl" => "required|unique:project_list|max:4",
         ]);
 
+        // dd($request->all());
+
         $data = array();
         $data['project_name'] = $request->project_name;
         $data['project_sl'] = $request->project_sl;
         $data['address'] = $request->address;
+        $data['name'] = $request->name;
         $data['phone'] = $request->phone;
         $data['lift_quanitiy'] = $request->lift_quanitiy;
         $data['unit_price'] = $request->unit_price;
@@ -48,6 +51,13 @@ class ProjectListController extends Controller
         $data['monthly_bill'] = $request->lift_quanitiy * $request->unit_price;
         $data['status'] = $request->status;
         $data['created_at'] = Carbon::now();
+
+        if ($request->generator_status == 1) {
+            $data['generator_status'] = $request->generator_status;
+            $data['generator_quanitiy'] = $request->generator_quanitiy;
+            $data['generator_unit_price'] = $request->generator_unit_price;
+            $data['generator_total_price'] = $request->generator_quanitiy * $request->generator_unit_price;
+        }
 
         DB::table($this->db_project_list)->insert($data);
 

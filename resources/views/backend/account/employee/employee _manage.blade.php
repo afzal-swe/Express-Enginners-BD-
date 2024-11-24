@@ -85,7 +85,7 @@
                                         
                                         <td>
                                             <a href="{{ route('employee_bill.details',$row->e_id_number) }}" class="btn btn-primary btn-xs editbtn" title="Details"><i class="fa fa-eye"></i></a>
-                                            <a href="#" class="btn btn-info btn-xs editbtn" title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('employee.edit',$row->id) }}" class="btn btn-info btn-xs editbtn" title="Edit"><i class="fa fa-edit"></i></a>
                                             <a href="{{ route('employee.delete',$row->id) }}" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>

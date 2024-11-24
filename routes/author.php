@@ -181,8 +181,8 @@ Route::middleware(['Supper_Admin', 'auth'])->group(function () {
                 Route::controller(EmployeeController::class)->group(function () {
                     Route::get('/list', 'Employee_List')->name('employee.list');
                     Route::post('/create', 'Employee_Store')->name('employee.store');
-                    // Route::get('/edit/{id}', 'Project_Edit')->name('project.edit');
-                    // Route::post('/update/{id}', 'Project_Update')->name('project.update');
+                    Route::get('/edit/{id}', 'Employee_Edit')->name('employee.edit');
+                    Route::post('/update/{id}', 'Employee_Update')->name('employee.update');
                     Route::get('/status/{id}', 'Employee_Status')->name('employee.status');
                     Route::get('/delete/{id}', 'Employee_Delete')->name('employee.delete');
                 });
@@ -193,7 +193,10 @@ Route::middleware(['Supper_Admin', 'auth'])->group(function () {
                 Route::controller(EmployeeBillController::class)->group(function () {
                     Route::get('/create', 'Employee_Bill')->name('employee.bill');
                     Route::post('/store', 'Employee_Bill_Store')->name('employee_bill.store');
+                    Route::get('/edit/{id}', 'Employee_Bill_Edite')->name('employee_bill.edite');
+                    Route::post('/update/{id}', 'Employee_Bill_Update')->name('employee_bill.update');
                     Route::get('/details/{e_id_number}', 'Employee_Bill_Details')->name('employee_bill.details');
+                    Route::get('/delete/{id}', 'Employee_Details_Delete')->name('employee_details.delete');
                 });
             });
 

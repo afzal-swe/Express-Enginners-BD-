@@ -63,6 +63,29 @@ class EmployeeBillController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    public function Employee_Bill_Edite($id)
+    {
+
+
+        $edit = DB::table($this->db_employee_bill)->where('id', $id)->first();
+        return view('backend.account.employee.employee_bill_edit', compact('edit'));
+    }
+
+    public function Employee_Bill_Update(Request $request, $id)
+    {
+
+        $data['date'] = date('d-m-Y', strtotime($request->date));
+        $data['reason'] = $request->reason;
+        $data['company'] = $request->company;
+        $data['deposit'] = $request->deposit;
+        $data['updated_at'] = Carbon::now();
+
+        DB::table($this->db_employee_bill)->where('id', $id)->update($data);
+
+        $notification = array('messege' => 'Create Successfully !', 'alert-type' => 'success');
+        return redirect()->route('employee.list')->with($notification);
+    }
+
     // Employee Billing Details
     public function Employee_Bill_Details(Request $request, $e_id_number)
     {
@@ -70,5 +93,15 @@ class EmployeeBillController extends Controller
         $single_employee_bill = DB::table($this->db_employee_bill)->where('e_id', $e_id_number)->orderBy('id', 'DESC')->get();
         // dd($single_employee_bill);
         return view('backend.account.employee.employee_bill_details', compact('single_employee_bill'));
+    }
+
+
+    public function Employee_Details_Delete($id)
+    {
+
+        DB::table($this->db_employee_bill)->where('id', $id)->delete();
+
+        $notification = array('messege' => 'Delete Successfully !', 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
     }
 }

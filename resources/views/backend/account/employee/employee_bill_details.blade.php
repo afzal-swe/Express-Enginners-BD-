@@ -55,7 +55,7 @@
                                   <th>Company</th>
                                   <th>Deposit</th>
                                   <th>Costs</th>
-                                  {{-- <th>Action</th> --}}
+                                  <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,11 +75,11 @@
                                       
                                       <td>{{ $row->costs ?? '' }}</td>
                           
-                                      {{-- <td>
-                                        <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a>
-                                        <a href="#" class="btn btn-info btn-xs" title="View"><i class="fa fa-eye"></i></a>
-                                        <a href="#" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
-                                    </td> --}}
+                                      <td>
+                                        {{-- <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a> --}}
+                                        <a href="{{ route('employee_bill.edite',$row->id) }}" class="btn btn-info btn-xs" title="View"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('employee_details.delete',$row->id) }}" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
+                                    </td>
                                   </tr>
                               @endforeach
                                

@@ -75,6 +75,36 @@ class EmployeeController extends Controller
     }
 
 
+    public function Employee_Edit($id)
+    {
+
+        $employee_edit = DB::table($this->db_employee)->where('id', $id)->first();
+
+        return view('backend.account.employee.employee_edit', compact('employee_edit'));
+    }
+
+
+    public function Employee_Update(Request $request, $id)
+    {
+
+        $data = array();
+
+        $data['e_name'] = $request->e_name;
+        $data['designation'] = $request->designation;
+        $data['phone'] = $request->phone;
+        $data['address'] = $request->address;
+        $data['join_date'] = date('d-m-Y', strtotime($request->join_date));
+        $data['salary'] = $request->salary;
+        $data['status'] = $request->status;
+        $data['updated_at'] = Carbon::now();
+
+        DB::table($this->db_employee)->where('id', $id)->update($data);
+
+        $notification = array('messege' => 'Create Successfully !', 'alert-type' => 'success');
+        return redirect()->route('employee.list')->with($notification);
+    }
+
+
 
     public function Employee_Delete($id)
     {

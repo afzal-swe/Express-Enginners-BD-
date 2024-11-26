@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 04, 2024 at 08:02 AM
+-- Generation Time: Nov 26, 2024 at 06:49 AM
 -- Server version: 8.0.30
--- PHP Version: 8.1.29
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -156,6 +156,61 @@ INSERT INTO `daly_income_statement` (`id`, `income_date`, `income_particulars`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `id` bigint UNSIGNED NOT NULL,
+  `e_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `e_id_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `designation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `join_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `salary` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `e_name`, `e_id_number`, `designation`, `phone`, `address`, `join_date`, `salary`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'sakil', '1701', 'cse', '01611178307', 'Dhaka, Bangladesh', '23-11-2024', '10000', '1', '2024-11-21 15:40:46', NULL),
+(3, 'test', '1700', 'test', '180', 'Banasree', '22-11-2026', '10000', '1', '2024-11-21 17:48:11', '2024-11-24 09:18:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee_bill`
+--
+
+CREATE TABLE `employee_bill` (
+  `id` bigint UNSIGNED NOT NULL,
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `e_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deposit` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `costs` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employee_bill`
+--
+
+INSERT INTO `employee_bill` (`id`, `date`, `e_id`, `reason`, `company`, `deposit`, `costs`, `created_at`, `updated_at`) VALUES
+(2, '28-11-2024', '1701', 'test2', 'akij', '1000', '0', '2024-11-21 17:47:45', NULL),
+(3, '01-12-2011', '1700', 'txc11', 'akij11', '12', '0', '2024-11-21 17:48:46', '2024-11-24 07:32:56'),
+(4, '01-12-2011', NULL, 'txc11', 'akij11', '1111', NULL, NULL, '2024-11-23 02:58:51');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -198,7 +253,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2024_08_02_235856_create_pages_table', 8),
 (14, '2024_08_12_105827_create_banner_table', 9),
 (15, '2024_08_12_110031_create_contact_table', 9),
-(16, '2024_08_13_063212_create_project_list_table', 10),
 (25, '2024_08_14_120653_create_daly_income_statement_table', 12),
 (26, '2024_08_14_120724_create_daly_expense_statement_table', 12),
 (29, '2024_09_17_075144_add_to_column_table', 15),
@@ -207,9 +261,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2024_09_23_152658_create_trending_products_table', 18),
 (33, '2024_09_23_191428_create_selling_products_table', 19),
 (37, '2024_10_23_224250_create_our_team_table', 21),
-(38, '2024_10_23_212247_add_to_clumn_project_list', 22),
-(41, '2024_08_15_073458_create_monthly_bill_table', 25),
-(42, '2024_08_13_100010_create_work_bill_table', 26);
+(42, '2024_08_13_100010_create_work_bill_table', 26),
+(43, '2024_11_21_204634_create_employee_table', 27),
+(44, '2024_11_21_221319_create_employee_bill_table', 28),
+(48, '2024_08_15_073458_create_monthly_bill_table', 30),
+(49, '2024_08_13_063212_create_project_list_table', 31);
 
 -- --------------------------------------------------------
 
@@ -225,6 +281,8 @@ CREATE TABLE `monthly_bill` (
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `month_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `no_month` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `generator_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `generator_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lift_quanitiy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `unit_price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -239,11 +297,9 @@ CREATE TABLE `monthly_bill` (
 -- Dumping data for table `monthly_bill`
 --
 
-INSERT INTO `monthly_bill` (`id`, `project_id`, `billing_id`, `date`, `description`, `month_name`, `no_month`, `lift_quanitiy`, `unit_price`, `price`, `debit`, `credit`, `total_price`, `created_at`, `updated_at`) VALUES
-(2, 8, 'EEBD/MB/12', '2024-11-04', 'Lift Maintenance & Servicing Charge For', 'August', '1', '2', '1000', '2000', '2000', '0', '2000', '2024-11-03 19:08:47', NULL),
-(3, 8, 'EEBD/MB/100', '2024-11-04', 'Lift Maintenance & Servicing Charge For', 'August', '1', '2', '1000', '2000', '2000', '0', '2000', '2024-11-03 19:24:50', NULL),
-(4, 8, 'EEBD/MB/12', '2024-11-04', 'Lift Maintenance & Servicing Charge For', 'August', '1', '2', '1000', '2000', '1000', '1000', '2000', '2024-11-04 01:58:32', NULL),
-(5, 8, 'EEBD/MB/100', '2024-11-04', 'Lift Maintenance & Servicing Charge For', 'August', '1', '2', '1000', '2000', '0', '2000', '2000', '2024-11-04 01:59:09', NULL);
+INSERT INTO `monthly_bill` (`id`, `project_id`, `billing_id`, `date`, `description`, `month_name`, `no_month`, `generator_status`, `generator_description`, `lift_quanitiy`, `unit_price`, `price`, `debit`, `credit`, `total_price`, `created_at`, `updated_at`) VALUES
+(1, 2, 'EEBD/MB/29', '2024-11-20', 'Lift Maintenance & Servicing Charge For', 'October', '1', '0', NULL, '2', '2000', '4000', '4000', '0', '4000', '2024-11-24 16:11:21', NULL),
+(2, 1, 'EEBD/MB/7', '2024-11-20', 'Lift Maintenance & Servicing Charge For', 'August', '1', '0', NULL, '2', '2000', '4000', '4000', '0', '0', '2024-11-24 16:13:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -364,11 +420,16 @@ CREATE TABLE `project_list` (
   `project_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lift_quanitiy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `unit_price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `generator_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `generator_quanitiy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `generator_unit_price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `generator_total_price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `in_word` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `monthly_bill` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  `in_word` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -377,9 +438,10 @@ CREATE TABLE `project_list` (
 -- Dumping data for table `project_list`
 --
 
-INSERT INTO `project_list` (`id`, `project_sl`, `project_name`, `address`, `phone`, `lift_quanitiy`, `unit_price`, `monthly_bill`, `status`, `in_word`, `created_at`, `updated_at`) VALUES
-(8, 1245, 'Management_System', 'House-215/17, Road-6, Block-E, Banasree, Dhaka', '0121022222', '2', '1000', '2000', '1', 'Two Thousand Taka Only', '2024-10-24 16:51:30', '2024-10-24 17:15:47'),
-(9, 1001, 'Neer', 'banasree', '01764130103', '01', '1500', '1500', '1', 'Fifteen hundred taka', '2024-10-25 04:48:31', NULL);
+INSERT INTO `project_list` (`id`, `project_sl`, `project_name`, `address`, `phone`, `name`, `lift_quanitiy`, `unit_price`, `generator_status`, `generator_quanitiy`, `generator_unit_price`, `generator_total_price`, `in_word`, `monthly_bill`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1245, 'Management_System', 'Banasree Block-B, Road-5, House-21 Dhaka', '01811178307', 'Md.Afzal Hossen', '2', '2000', '0', NULL, NULL, NULL, 'Two Thousand Taka Only', '4000', '1', '2024-11-24 16:06:06', NULL),
+(2, 1544, 'LoginRegistrationAPI', 'Banasree Block-B, Road-5, House-21 Dhaka', '01811178307', 'Md.Afzal Hossen', '2', '2000', '1', '2', '1000', '4000', 'Eight Thousand Taka Only', '4000', '1', '2024-11-24 16:06:33', NULL),
+(3, 1274, 'test', 'Banasree Block-B, Road-5, House-21 Dhaka', '[\"01811178307\",\"01811178307\",\"01811178307\"]', '[\"Md.Afzal Hossen\",\"Md.Afzal Hossen\",\"Md.Afzal Hossen\"]', '2', '1254', '1', '2', '2000', '4000', 'Four Thousand Taka Only', '2508', '1', '2024-11-25 16:26:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -612,10 +674,7 @@ CREATE TABLE `work_bill` (
 --
 
 INSERT INTO `work_bill` (`id`, `project_id`, `ref`, `billing_date`, `equipment_list`, `quantity`, `unit_price`, `sub_price`, `in_word`, `general_terms`, `supply_date`, `expire_date`, `price`, `debit`, `credit`, `total_price`, `created_at`, `updated_at`) VALUES
-(1, 8, 'EEBD/WB/30', '2024-11-04', '[\"adsfsa\",\"adsfsa\"]', '[\"2\",\"2\"]', '[\"1000\",\"1000\"]', '[\"2000\",\"2000\"]', 'Four Thousand Taka Only', '1', '2024-11-04', '2024-11-04', '4000', '4000', '0', '4000', '2024-11-03 19:45:52', NULL),
-(2, 8, 'EEBD/WB/73', '2024-11-04', '[\"adsfsa\"]', '[\"2\"]', '[\"1000\"]', '[\"2000\"]', 'Two Thousand Taka Only', '1', '2024-11-04', '2024-11-04', '2000', '2000', '0', '2000', '2024-11-03 19:50:42', NULL),
-(3, 8, 'EEBD/WB/30', '2024-11-04', '\"[\\\"adsfsa\\\",\\\"adsfsa\\\"]\"', '\"[\\\"2\\\",\\\"2\\\"]\"', '\"[\\\"1000\\\",\\\"1000\\\"]\"', '\"[\\\"2000\\\",\\\"2000\\\"]\"', 'Four Thousand Taka Only', '1', '2024-11-04', '2024-11-04', '4000', '0', '4000', '4000', '2024-11-04 01:09:43', NULL),
-(4, 8, 'EEBD/WB/73', '2024-11-04', '\"[\\\"adsfsa\\\"]\"', '\"[\\\"2\\\"]\"', '\"[\\\"1000\\\"]\"', '\"[\\\"2000\\\"]\"', 'One Thousand Taka Only', '1', '2024-11-04', '2024-11-04', '2000', '1000', '1000', '2000', '2024-11-04 01:11:33', NULL);
+(5, 1, 'EEBD/WB/12', '2024-11-25', '[\"adsfsa\"]', '[\"2\"]', '[\"1000\"]', '[\"2000\"]', 'Two Thousand Taka Only', '1', '2024-11-25', '2024-11-25', '2000', '2000', '0', '2000', '2024-11-24 16:14:52', NULL);
 
 --
 -- Indexes for dumped tables
@@ -649,6 +708,18 @@ ALTER TABLE `daly_expense_statement`
 -- Indexes for table `daly_income_statement`
 --
 ALTER TABLE `daly_income_statement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employee_bill`
+--
+ALTER TABLE `employee_bill`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -800,6 +871,18 @@ ALTER TABLE `daly_income_statement`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `employee_bill`
+--
+ALTER TABLE `employee_bill`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -809,13 +892,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `monthly_bill`
 --
 ALTER TABLE `monthly_bill`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `notices`
@@ -845,7 +928,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `project_list`
 --
 ALTER TABLE `project_list`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `selling_products`
@@ -899,7 +982,7 @@ ALTER TABLE `website_settings`
 -- AUTO_INCREMENT for table `work_bill`
 --
 ALTER TABLE `work_bill`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

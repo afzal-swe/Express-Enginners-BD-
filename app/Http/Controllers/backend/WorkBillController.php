@@ -92,18 +92,6 @@ class WorkBillController extends Controller
         return redirect()->route('project.list')->with($notification);
     }
 
-    // Project Working Bill Show
-    public function Project_Bill_Show(Request $request, $id)
-    {
-
-        $p_work_bill = DB::table($this->db_work_bill)
-            ->where('project_id', $id)
-            ->join('project_list', 'work_bill.project_id', 'project_list.id')
-            ->select('project_list.project_name', 'work_bill.*')
-            ->get();
-        // dd($p_work_bill);
-        return view('backend.account.project_work_bill.view', compact('p_work_bill'));
-    }
 
 
 

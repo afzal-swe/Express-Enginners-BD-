@@ -168,6 +168,8 @@ Route::middleware(['Supper_Admin', 'auth'])->group(function () {
                     Route::post('/update/{id}', 'Project_Update')->name('project.update');
                     Route::get('/status/{id}', 'Project_Status')->name('project.status');
                     Route::get('/delete/{id}', 'Project_Delete')->name('project.delete');
+                    // Project Details Show
+                    Route::get('/details/{id}', 'Project_Details_Show')->name('project.view');
                     // Billing route Section
                     Route::get('/wori-billing/{id}', 'Work_Billing')->name('billing.view');
                     Route::get('/monthly-billing/{id}', 'Monthly_Bill_View')->name('monthly_bill_view');
@@ -212,8 +214,6 @@ Route::middleware(['Supper_Admin', 'auth'])->group(function () {
                     Route::get('/submit', 'Work_Bill_Submit')->name('work_bill_submit');
                     Route::post('/submit-workbill', 'Submit_Work_Bill_Update')->name('submit_work_bill.update');
 
-                    // Project Worije Biling Show
-                    Route::get('/project/{id}', 'Project_Bill_Show')->name('project.view');
                     // Route::post('/update/{id}', 'Project_Update')->name('project.update');
                     // Route::get('/status/{id}', 'Project_Status')->name('project.status');
                     Route::get('/delete/{id}', 'work_bill_delete')->name('work_bill_delete');

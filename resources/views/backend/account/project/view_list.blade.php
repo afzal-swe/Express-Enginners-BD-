@@ -4,7 +4,9 @@
 @extends('backend.layouts.app')
 @section('content')
 
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <div class="content-wrapper">
@@ -86,7 +88,7 @@
                                         </td>
                                         
                                         <td>
-                                            <a href="{{ route('project.view',$row->id) }}" class="btn btn-primary btn-xs editbtn" title="Details"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('project.view',$row->id) }}" class="btn btn-primary btn-xs view-btn" data-id="{{ $row->id }}" data-bs-toggle="modal" data-target="#ProjectDetails" title="Details"><i class="fa fa-eye"></i></a>
                                             {{-- <a href="{{ route('project.view',$row->id) }}" class="btn btn-info btn-xs editbtn" title="All Info"><i class="fa fa-file"></i></a> --}}
                                             <a href="{{ route('project.edit',$row->id) }}" class="btn btn-info btn-xs editbtn" title="Edit"><i class="fa fa-edit"></i></a>
                                             <a href="{{ route('project.delete',$row->id) }}" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
@@ -157,24 +159,31 @@
                         
                     </div>
 
+                    <div id="dynamic_field">
                     <div class="row">
 
-                        <div class="col col-lg-6 col-xl-6">
+                        <div class="col col-lg-4 col-xl-4">
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name')}}">
+                                <input type="text" name="name[]" class="form-control" placeholder="Name" value="{{ old('name')}}">
                                 
                             </div>
                         </div>
 
-                        <div class="col col-lg-6 col-xl-6">
+                        <div class="col col-lg-4 col-xl-4">
                             <div class="form-group">
                                 <label for="">Phone</label>
-                                <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone')}}">
+                                <input type="text" name="phone[]" class="form-control" placeholder="Phone" value="{{ old('phone')}}">
                                 
                             </div>
                         </div> 
+
+                        <div class="col col-lg-4 col-xl-4">
+                            <label>Contact Add</label><br>
+                            <button type="button" class="btn btn-info add">Contact Add</button>
+                        </div>
                         
+                    </div>
                     </div>
 
 
@@ -274,6 +283,38 @@
 
 
 
+  <!-- Modal -->
+<div class="modal fade" id="dataModal" tabindex="-1" aria-labelledby="dataModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dataModalLabel">Data Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Project SL:</strong> <span id="project_sl"></span></p>
+                <p><strong>Project Name:</strong> <span id="project_name"></span></p>
+                <p><strong>Address:</strong> <span id="address"></span></p>
+                <p><strong>Lift Quantity:</strong> <span id="lift_quanitiy"></span></p>
+                <p><strong>Lift Unit Price:</strong> <span id="unit_price"></span></p>
+                <p><strong>Generator Quanitiy:</strong> <span id="generator_quanitiy"></span></p>
+                <p><strong>Generator Unit Price:</strong> <span id="generator_unit_price"></span></p>
+                <p><strong>Generator Total Price:</strong> <span id="generator_total_price"></span></p>
+                <p><strong>Monthly Bill:</strong> <span id="monthly_bill"></span></p>
+                <p><strong>In Word:</strong> <span id="in_word"></span></p>
+                <p><strong>Project Status:</strong> <span id="status"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <script type="text/javascript">
 
     // General Terams Yes or No Code Start
@@ -286,6 +327,75 @@
             }
         });
     });// General Terams Yes or No Code End
+
+
+    // view project data
+    $(document).ready(function () {
+        $('.view-btn').on('click', function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: "{{ route('project.view', '') }}/" + id,
+                type: "GET",
+                success: function (response) {
+                    $('#project_sl').text(response.project_sl);
+                    $('#project_name').text(response.project_name);
+                    $('#address').text(response.address);
+                    $('#lift_quanitiy').text(response.lift_quanitiy);
+                    $('#unit_price').text(response.unit_price);
+                    $('#generator_quanitiy').text(response.generator_quanitiy);
+                    $('#generator_unit_price').text(response.generator_unit_price);
+                    $('#generator_total_price').text(response.generator_total_price);
+                    $('#monthly_bill').text(response.monthly_bill);
+                    $('#in_word').text(response.in_word);
+                    $('#status').text(response.status);
+
+                    $('#dataModal').modal('show');
+                },
+                error: function () {
+                    alert('Failed to fetch data. Please try again.');
+                }
+            });
+        });
+    });
+
+
+
+
+    $(document).ready(function () {
+
+
+// Remove row and recalculate total price
+$(document).on('click', '.remove', function () {
+    $(this).closest('.row').remove();
+    calculateTotalPrice();
+});
+
+// Add new row
+$(document).on('click', '.add', function () {
+    let i = $('#dynamic_field .row').length + 1;
+    const html = `
+        <div class="row" id="row${i}">
+           
+
+            <div class="col col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <input type="text" name="name[]" class="form-control" placeholder="Name" value="{{ old('name')}}">
+                </div>
+            </div>
+
+            <div class="col col-lg-4 col-xl-4">
+                <div class="form-group">
+                    <input type="text" name="phone[]" class="form-control" placeholder="Phone" value="{{ old('phone')}}">
+                </div>
+            </div>
+            
+            <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                <button type="button" class="btn btn-danger remove" id="${i}">Remove</button>
+            </div>
+        </div>`;
+    $('#dynamic_field').append(html);
+});
+});
 
 </script>
 

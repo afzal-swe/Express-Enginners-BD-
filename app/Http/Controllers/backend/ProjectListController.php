@@ -43,8 +43,8 @@ class ProjectListController extends Controller
         $data['project_name'] = $request->project_name;
         $data['project_sl'] = $request->project_sl;
         $data['address'] = $request->address;
-        $data['name'] = $request->name;
-        $data['phone'] = $request->phone;
+        $data['name'] = json_encode($request->name);
+        $data['phone'] = json_encode($request->phone);
         $data['lift_quanitiy'] = $request->lift_quanitiy;
         $data['unit_price'] = $request->unit_price;
         $data['in_word'] = $request->in_word;
@@ -59,6 +59,7 @@ class ProjectListController extends Controller
             $data['generator_total_price'] = $request->generator_quanitiy * $request->generator_unit_price;
         }
 
+        // dd($data);
         DB::table($this->db_project_list)->insert($data);
 
         $notification = array('messege' => 'Project Added Successfully!', 'alert-type' => 'success');
@@ -118,6 +119,19 @@ class ProjectListController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
+
+
+    // Project Working Bill Show
+    public function Project_Details_Show($id)
+    {
+
+        $project_details_view = DB::table($this->db_project_list)
+            ->where('id', $id)
+            ->first();
+        return response()->json($project_details_view);
+    }
+
 
     // Project Delete Function
     public function Project_Delete($id)

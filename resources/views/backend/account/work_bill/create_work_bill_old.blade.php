@@ -73,15 +73,15 @@
     
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
-                                                
-                                                   
-                                                
-                                                    <!-- Dropdown with projects -->
-                                                    <select name="project_id" id="project-dropdown" class="form-control" required>
+                                                    <select name="project_id" class="form-control" required>
+                                                        <option disabled selected><= Choose Project Name =></option>
                                                         @foreach ($project_list as $row)
+                                                            
                                                         <option value="{{ $row->id }}" class="text-info">{{ $row->project_name }} | {{ $row->project_sl }}</option>
                                                         @endforeach
+                                                       
                                                     </select>
+                                                    
                                                 </div>
                                             </div>
 
@@ -104,7 +104,7 @@
                                             
                                                     <div class="form-group col-sm-2 col-lg-2 col-md-2">
                                                         <label>Sub Price <span class="text-danger">*</span></label>
-                                                        <input type="text" name="sub_price[]" class="form-control" placeholder="Sub Price" readonly>
+                                                        <input type="text" name="sub_price[]" class="form-control" placeholder="Sub Price" required>
                                                     </div>
                                             
                                                     <div class="form-group col-sm-2 col-lg-2 col-md-2">
@@ -119,7 +119,7 @@
 
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                     <label>Total Price <span class="text-danger">*</span></label>
-                                                    <input type="text" name="total_price" class="form-control" placeholder="Total Price" readonly>
+                                                    <input type="text" name="total_price" class="form-control" placeholder="Total Price" required>
                                                 </div>
 
                                             
@@ -173,7 +173,6 @@
     </section>
   </div>
 
-
    
 <script type="text/javascript">
 
@@ -190,64 +189,47 @@
 
 
 
-    $(document).ready(function () {
 
-        // Calculate Sub Price based on Quantity and Unit Price
-        $(document).on('input', '[name="quantity[]"], [name="unit_price[]"]', function () {
-            const row = $(this).closest('.row');
-            const quantity = parseFloat(row.find('[name="quantity[]"]').val()) || 0;
-            const unitPrice = parseFloat(row.find('[name="unit_price[]"]').val()) || 0;
+    // Multiple Column Added Code Start
+    $(document).ready(function() {
+    let i = 1; // Counter for dynamic fields
 
-            // Calculate sub-price
-            const subPrice = (quantity * unitPrice).toFixed(2);
-            row.find('[name="sub_price[]"]').val(subPrice);
+    // Add new row on Add button click
+    $(document).on('click', '.add', function() {
+        i++;
+        let html = `
+            <div class="row" id="row${i}">
+                <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                    <input type="text" name="equipment_list[]" class="form-control" placeholder="Equipment Name" required>
+                </div>
 
-            // Update the total price
-            calculateTotalPrice();
-        });
+                <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                    <input type="text" name="quantity[]" class="form-control" placeholder="Quantity" required>
+                </div>
 
-        // Remove row and recalculate total price
-        $(document).on('click', '.remove', function () {
-            $(this).closest('.row').remove();
-            calculateTotalPrice();
-        });
+                <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                    <input type="text" name="unit_price[]" class="form-control" placeholder="Unit Price" required>
+                </div>
 
-        // Add new row
-        $(document).on('click', '.add', function () {
-            let i = $('#dynamic_field .row').length + 1;
-            const html = `
-                <div class="row" id="row${i}">
-                    <div class="form-group col-sm-4 col-lg-4 col-md-4">
-                        <input type="text" name="equipment_list[]" class="form-control" placeholder="Equipment Name" required>
-                    </div>
-                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                        <input type="text" name="quantity[]" class="form-control" placeholder="Quantity" required>
-                    </div>
-                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                        <input type="text" name="unit_price[]" class="form-control" placeholder="Unit Price" required>
-                    </div>
-                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                        <input type="text" name="sub_price[]" class="form-control" placeholder="Sub Price" readonly>
-                    </div>
-                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                        <button type="button" class="btn btn-danger remove" id="${i}">Remove</button>
-                    </div>
-                </div>`;
-            $('#dynamic_field').append(html);
-        });
+                <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                    <input type="text" name="sub_price[]" class="form-control" placeholder="Total Price" required>
+                </div>
 
-        // Function to calculate the total price
-        function calculateTotalPrice() {
-            let totalPrice = 0;
-            $('[name="sub_price[]"]').each(function () {
-                const subPrice = parseFloat($(this).val()) || 0;
-                totalPrice += subPrice;
-            });
-            $('[name="total_price"]').val(totalPrice.toFixed(2));
-        }
-
-        
+                <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                    <button type="button" class="btn btn-danger remove" id="${i}">Remove</button>
+                </div>
+            </div>
+        `;
+        $('#dynamic_field').append(html);
     });
+
+    // Remove row on Remove button click
+    $(document).on('click', '.remove', function() {
+        let button_id = $(this).attr("id");
+        $('#row' + button_id).remove();
+    });
+    });
+
 
 
 

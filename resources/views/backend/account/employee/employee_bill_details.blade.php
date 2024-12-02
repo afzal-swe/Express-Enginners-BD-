@@ -54,9 +54,9 @@
                                   <th>Date</th>
                                   <th>Reason</th>
                                   {{-- <th>Price</th> --}}
-                                  <th>Company</th>
-                                  <th>Deposit</th>
-                                  <th>Costs</th>
+                                  <th>Discription</th>
+                                  <th>Credit</th>
+                                  <th>Debit</th>
                                   <th>Action</th>
                                 </tr>
                             </thead>
@@ -71,7 +71,7 @@
                                       <td>{{ $row->date ?? '' }}</td>
                                       <td>{{ $row->reason ?? '' }}</td>
                                       {{-- <td>{{ $row->price ?? '' }}</td> --}}
-                                      <td>{{ $row->company ?? '' }}</td>
+                                      <td>{{ $row->discription ?? '' }}</td>
                                       <td>{{ $row->deposit ?? '' }}</td>
                                      
                                       

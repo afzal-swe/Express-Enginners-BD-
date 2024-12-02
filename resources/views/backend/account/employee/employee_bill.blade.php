@@ -72,15 +72,72 @@
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
+                                                  
                                                 </div>
 
-                                                <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2">
                                                     <div class="form-group">
                                                         <label for="">Reason <span class="text-danger">*</span></label>
-                                                        <input type="text" name="reason" class="form-control @error('reason') is-invalid @enderror" placeholder="Reason" value="{{ old('reason') }}">
+                                                        <select name="reason" id="reason" class="form-control">
+                                                            <option selected disabled>== Choose Reason ==</option>
+                                                            <option value="sallary">Sallary</option>
+                                                            <option value="convenance">Convenance</option>
+                                                            <option value="over_time">Over Time</option>
+                                                            <option value="puscles">puscles</option>
+                                                            <option value="bonus">Bonus</option>
+                                                            <option value="loan">loan</option>
+                                                        </select>
                                                         @error('reason')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2" id="sallary" style="display: none">
+                                                    <div class="form-group">
+                                                        <label for="">Sallary Month<span class="text-danger">*</span></label>
+                                                        <input type="text" name="sallary_month" class="form-control" value="{{ old('sallary_month') }}">
+                                                       
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2" id="convenance" style="display: none">
+                                                    <div class="form-group">
+                                                        <label for="">Convenance Month<span class="text-danger">*</span></label>
+                                                        <input type="text" name="convenance_month" class="form-control" value="{{ old('convenance_month') }}">
+                                                       
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2" id="over_time" style="display: none">
+                                                    <div class="form-group">
+                                                        <label for="">Over Time Month<span class="text-danger">*</span></label>
+                                                        <input type="text" name="over_time_month" class="form-control" value="{{ old('over_time_month') }}">
+                                                       
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2" id="bonus" style="display: none">
+                                                    <div class="form-group">
+                                                        <label for="">Eid Bonus<span class="text-danger">*</span></label>
+                                                        <input type="text" name="eid_bonus" class="form-control" value="{{ old('eid_bonus') }}">
+                                                       
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2" id="puscles" style="display: none">
+                                                    <div class="form-group">
+                                                        <label for="">Project<span class="text-danger">*</span></label>
+                                                        <input type="text" name="puscles_project" class="form-control" value="{{ old('puscles_project') }}">
+                                                       
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-2 col-lg-2 col-md-2" id="loan" style="display: none">
+                                                    <div class="form-group">
+                                                        <label for="">Purpose<span class="text-danger">*</span></label>
+                                                        <input type="text" name="loan_purpose" class="form-control" value="{{ old('loan_purpose') }}">
+                                                       
                                                     </div>
                                                 </div>
                                                 
@@ -92,9 +149,9 @@
                                             <div class="row">
                                                 <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="">Company<span class="text-danger">*</span></label>
-                                                        <input type="text" name="company" class="form-control @error('company') is-invalid @enderror" value="{{ old('company') }}" placeholder="Company">
-                                                        @error('company')
+                                                        <label for="">Discription<span class="text-danger">*</span></label>
+                                                        <input type="text" name="discription" class="form-control @error('discription') is-invalid @enderror" value="{{ old('discription') }}" placeholder="Discription">
+                                                        @error('discription')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -103,9 +160,9 @@
                                               
                                             
 
-                                            <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                <label for="">Deposit <span class="text-danger">*</span></label>
-                                                <input type="text" name="deposit" class="form-control @error('deposit') is-invalid @enderror" value="{{ old('deposit') }}" placeholder="Deposit">
+                                            <div class="form-group col-sm-4 col-lg-4 col-md-4">
+                                                <label for="">Amount <span class="text-danger">*</span></label>
+                                                <input type="text" name="deposit" class="form-control @error('deposit') is-invalid @enderror" value="{{ old('deposit') }}" placeholder="Amount">
                                                 @error('deposit')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -131,6 +188,52 @@
         </div>
     </section>
   </div>
+
+
+<script type="text/javascript">
+
+    // General Terams Yes or No Code Start
+    $(document).ready(function() {
+        $('#reason').on('change', function() {
+            if (this.value === 'sallary') { // 'Yes' selected
+                $('#sallary').show();
+            }else { // 'No' selected or default
+                $('#sallary').hide();
+            }
+
+            if (this.value === 'convenance') { // 'Yes' selected
+                $('#convenance').show();
+            }else { // 'No' selected or default
+                $('#convenance').hide();
+            }
+
+            if (this.value === 'over_time') { // 'Yes' selected
+                $('#over_time').show();
+            }else { // 'No' selected or default
+                $('#over_time').hide();
+            }
+
+            if (this.value === 'bonus') { // 'Yes' selected
+                $('#bonus').show();
+            } else { // 'No' selected or default
+                $('#bonus').hide();
+            }
+
+            if (this.value === 'puscles') { // 'Yes' selected
+                $('#puscles').show();
+            } else { // 'No' selected or default
+                $('#puscles').hide();
+            }
+
+            if (this.value === 'loan') { // 'Yes' selected
+                $('#loan').show();
+            } else { // 'No' selected or default
+                $('#loan').hide();
+            }
+        });
+    });// General Terams Yes or No Code End
+
+</script>
 
 @endsection
     

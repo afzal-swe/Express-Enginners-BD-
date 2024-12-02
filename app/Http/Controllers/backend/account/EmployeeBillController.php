@@ -33,10 +33,12 @@ class EmployeeBillController extends Controller
             'date' => 'required',
             'e_id' => 'required',
             'reason' => 'required',
-            'company' => 'required',
+            'discription' => 'required',
             'deposit' => 'required',
 
         ]);
+
+        // dd($request->all());
 
         $check_employee_id = DB::table($this->db_employee)->where('e_id_number', $request->e_id)->first();
 
@@ -48,7 +50,13 @@ class EmployeeBillController extends Controller
             $data['date'] = date('d-m-Y', strtotime($request->date));
             $data['e_id'] = $request->e_id;
             $data['reason'] = $request->reason;
-            $data['company'] = $request->company;
+            $data['sallary_month'] = $request->sallary_month ?? '';
+            $data['convenance_month'] = $request->convenance_month ?? '';
+            $data['over_time_month'] = $request->over_time_month ?? '';
+            $data['eid_bonus'] = $request->eid_bonus ?? '';
+            $data['puscles_project'] = $request->puscles_project ?? '';
+            $data['loan_purpose'] = $request->loan_purpose ?? '';
+            $data['discription'] = $request->discription;
             $data['deposit'] = $request->deposit;
             $data['costs'] = "0";
             $data['created_at'] = Carbon::now();
@@ -76,7 +84,13 @@ class EmployeeBillController extends Controller
 
         $data['date'] = date('d-m-Y', strtotime($request->date));
         $data['reason'] = $request->reason;
-        $data['company'] = $request->company;
+        $data['sallary_month'] = $request->sallary_month;
+        $data['convenance_month'] = $request->convenance_month;
+        $data['over_time_month'] = $request->over_time_month;
+        $data['eid_bonus'] = $request->eid_bonus;
+        $data['puscles_project'] = $request->puscles_project;
+        $data['loan_purpose'] = $request->loan_purpose;
+        $data['discription'] = $request->discription;
         $data['deposit'] = $request->deposit;
         $data['updated_at'] = Carbon::now();
 

@@ -6,7 +6,7 @@
 
 
 
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 
 <div class="content-wrapper">
@@ -47,36 +47,74 @@
                                             <div class="clearfix"></div>
                                           </div>
 
-                                          <div class="">
-                                            <label class="control-label col-md-12 col-sm-12 col-xs-12">Date <span class="text-danger">*</span></label>
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                              <input type="date" class="form-control" name="income_date" value="{{ old('income_date') }}" required>
+                                          <div class="row">
+                                            <div class="col col-lg-6 col-xl-6">
+                                              <div class="form-group">
+                                                <label>Date <span class="text-danger">*</span></label>
+                                                <input type="date" class="form-control" name="income_date" value="{{ old('income_date') }}" required>
+                                              </div>
                                             </div>
-                                          </div>
+                                         
 
-                                          <div class="">
-                                            <label class="control-label col-md-12 col-sm-12 col-xs-12">Particulars <span class="text-danger">*</span></label>
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col col-lg-6 col-xl-6">
+                                              <div class="form-group">
+                                                <label>Particulars <span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="income_particulars" placeholder="Particulars" value="{{ old('income_particulars') }}" required>
+                                              </div>
                                             </div>
                                           </div>
 
-                                          <div class="">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Reason <span class="text-danger">*</span></label>
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                              <input type="text" class="form-control" name="income_reason" value="{{ old('income_reason') }}" placeholder="Reason" required>
+                                          <div class="row">
+                                            <div class="col col-lg-6 col-xl-6">
+                                              <div class="form-group">
+                                                <label>Reason <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="income_reason" value="{{ old('income_reason') }}" placeholder="Reason" required>
+                                              </div>
                                             </div>
-                                          </div>
 
-                                          <div class="">
-                                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Amount <span class="text-danger">*</span></label>
-                                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col col-lg-6 col-xl-6">
+                                              <div class="form-group">
+                                                <label>Amount <span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="income_amount" value="{{ old('income_amount') }}" placeholder="Amount" required>
                                               </div>
+                                            </div>
                                           </div>
-     
 
-                                     
+                                          <div class="col col-lg-6 col-xl-6">
+                                            <div class="form-group">
+                                              <label for="exampleInputFile">Project</label>
+                                              <select name="project_status" class="form-control" id="project_status">
+                                                  <option disabled selected>== Choose Option ==</option>
+                                                  <option value="0">No</option>
+                                                  <option value="1">Yes</option>
+                                              </select>
+                                            </div>
+                                          </div>
+
+                                           
+                                          <div class="row" id="date" style="display: none">
+                                            <div class="col col-lg-6 col-xl-6" >
+                                              <div class="form-group">
+                                                <label for="">Project Name</label>
+                                                <input type="text" name="project_name" class="form-control @error('project_name') is-invalid @enderror" placeholder="Project Name" value="{{ old('project_name')}}"> 
+                                              </div>
+                                              @error('project_name')
+                                                  <div class="alert alert-danger">{{ $message }}</div>
+                                              @enderror
+                                            </div>
+
+                                            <div class="col col-lg-6 col-xl-6">
+                                              <div class="form-group">
+                                                <label for="exampleInputFile">Billing System</label>
+                                                <select name="billing" class="form-control" id="billing">
+                                                    <option disabled selected>== Choose Option ==</option>
+                                                    <option value="0">Monthly Bill</option>
+                                                    <option value="1">Work Bill</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                          </div>
+                                    
                                         <br><hr>
 
                                             <div class="card-footer">
@@ -92,7 +130,6 @@
                                     </form>
                                 </div>
                               </div>
-                       
                         <!-- /.card-body -->
                       </div>
                 </div>
@@ -175,11 +212,23 @@
             </div>
         </div>
     </section>
-
-
-    
-                
+            
        
   </div>
+
+  <script type="text/javascript">
+
+    // General Terams Yes or No Code Start
+    $(document).ready(function() {
+        $('#project_status').on('change', function() {
+            if (this.value === '1') { // 'Yes' selected
+                $('#date').show();
+            } else { // 'No' selected or default
+                $('#date').hide();
+            }
+        });
+    });// General Terams Yes or No Code End
+
+</script>
 
 @endsection

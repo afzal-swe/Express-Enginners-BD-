@@ -35,6 +35,7 @@ class MonthlyBillController extends Controller
         $request->validate([
             'billing_id' => ['required', 'string', 'max:255', 'unique:monthly_bill'],
             'project_id' => ['required'],
+            // 'generator_status' => ['required'],
 
         ]);
         // dd($request->all());
@@ -72,16 +73,24 @@ class MonthlyBillController extends Controller
         $data = array();
         $data['project_id'] = $bill_info['project_id'];
         $data['billing_id'] = $bill_info['billing_id'];
-        $data['date'] = $bill_info['date'];
+        $data['date'] = date('d-m-Y', strtotime($bill_info['date']));
         $data['description'] = $bill_info['description'];
         $data['month_name'] = $bill_info['month_name'];
+        $data['generator_status'] = $bill_info['generator_status'];
         $data['no_month'] = $bill_info['no_month'];
         $data['lift_quanitiy'] = $project_info->lift_quanitiy;
         $data['unit_price'] = $project_info->unit_price;
         $data['price'] = $project_info->monthly_bill;
-        $data['credit'] = '0';
-        $data['debit'] = $project_info->monthly_bill;
-        $data['total_price'] = '0';
+        if ($bill_info['generator_status'] == 1) {
+            $data['credit'] = $project_info->monthly_bill + $project_info->generator_total_price;
+            $data['debit'] = '0';
+            $data['total_price'] = $project_info->monthly_bill + $project_info->generator_total_price;
+        } else {
+            $data['credit'] = $project_info->monthly_bill;
+            $data['debit'] = '0';
+            $data['total_price'] = $project_info->monthly_bill;
+        }
+
         $data['created_at'] = Carbon::now();
         // dd($data);
 
@@ -115,14 +124,14 @@ class MonthlyBillController extends Controller
     public function Submit_Monthly_Billing(Request $request)
     {
 
-        $monthly_bill = DB::table($this->db_monthly_bill)->where('billing_id', $request->billing_id)->first();
+        $monthly_bill = DB::table($this->db_monthly_bill)->where('billing_id', $request->billing_id)->orderBy('id', 'DESC')->first();
         // dd($monthly_bill);
 
         if ($monthly_bill) {
             $data = array();
             $data['project_id'] = $monthly_bill->project_id;
             $data['billing_id'] = $request->billing_id;
-            $data['date'] = $request->date;
+            $data['date'] = date('d-m-Y', strtotime($request->date));
             $data['description'] = $monthly_bill->description;
             $data['month_name'] = $monthly_bill->month_name;
             $data['no_month'] = $monthly_bill->no_month;
@@ -130,9 +139,9 @@ class MonthlyBillController extends Controller
             $data['unit_price'] = $monthly_bill->unit_price;
 
             $data['price'] = $monthly_bill->total_price;
-            $data['credit'] = $request->amount;
-            $data['debit'] = $monthly_bill->debit - $request->amount;
-            $data['total_price'] = $monthly_bill->credit;
+            $data['credit'] = $monthly_bill->credit - $request->amount;
+            $data['debit'] = $request->amount;
+            $data['total_price'] = $monthly_bill->credit - $request->amount;
             $data['created_at'] = Carbon::now();
 
             DB::table($this->db_monthly_bill)->insert($data);

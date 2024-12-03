@@ -65,19 +65,25 @@
                               @foreach ($work_bill as $key=>$row)
                               {{-- @dd($row); --}}
                                     <tr>
-                                     
-                                      <td>{{ ++$key }}</td>
-                                      <td>{{ $row->ref }}</td>
-                                      <td>{{ $row->billing_date }}</td>
-                                      {{-- <td>{{ $row->price ?? '' }}</td> --}}
-                                      <td>{{ $row->credit ?? '' }}</td>
                                       @if ($row->debit == 0)
-                                        <td class="text-success">{{ $row->debit ?? '' }}</td>
+                                        <td>{{ ++$key }}</td>
+                                        <td>{{ $row->ref }}</td>
+                                        <td>{{ $row->billing_date }}</td>
+                                        {{-- <td>{{ $row->price ?? '' }}</td> --}}
+                                        <td>{{ $row->credit ?? '' }}</td>
+                                        <td>{{ $row->debit ?? '' }}</td>
+                                        <td>{{ $row->credit ?? '' }}</td>
                                       @else
+                                        <td class="text-danger">{{ ++$key }}</td>
+                                        <td class="text-danger">{{ $row->ref }}</td>
+                                        <td class="text-danger">{{ $row->billing_date }}</td>
+                                        {{-- <td>{{ $row->price ?? '' }}</td> --}}
+                                        <td class="text-danger">{{ $row->credit ?? '' }}</td>
                                         <td class="text-danger">{{ $row->debit ?? '' }}</td>
+                                        <td class="text-danger">{{ $row->credit ?? '' }}</td>
                                       @endif
                                       
-                                      <td>{{ $row->total_price ?? '' }}</td>
+                                      
                                       
                                       
                                       <td>

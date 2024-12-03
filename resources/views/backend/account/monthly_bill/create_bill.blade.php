@@ -102,7 +102,6 @@
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <label for="exampleInputFile">Generator Bill :</label>
                                                     <select name="generator_status" class="form-control" id="generator_status">
-                                                        <option disabled selected>== Choose Option ==</option>
                                                         <option value="0">No</option>
                                                         <option value="1">Yes</option>
                                                     </select>

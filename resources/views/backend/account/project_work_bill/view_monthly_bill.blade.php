@@ -65,20 +65,29 @@
                                 
                               @foreach ($monthly_bill as $key=>$row)
                                     <tr>
-                                      <td>{{ ++$key }}</td>
-                                      <td>{{ $row->billing_id ?? '' }}</td>
-                                      {{-- <td class=" ">{{ $row->description }}</td> --}}
-                                      <td>{{ $row->date ?? '' }}</td>
-                                      <td>{{ $row->month_name ?? '' }}</td>
-                                      {{-- <td>{{ $row->price ?? '' }}</td> --}}
-                                      <td>{{ $row->credit ?? '' }}</td>
                                       @if ($row->debit == 0)
-                                        <td class="text-success">{{ $row->debit ?? '' }}</td>
+                                        <td>{{ ++$key }}</td>
+                                        <td>{{ $row->billing_id ?? '' }}</td>
+                                        {{-- <td class=" ">{{ $row->description }}</td> --}}
+                                        <td>{{ $row->date ?? '' }}</td>
+                                        <td>{{ $row->month_name ?? '' }}</td>
+                                        {{-- <td>{{ $row->price ?? '' }}</td> --}}
+                                        <td>{{ $row->credit ?? '' }}</td>
+                                        <td>{{ $row->debit ?? '' }}</td>
+                                        <td>{{ $row->credit ?? '' }}</td>
                                       @else
+                                        <td class="text-danger">{{ ++$key }}</td>
+                                        <td class="text-danger">{{ $row->billing_id ?? '' }}</td>
+                                        {{-- <td class=" ">{{ $row->description }}</td> --}}
+                                        <td class="text-danger">{{ $row->date ?? '' }}</td>
+                                        <td class="text-danger">{{ $row->month_name ?? '' }}</td>
+                                        {{-- <td>{{ $row->price ?? '' }}</td> --}}
+                                        <td class="text-danger">{{ $row->credit ?? '' }}</td>
                                         <td class="text-danger">{{ $row->debit ?? '' }}</td>
+                                        <td class="text-danger">{{ $row->credit ?? '' }}</td>
                                       @endif
                                       
-                                      <td>{{ $row->total_price ?? '' }}</td>
+                                      
                           
                                       <td>
                                         <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a>

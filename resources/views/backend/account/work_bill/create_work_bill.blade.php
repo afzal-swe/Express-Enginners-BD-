@@ -131,7 +131,7 @@
                                             </div>
 
                                             <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                <label for="exampleInputFile">General Terms & Conditions : <span class="text-danger">*</span></label>
+                                                <label for="exampleInputFile">Warranty : <span class="text-danger">*</span></label>
                                                 <select name="general_terms" class="form-control" id="general_terms" required>
                                                     <option disabled selected>== Choose Option ==</option>
                                                     <option value="0">No</option>

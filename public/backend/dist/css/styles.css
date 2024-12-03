@@ -57,8 +57,7 @@ p {
 }
 
 .total {
-    margin-top: 20px;
-    font-weight: bold;
+    margin-top: 18px;
 }
 
 .signature {
@@ -109,7 +108,7 @@ p {
     }
 
     .total {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     /* Hides elements that are not needed for print */

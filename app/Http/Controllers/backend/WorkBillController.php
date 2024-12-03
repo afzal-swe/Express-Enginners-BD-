@@ -77,9 +77,9 @@ class WorkBillController extends Controller
         $data['supply_date'] = $work_bill_info['supply_date'];
         $data['expire_date'] = $work_bill_info['expire_date'];
         $data['price'] = $work_bill_info['total_price'];
-        $data['credit'] = '0';
-        $data['debit'] = $work_bill_info['total_price'];
-        $data['total_price'] = '0';
+        $data['credit'] = $work_bill_info['total_price'];
+        $data['debit'] = '0';
+        $data['total_price'] = $work_bill_info['total_price'];
         $data['created_at'] = Carbon::now();
 
 
@@ -120,8 +120,8 @@ class WorkBillController extends Controller
 
         ]);
 
-        // dd($request->all());
-        $work_bill = DB::table($this->db_work_bill)->where('ref', $request->ref)->first();
+
+        $work_bill = DB::table($this->db_work_bill)->where('ref', $request->ref)->orderBy('id', 'DESC')->first();
 
         if ($work_bill) {
             $data = array();
@@ -138,10 +138,11 @@ class WorkBillController extends Controller
             $data['expire_date'] = $work_bill->expire_date;
 
             $data['price'] = $work_bill->total_price;
-            $data['credit'] = $request->total_price;
-            $data['debit'] = $work_bill->debit - $request->total_price;
-            $data['total_price'] = $request->total_price;
+            $data['credit'] = $work_bill->credit - $request->total_price;
+            $data['debit'] = $request->total_price;
+            $data['total_price'] = $work_bill->credit - $request->total_price;
             $data['created_at'] = Carbon::now();
+            // dd($request->all());
 
             DB::table($this->db_work_bill)->insert($data);
 

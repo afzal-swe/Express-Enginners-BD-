@@ -112,10 +112,10 @@
                                     <p>In word: ({{ $project_data->in_word }}).</p>
                                 </div>
                         
-                                <p>We are assuring you of our best attention and services at all times.</p>
+                                <p class="total">We are assuring you of our best attention and services at all times.</p>
                         
                                 <div class="signature">
-                                    <p>Sincerely Thanks From</p>
+                                    <p class="total">Sincerely Thanks From</p>
                                     <h4><strong>EXPRESS ENGINEERS BD</strong></h4>
                                     <div class="signuter_image mb-2">
                                         <img src="{{ asset('backend/images/signature/unnamed.png') }}" alt="" style="width:152px;">

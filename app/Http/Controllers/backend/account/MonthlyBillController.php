@@ -82,6 +82,7 @@ class MonthlyBillController extends Controller
         $data['unit_price'] = $project_info->unit_price;
         $data['price'] = $project_info->monthly_bill;
         if ($bill_info['generator_status'] == 1) {
+            $data['generator_description'] = $bill_info['generator_description'];
             $data['credit'] = $project_info->monthly_bill + $project_info->generator_total_price;
             $data['debit'] = '0';
             $data['total_price'] = $project_info->monthly_bill + $project_info->generator_total_price;
@@ -137,11 +138,14 @@ class MonthlyBillController extends Controller
             $data['no_month'] = $monthly_bill->no_month;
             $data['lift_quanitiy'] = $monthly_bill->lift_quanitiy;
             $data['unit_price'] = $monthly_bill->unit_price;
+            $data['generator_status'] = $monthly_bill->generator_status;
+            $data['generator_description'] = $monthly_bill->generator_description;
 
             $data['price'] = $monthly_bill->total_price;
-            $data['credit'] = $monthly_bill->credit - $request->amount;
+            $data['credit'] = '0';
+            // $data['credit'] = $monthly_bill->credit - $request->amount;
             $data['debit'] = $request->amount;
-            $data['total_price'] = $monthly_bill->credit - $request->amount;
+            $data['total_price'] = $monthly_bill->total_price - $request->amount;
             $data['created_at'] = Carbon::now();
 
             DB::table($this->db_monthly_bill)->insert($data);
@@ -153,5 +157,14 @@ class MonthlyBillController extends Controller
             $notification = array('messege' => 'Monthly Bill Create Successfully !', 'alert-type' => 'success');
             return redirect()->route('monthly_bill_submit')->with($notification);
         }
+    }
+
+    // Monthly Bill Single Details Function
+    public function Monthly_Bill_Details($id)
+    {
+        $monthly_Bill_Details_view = DB::table($this->db_monthly_bill)
+            ->where('id', $id)
+            ->first();
+        return response()->json($monthly_Bill_Details_view);
     }
 }

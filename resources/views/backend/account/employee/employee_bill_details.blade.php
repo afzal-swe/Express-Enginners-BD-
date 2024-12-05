@@ -57,6 +57,7 @@
                                   <th>Discription</th>
                                   <th>Credit</th>
                                   <th>Debit</th>
+                                  <th>Total</th>
                                   <th>Action</th>
                                 </tr>
                             </thead>
@@ -72,10 +73,9 @@
                                       <td>{{ $row->reason ?? '' }}</td>
                                       {{-- <td>{{ $row->price ?? '' }}</td> --}}
                                       <td>{{ $row->discription ?? '' }}</td>
-                                      <td>{{ $row->deposit ?? '' }}</td>
-                                     
-                                      
-                                      <td>{{ $row->costs ?? '' }}</td>
+                                      <td>{{ $row->credit ?? '' }}</td>
+                                      <td>{{ $row->debit ?? '' }}</td>
+                                      <td>{{ $row->total ?? '' }}</td>
                           
                                       <td>
                                         {{-- <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a> --}}

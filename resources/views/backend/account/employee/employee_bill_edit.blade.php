@@ -153,7 +153,7 @@
 
                                             <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                 <label for="">Amount</label>
-                                                <input type="text" name="deposit" class="form-control" value="{{ $edit->deposit ?? ''}}">
+                                                <input type="text" name="credit" class="form-control" value="{{ $edit->credit ?? ''}}">
                                             </div>
                                         </div>
 

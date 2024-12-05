@@ -64,7 +64,7 @@
                                                 </div>
 
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
-                                                    <label for="">Project Ref : <span class="text-danger">*</span></label>
+                                                    <label for="">Billing Ref : <span class="text-danger">*</span></label>
                                                     <input type="text" name="ref" class="form-control @error('ref') is-invalid @enderror" value="EEBD/WB/{{ mt_rand(0, 100) }}">
                                                     @error('ref')
                                                     <samp class="text-danger">{{ $message }}</samp>
@@ -117,23 +117,36 @@
 
                                             <div class="row">
 
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
+                                                <div class="form-group col-sm-3 col-lg-3 col-md-3">
+                                                    <label for="exampleInputFile">Discount Status :</label>
+                                                    <select name="discount_status" class="form-control" id="discount_status">
+                                                        <option value="0">No</option>
+                                                        <option value="1">Yes</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-sm-3 col-lg-3 col-md-3" id="special_discount" style="display: none">
+                                                    <label>Special Discount (৳)</label>
+                                                    <input type="text" name="special_discount" class="form-control" placeholder="00 ৳">
+                                                </div>
+
+                                                <div class="form-group col-sm-3 col-lg-3 col-md-3">
                                                     <label>Total Price <span class="text-danger">*</span></label>
                                                     <input type="text" name="total_price" class="form-control" placeholder="Total Price" readonly>
                                                 </div>
 
                                             
-                                            <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                <label for="">In Word <span class="text-danger">*</span></label>
-                                                <input type="text" name="in_word" class="form-control" placeholder="Only" required>
-                                            </div>
+                                                <div class="form-group col-sm-3 col-lg-3 col-md-3">
+                                                    <label for="">In Word <span class="text-danger">*</span></label>
+                                                    <input type="text" name="in_word" class="form-control" placeholder="Only" required>
+                                                </div>
                                           
                                             </div>
 
                                             <div class="form-group col-sm-6 col-lg-6 col-md-6">
                                                 <label for="exampleInputFile">Warranty : <span class="text-danger">*</span></label>
-                                                <select name="general_terms" class="form-control" id="general_terms" required>
-                                                    <option disabled selected>== Choose Option ==</option>
+                                                <select name="general_terms" class="form-control" id="general_terms">
+                                                   
                                                     <option value="0">No</option>
                                                     <option value="1">Yes</option>
                                                 </select>
@@ -188,10 +201,19 @@
         });
     });// General Terams Yes or No Code End
 
+    // Special Discount Status
+    $(document).ready(function() {
+        $('#discount_status').on('change', function() {
+            if (this.value === '1') { // 'Yes' selected
+                $('#special_discount').show();
+            } else { // 'No' selected or default
+                $('#special_discount').hide();
+            }
+        });
+    });// Special Discount Status
 
 
     $(document).ready(function () {
-
         // Calculate Sub Price based on Quantity and Unit Price
         $(document).on('input', '[name="quantity[]"], [name="unit_price[]"]', function () {
             const row = $(this).closest('.row');
@@ -203,6 +225,11 @@
             row.find('[name="sub_price[]"]').val(subPrice);
 
             // Update the total price
+            calculateTotalPrice();
+        });
+
+        // Calculate the total price with discount
+        $(document).on('input', '[name="special_discount"]', function () {
             calculateTotalPrice();
         });
 
@@ -243,10 +270,13 @@
                 const subPrice = parseFloat($(this).val()) || 0;
                 totalPrice += subPrice;
             });
+
+            // Subtract special discount
+            const specialDiscount = parseFloat($('[name="special_discount"]').val()) || 0;
+            totalPrice = Math.max(totalPrice - specialDiscount, 0); // Ensure the total is not negative
+
             $('[name="total_price"]').val(totalPrice.toFixed(2));
         }
-
-        
     });
 
 

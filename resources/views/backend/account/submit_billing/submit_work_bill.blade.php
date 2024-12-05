@@ -64,58 +64,14 @@
                                                 </div>
 
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
-                                                    <label for="">Project Ref : <span class="text-danger">*</span></label>
+                                                    <label for="">Billing Ref : <span class="text-danger">*</span></label>
                                                     <input type="text" name="ref" class="form-control @error('ref') is-invalid @enderror" value="EEBD/WB/">
                                                     @error('ref')
                                                         <samp class="text-danger">{{ $message }}</samp>
                                                     @enderror
                                                 </div>
-
-                                                {{-- <div class="form-group col-sm-4 col-lg-4 col-md-4">
-                                                    <label for="exampleInputFile">Project Name / SL Number <span class="text-danger">*</span></label>
-                                                    <select name="project_id" class="form-control" required>
-                                                        <option disabled selected><= Choose Project Name =></option>
-                                                        @foreach ($project_list as $row)
-                                                            
-                                                        <option value="{{ $row->id }}" class="text-info">{{ $row->project_name }} | {{ $row->project_sl }}</option>
-                                                        @endforeach
-                                                       
-                                                    </select>
-                                                    
-                                                </div> --}}
-    
-                                                
+   
                                             </div>
-
-                                            {{-- <div id="dynamic_field">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-4 col-lg-4 col-md-4">
-                                                        <label>Equipment Name <span class="text-danger">*</span></label>
-                                                        <input type="text" name="equipment_list[]" class="form-control" placeholder="Equipment Name" required>
-                                                    </div>
-                                            
-                                                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                                                        <label>Quantity <span class="text-danger">*</span></label>
-                                                        <input type="text" name="quantity[]" class="form-control" placeholder="Quantity" required>
-                                                    </div>
-                                            
-                                                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                                                        <label>Unit Price <span class="text-danger">*</span></label>
-                                                        <input type="text" name="unit_price[]" class="form-control" placeholder="Unit Price" required>
-                                                    </div>
-                                            
-                                                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                                                        <label>Sub Price <span class="text-danger">*</span></label>
-                                                        <input type="text" name="sub_price[]" class="form-control" placeholder="Sub Price" required>
-                                                    </div>
-                                            
-                                                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                                                        <label>Add Column</label><br>
-                                                        <button type="button" class="btn btn-info add">Add</button>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                            
 
                                             <div class="row">
 
@@ -131,31 +87,6 @@
                                             </div>
                                           
                                             </div>
-
-                                            {{-- <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                <label for="exampleInputFile">General Terms & Conditions : <span class="text-danger">*</span></label>
-                                                <select name="general_terms" class="form-control" id="general_terms" required>
-                                                    <option disabled selected>== Choose Option ==</option>
-                                                    <option value="0">No</option>
-                                                    <option value="1">Yes</option>
-                                                </select>
-                                            </div> --}}
-
-
-                                            <div class="row" id="date" style="display: none">
-
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                    <label for="">Supply Date </label>
-                                                    <input type="date" name="supply_date" class="form-control" placeholder="Supply Date" >
-                                                </div>
-
-                                                <div class="form-group col-sm-6 col-lg-6 col-md-6">
-                                                    <label for="">Worranty Expire Date</label>
-                                                    <input type="date" name="expire_date" class="form-control" placeholder="Worranty Expire Date">
-                                                </div>
-
-                                            </div>
-
 
                                        <br><hr>
 
@@ -174,72 +105,6 @@
         </div>
     </section>
   </div>
-
-   
-<script type="text/javascript">
-
-    // General Terams Yes or No Code Start
-    $(document).ready(function() {
-        $('#general_terms').on('change', function() {
-            if (this.value === '1') { // 'Yes' selected
-                $('#date').show();
-            } else { // 'No' selected or default
-                $('#date').hide();
-            }
-        });
-    });// General Terams Yes or No Code End
-
-
-
-
-    // Multiple Column Added Code Start
-    $(document).ready(function() {
-    let i = 1; // Counter for dynamic fields
-
-    // Add new row on Add button click
-    $(document).on('click', '.add', function() {
-        i++;
-        let html = `
-            <div class="row" id="row${i}">
-                <div class="form-group col-sm-4 col-lg-4 col-md-4">
-                    <input type="text" name="equipment_list[]" class="form-control" placeholder="Equipment Name" required>
-                </div>
-
-                <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                    <input type="text" name="quantity[]" class="form-control" placeholder="Quantity" required>
-                </div>
-
-                <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                    <input type="text" name="unit_price[]" class="form-control" placeholder="Unit Price" required>
-                </div>
-
-                <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                    <input type="text" name="sub_price[]" class="form-control" placeholder="Total Price" required>
-                </div>
-
-                <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                    <button type="button" class="btn btn-danger remove" id="${i}">Remove</button>
-                </div>
-            </div>
-        `;
-        $('#dynamic_field').append(html);
-    });
-
-    // Remove row on Remove button click
-    $(document).on('click', '.remove', function() {
-        let button_id = $(this).attr("id");
-        $('#row' + button_id).remove();
-    });
-    });
-
-
-
-
-
-</script>
-
-
-
 
 @endsection
     

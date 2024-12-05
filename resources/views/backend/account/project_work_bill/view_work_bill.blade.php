@@ -72,7 +72,7 @@
                                         {{-- <td>{{ $row->price ?? '' }}</td> --}}
                                         <td>{{ $row->credit ?? '' }}</td>
                                         <td>{{ $row->debit ?? '' }}</td>
-                                        <td>{{ $row->credit ?? '' }}</td>
+                                        <td>{{ $row->total_price ?? '' }}</td>
                                       @else
                                         <td class="text-danger">{{ ++$key }}</td>
                                         <td class="text-danger">{{ $row->ref }}</td>
@@ -80,7 +80,7 @@
                                         {{-- <td>{{ $row->price ?? '' }}</td> --}}
                                         <td class="text-danger">{{ $row->credit ?? '' }}</td>
                                         <td class="text-danger">{{ $row->debit ?? '' }}</td>
-                                        <td class="text-danger">{{ $row->credit ?? '' }}</td>
+                                        <td class="text-danger">{{ $row->total_price ?? '' }}</td>
                                       @endif
                                       
                                       
@@ -88,7 +88,7 @@
                                       
                                       <td>
                                           <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a>
-                                          <a href="#" class="btn btn-info btn-xs" title="View"><i class="fa fa-eye"></i></a>
+                                          <a href="{{ route('work_bill_details',$row->id) }}" class="btn btn-info btn-xs view-btn" data-id="{{ $row->id }}" data-bs-toggle="modal" data-target="#ProjectDetails" title="View"><i class="fa fa-eye"></i></a>
                                           <a href="{{ route('work_bill_delete',$row->id) }}" class="btn btn-danger btn-xs " id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                       </td>
                                     </tr>
@@ -106,6 +106,75 @@
         </div>
     </section>
   </div>
+
+
+    <!-- Modal -->
+<div class="modal fade" id="dataModal" tabindex="-1" aria-labelledby="dataModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="dataModalLabel">Data Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p><strong>Work Bill Ref NO : </strong> <span id="ref"></span></p>
+              <p><strong>Billing Date : </strong> <span id="billing_date"></span></p>
+              <p><strong>Equipment List : </strong> <span id="equipment_list"></span></p>
+              <p><strong>Quantity : </strong> <span id="quantity"></span></p>
+              <p><strong>Unit Price : </strong> <span id="unit_price"></span></p>
+              <p><strong>Sub Price : </strong> <span id="sub_price"></span></p>
+              <p><strong>General Terms : </strong> <span id="general_terms"></span></p>
+              <p><strong>Supply Date : </strong> <span id="supply_date"></span></p>
+              <p><strong>Expire Date : </strong> <span id="expire_date"></span></p>
+              <p><strong>Old Due : </strong> <span id="price"></span></p>
+              <p><strong>New Debit : </strong> <span id="debit"></span></p>
+              <p><strong>Credit : </strong> <span id="credit"></span></p>
+              <p><strong>Total Price : </strong> <span id="total_price"></span></p>
+              <p><strong>In Word : </strong> <span id="in_word"></span></p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  // view project data
+  $(document).ready(function () {
+          $('.view-btn').on('click', function () {
+              var id = $(this).data('id');
+              $.ajax({
+                  url: "{{ route('work_bill_details', '') }}/" + id,
+                  type: "GET",
+                  success: function (response) {
+                      $('#ref').text(response.ref);
+                      $('#billing_date').text(response.billing_date);
+                      $('#general_terms').text(response.general_terms);
+                      $('#supply_date').text(response.supply_date);
+                      $('#expire_date').text(response.expire_date);
+                      $('#price').text(response.price);
+                      $('#debit').text(response.debit);
+                      $('#credit').text(response.credit);
+                      $('#total_price').text(response.total_price);
+                      $('#in_word').text(response.in_word);
+                     
+
+                      $('#dataModal').modal('show');
+                  },
+                  error: function () {
+                      alert('Failed to fetch data. Please try again.');
+                  }
+              });
+          });
+      });
+
+
+
+
+</script>
 
 
 @endsection

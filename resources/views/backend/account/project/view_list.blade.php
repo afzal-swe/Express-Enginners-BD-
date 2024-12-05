@@ -362,40 +362,38 @@
 
 
     $(document).ready(function () {
+        // Remove row and recalculate total price
+        $(document).on('click', '.remove', function () {
+            $(this).closest('.row').remove();
+            calculateTotalPrice();
+        });
 
+        // Add new row
+        $(document).on('click', '.add', function () {
+            let i = $('#dynamic_field .row').length + 1;
+            const html = `
+                <div class="row" id="row${i}">
+                
 
-// Remove row and recalculate total price
-$(document).on('click', '.remove', function () {
-    $(this).closest('.row').remove();
-    calculateTotalPrice();
-});
+                    <div class="col col-lg-4 col-xl-4">
+                        <div class="form-group">
+                            <input type="text" name="name[]" class="form-control" placeholder="Name" value="{{ old('name')}}">
+                        </div>
+                    </div>
 
-// Add new row
-$(document).on('click', '.add', function () {
-    let i = $('#dynamic_field .row').length + 1;
-    const html = `
-        <div class="row" id="row${i}">
-           
-
-            <div class="col col-lg-4 col-xl-4">
-                <div class="form-group">
-                    <input type="text" name="name[]" class="form-control" placeholder="Name" value="{{ old('name')}}">
-                </div>
-            </div>
-
-            <div class="col col-lg-4 col-xl-4">
-                <div class="form-group">
-                    <input type="text" name="phone[]" class="form-control" placeholder="Phone" value="{{ old('phone')}}">
-                </div>
-            </div>
-            
-            <div class="form-group col-sm-2 col-lg-2 col-md-2">
-                <button type="button" class="btn btn-danger remove" id="${i}">Remove</button>
-            </div>
-        </div>`;
-    $('#dynamic_field').append(html);
-});
-});
+                    <div class="col col-lg-4 col-xl-4">
+                        <div class="form-group">
+                            <input type="text" name="phone[]" class="form-control" placeholder="Phone" value="{{ old('phone')}}">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col-sm-2 col-lg-2 col-md-2">
+                        <button type="button" class="btn btn-danger remove" id="${i}">Remove</button>
+                    </div>
+                </div>`;
+            $('#dynamic_field').append(html);
+        });
+    });
 
 </script>
 

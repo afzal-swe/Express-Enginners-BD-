@@ -34,7 +34,7 @@ class EmployeeBillController extends Controller
             'e_id' => 'required',
             'reason' => 'required',
             'discription' => 'required',
-            'deposit' => 'required',
+            'credit' => 'required',
 
         ]);
 
@@ -57,8 +57,9 @@ class EmployeeBillController extends Controller
             $data['puscles_project'] = $request->puscles_project ?? '';
             $data['loan_purpose'] = $request->loan_purpose ?? '';
             $data['discription'] = $request->discription;
-            $data['deposit'] = $request->deposit;
-            $data['costs'] = "0";
+            $data['credit'] = $request->credit;
+            $data['debit'] = "0";
+            $data['total'] = $request->credit;
             $data['created_at'] = Carbon::now();
 
             DB::table($this->db_employee_bill)->insert($data);
@@ -91,7 +92,9 @@ class EmployeeBillController extends Controller
         $data['puscles_project'] = $request->puscles_project;
         $data['loan_purpose'] = $request->loan_purpose;
         $data['discription'] = $request->discription;
-        $data['deposit'] = $request->deposit;
+        $data['credit'] = $request->credit;
+        $data['debit'] = "0";
+        $data['total'] = $request->credit;
         $data['updated_at'] = Carbon::now();
 
         DB::table($this->db_employee_bill)->where('id', $id)->update($data);

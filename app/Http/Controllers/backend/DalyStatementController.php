@@ -14,17 +14,20 @@ class DalyStatementController extends Controller
     //
     private $db_daly_expense_statement;
     private $db_daly_income_statement;
+    private $db_project_list;
 
     public function __construct()
     {
         $this->db_daly_expense_statement = "daly_expense_statement";
         $this->db_daly_income_statement = "daly_income_statement";
+        $this->db_project_list = "project_list";
     }
 
     // Daly Statement Store
     public function Statement_Form()
     {
-        return view('backend.account.daly_statement.create_daly');
+        $project_list = DB::table($this->db_project_list)->where('status', '1')->get();
+        return view('backend.account.daly_statement.create_daly', compact('project_list'));
     }
 
     // All Statement View
@@ -61,6 +64,7 @@ class DalyStatementController extends Controller
             'income_amount' => $request->income_amount,
             'created_at' => Carbon::now()
         ];
+
 
         // Calculate income total
         if ($last_record) {

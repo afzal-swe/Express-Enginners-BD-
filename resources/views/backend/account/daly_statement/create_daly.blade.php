@@ -78,7 +78,7 @@
                                                 <input type="text" class="form-control" name="income_amount" value="{{ old('income_amount') }}" placeholder="Amount" required>
                                               </div>
                                             </div>
-                                          </div>
+                                          </div> <hr>
 
                                           <div class="col col-lg-6 col-xl-6">
                                             <div class="form-group">
@@ -96,12 +96,21 @@
                                             <div class="col col-lg-6 col-xl-6" >
                                               <div class="form-group">
                                                 <label for="">Project Name</label>
-                                                <input type="text" name="project_name" class="form-control @error('project_name') is-invalid @enderror" placeholder="Project Name" value="{{ old('project_name')}}"> 
+                                                {{-- <input type="text" name="project_name" class="form-control @error('project_name') is-invalid @enderror" placeholder="Project Name" value="{{ old('project_name')}}">  --}}
+                                                 <!-- Dropdown with projects -->
+                                                <select name="project_id" id="project-dropdown" class="form-control @error('project_id') is-invalid @enderror">
+                                                  <option value="" selected disabled>== Choose Option ==</option>
+                                                  @foreach ($project_list as $row)
+                                                  <option value="{{ $row->id }}" class="text-info">{{ $row->project_name }} | {{ $row->project_sl }}</option>
+                                                  @endforeach
+                                              </select>
                                               </div>
-                                              @error('project_name')
+                                              @error('project_id')
                                                   <div class="alert alert-danger">{{ $message }}</div>
                                               @enderror
                                             </div>
+
+                                           
 
                                             <div class="col col-lg-6 col-xl-6">
                                               <div class="form-group">
@@ -113,6 +122,51 @@
                                                 </select>
                                               </div>
                                             </div>
+                                          </div>
+
+
+                                          <div class="row" id="monthlyBillingDate" style="display: none">
+                                            <div class="col col-lg-6 col-xl-6">
+                                              <div class="form-group">
+                                                <label for="">Billing ID : <span class="text-danger">*</span></label>
+                                                    <input type="text" name="billing_id" class="form-control" value="EEBD/MB/" placeholder="Billing ID" required>
+                                              </div>
+                                            </div>
+
+                                            <div class="col col-lg-6 col-xl-6">
+                                              <div class="form-group">
+                                                <label for="">Description</label>
+                                                <input type="text" name="description" class="form-control" value="Lift Maintenance & Servicing Charge For" readonly>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div id="workBillingDate" style="display: none">
+                                            <div class="row">
+                                              <div class="col col-lg-6 col-xl-6">
+                                                <div class="form-group">
+                                                  <label for="">Billing Ref : <span class="text-danger">*</span></label>
+                                                    <input type="text" name="ref" class="form-control @error('ref') is-invalid @enderror" value="EEBD/WB/">
+                                                    @error('ref')
+                                                        <samp class="text-danger">{{ $message }}</samp>
+                                                    @enderror
+                                                </div>
+                                              </div>
+  
+                                              {{-- <div class="col col-lg-6 col-xl-6">
+                                                <div class="form-group">
+                                                  <label>Total Price <span class="text-danger">*</span></label>
+                                                  <input type="text" name="total_price" class="form-control" placeholder="Total Price" required>
+                                                </div>
+                                              </div> --}}
+                                            </div>
+
+                                            {{-- <div class="col col-lg-12 col-xl-12">
+                                              <div class="form-group">
+                                                <label for="">In Word <span class="text-danger">*</span></label>
+                                                <input type="text" name="in_word" class="form-control" placeholder="Only" required>
+                                              </div>
+                                            </div> --}}
                                           </div>
                                     
                                         <br><hr>
@@ -160,36 +214,40 @@
                                           <div class="clearfix"></div>
                                         </div>
 
-                                        <div class="">
-                                          <label class="control-label col-md-12 col-sm-12 col-xs-12">Expense Date <span class="text-danger">*</span></label>
-                                          <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="date" class="form-control date" name="expense_date" value="{{ old('expense_date') }}" required>
+                                        <div class="row">
+                                          <div class="col col-lg-6 col-xl-6">
+                                            <div class="form-group">
+                                              <label>Expense Date  <span class="text-danger">*</span></label>
+                                              {{-- <input type="date" class="form-control" name="expense_date" value="{{ old('expense_date') }}" required> --}}
+                                              <input type="date" class="form-control date" name="expense_date" value="{{ old('expense_date') }}" required>
+                                            </div>
+                                          </div>
+
+                                          <div class="col col-lg-6 col-xl-6">
+                                            <div class="form-group">
+                                              <label>Particulars <span class="text-danger">*</span></label>
+                                              <input type="text" class="form-control" name="expense_particulars" placeholder="Particulars" value="{{ old('expense_particulars') }}" required>
+                                            </div>
                                           </div>
                                         </div>
 
-                                        <div class="">
-                                          <label class="control-label col-md-12 col-sm-12 col-xs-12">Particulars <span class="text-danger">*</span></label>
-                                          <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control" name="expense_particulars" placeholder="Particulars" value="{{ old('expense_particulars') }}" required>
-                                          </div>
-                                        </div>
 
-                                        <div class="">
-                                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Reason <span class="text-danger">*</span></label>
-                                          <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control" name="expense_reason" value="{{ old('expense_reason') }}" placeholder="Reason" required>
+                                        <div class="row">
+                                          <div class="col col-lg-6 col-xl-6">
+                                            <div class="form-group">
+                                              <label>Reason<span class="text-danger">*</span></label>
+                                              <input type="text" class="form-control" name="expense_reason" value="{{ old('expense_reason') }}" placeholder="Reason" required>
+                                            </div>
                                           </div>
-                                        </div>
 
-                                        <div class="">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Amount <span class="text-danger">*</span></label>
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                          <div class="col col-lg-6 col-xl-6">
+                                            <div class="form-group">
+                                              <label>Amount <span class="text-danger">*</span></label>
                                               <input type="text" class="form-control" name="expense_amount" value="{{ old('expense_amount') }}" placeholder="Amount" required>
                                             </div>
+                                          </div>
                                         </div>
-   
 
-                                   
                                       <br><hr>
 
                                           <div class="card-footer">
@@ -228,6 +286,23 @@
             }
         });
     });// General Terams Yes or No Code End
+
+    // Project added
+    $(document).ready(function() {
+        $('#billing').on('change', function() {
+            if (this.value === '0') { // 'Yes' selected
+                $('#monthlyBillingDate').show();
+            } else { // 'No' selected or default
+                $('#monthlyBillingDate').hide();
+            }
+
+            if (this.value === '1') { // 'Yes' selected
+                $('#workBillingDate').show();
+            } else { // 'No' selected or default
+                $('#workBillingDate').hide();
+            }
+        });
+    });// Project added
 
 </script>
 

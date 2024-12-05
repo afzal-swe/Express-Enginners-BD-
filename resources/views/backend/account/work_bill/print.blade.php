@@ -67,20 +67,41 @@
                                     </thead>
                                     <tbody>
 
+                                        @if ($workBill['discount_status'] == 1)
                                         @foreach(session('workBill.equipment_list') as $index => $equipment)
-                                        <tr>
-                                            <td>{{ $index + 1 }}</td>
-                                            <td style="text-align: left;">{{ $equipment }}</td>
-                                            <td >{{ session('workBill.quantity')[$index] ?? '' }} </td>
-                                            <td>{{ session('workBill.unit_price')[$index] ?? '' }} /-</td>
-                                            <td>{{ session('workBill.sub_price')[$index] ?? '' }} /-</td>
-                                        </tr>
-                                    @endforeach
-                                        
-                                        <tr>
-                                            <td colspan="4" >Total amount : </td>
-                                            <td colspan="1"><strong>{{ $workBill['total_price'] }} /-</strong></td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td style="text-align: left;">{{ $equipment }}</td>
+                                                <td >{{ session('workBill.quantity')[$index] ?? '' }} </td>
+                                                <td>{{ session('workBill.unit_price')[$index] ?? '' }} /-</td>
+                                                <td>{{ session('workBill.sub_price')[$index] ?? '' }} /-</td>
+                                            </tr>
+                                        @endforeach
+                                            
+                                            <tr>
+                                                <td colspan="4" >Special Discount : </td>
+                                                <td colspan="1"><strong>{{ $workBill['special_discount'] }} /-</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" >Total amount : </td>
+                                                <td colspan="1"><strong>{{ $workBill['total_price'] }} /-</strong></td>
+                                            </tr>
+                                    
+                                        @else
+                                        @foreach(session('workBill.equipment_list') as $index => $equipment)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td style="text-align: left;">{{ $equipment }}</td>
+                                                <td >{{ session('workBill.quantity')[$index] ?? '' }} </td>
+                                                <td>{{ session('workBill.unit_price')[$index] ?? '' }} /-</td>
+                                                <td>{{ session('workBill.sub_price')[$index] ?? '' }} /-</td>
+                                            </tr>
+                                        @endforeach
+                                            <tr>
+                                                <td colspan="4" >Total amount : </td>
+                                                <td colspan="1"><strong>{{ $workBill['total_price'] }} /-</strong></td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                         

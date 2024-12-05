@@ -162,8 +162,8 @@
 
                                             <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                 <label for="">Amount <span class="text-danger">*</span></label>
-                                                <input type="text" name="deposit" class="form-control @error('deposit') is-invalid @enderror" value="{{ old('deposit') }}" placeholder="Amount">
-                                                @error('deposit')
+                                                <input type="text" name="credit" class="form-control @error('credit') is-invalid @enderror" value="{{ old('credit') }}" placeholder="Amount">
+                                                @error('credit')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>

@@ -74,7 +74,7 @@
                                         {{-- <td>{{ $row->price ?? '' }}</td> --}}
                                         <td>{{ $row->credit ?? '' }}</td>
                                         <td>{{ $row->debit ?? '' }}</td>
-                                        <td>{{ $row->credit ?? '' }}</td>
+                                        <td>{{ $row->total_price ?? '' }}</td>
                                       @else
                                         <td class="text-danger">{{ ++$key }}</td>
                                         <td class="text-danger">{{ $row->billing_id ?? '' }}</td>
@@ -84,14 +84,14 @@
                                         {{-- <td>{{ $row->price ?? '' }}</td> --}}
                                         <td class="text-danger">{{ $row->credit ?? '' }}</td>
                                         <td class="text-danger">{{ $row->debit ?? '' }}</td>
-                                        <td class="text-danger">{{ $row->credit ?? '' }}</td>
+                                        <td class="text-danger">{{ $row->total_price ?? '' }}</td>
                                       @endif
                                       
                                       
                           
                                       <td>
                                         <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a>
-                                        <a href="#" class="btn btn-info btn-xs" title="View"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('monthly_bill.details',$row->id) }}" class="btn btn-info btn-xs view-btn" data-id="{{ $row->id }}" data-bs-toggle="modal" data-target="#ProjectDetails" title="View"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('monthly_bill.delete',$row->id) }}" class="btn btn-danger btn-xs" id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                     </td>
                                   </tr>
@@ -108,6 +108,79 @@
         </div>
     </section>
   </div>
+
+
+    <!-- Modal -->
+<div class="modal fade" id="dataModal" tabindex="-1" aria-labelledby="dataModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="dataModalLabel">Monthly Bill Single Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p><strong>Billing ID : </strong> <span id="billing_id"></span></p>
+              <p><strong>Date : </strong> <span id="date"></span></p>
+              <p><strong>Description : </strong> <span id="description"></span></p>
+              <p><strong>Month Name : </strong> <span id="month_name"></span></p>
+              <p><strong>No Of Month : </strong> <span id="no_month"></span></p>
+              <p><strong>Generator Status : </strong> <span id="generator_status"></span></p>
+              <p><strong>Generator Description : </strong> <span id="generator_description"></span></p>
+              <p><strong>Lift Quanitiy : </strong> <span id="lift_quanitiy"></span></p>
+              <p><strong>Unit Price : </strong> <span id="unit_price"></span></p>
+              <p><strong>Price : </strong> <span id="price"></span></p>
+              <p><strong>Debit : </strong> <span id="debit"></span></p>
+              <p><strong>Credit : </strong> <span id="credit"></span></p>
+              <p><strong>Total Price : </strong> <span id="total_price"></span></p>
+            
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+  <script type="text/javascript">
+
+    // view project data
+    $(document).ready(function () {
+        $('.view-btn').on('click', function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: "{{ route('monthly_bill.details', '') }}/" + id,
+                type: "GET",
+                success: function (response) {
+                    $('#billing_id').text(response.billing_id);
+                    $('#date').text(response.date);
+                    $('#description').text(response.description);
+                    $('#month_name').text(response.month_name);
+                    $('#no_month').text(response.no_month);
+                    $('#generator_status').text(response.generator_status);
+                    $('#generator_description').text(response.generator_description);
+                    $('#lift_quanitiy').text(response.lift_quanitiy);
+                    $('#unit_price').text(response.unit_price);
+                    $('#price').text(response.price);
+                    $('#debit').text(response.debit);
+                    $('#credit').text(response.credit);
+                    $('#total_price').text(response.total_price);
+                   
+                    $('#dataModal').modal('show');
+                },
+                error: function () {
+                    alert('Failed to fetch data. Please try again.');
+                }
+            });
+        });
+      });
+  
+  
+  
+  
+  </script>
 
 
 @endsection

@@ -25,8 +25,9 @@ return new class extends Migration
             $table->string('eid_bonus')->nullable();
             $table->string('loan_purpose')->nullable();
             $table->string('discription')->nullable();
-            $table->string('deposit')->nullable();
-            $table->string('costs')->nullable();
+            $table->string('credit')->nullable();
+            $table->string('debit')->nullable();
+            $table->string('total')->nullable();
             $table->timestamps();
         });
     }

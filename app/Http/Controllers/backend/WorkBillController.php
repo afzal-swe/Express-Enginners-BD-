@@ -67,19 +67,24 @@ class WorkBillController extends Controller
         $data = array();
         $data['project_id'] = $work_bill_info['project_id'];
         $data['ref'] = $work_bill_info['ref'];
-        $data['billing_date'] = $work_bill_info['billing_date'];
+        $data['billing_date'] = date('d-m-Y', strtotime($work_bill_info['billing_date']));
         $data['equipment_list'] = json_encode($work_bill_info['equipment_list']);
         $data['quantity'] = json_encode($work_bill_info['quantity']);
         $data['unit_price'] = json_encode($work_bill_info['unit_price']);
         $data['sub_price'] = json_encode($work_bill_info['sub_price']);
         $data['in_word'] = $work_bill_info['in_word'];
         $data['general_terms'] =  $work_bill_info['general_terms'];
-        $data['supply_date'] = $work_bill_info['supply_date'];
-        $data['expire_date'] = $work_bill_info['expire_date'];
+        $data['supply_date'] = date('d-m-Y', strtotime($work_bill_info['supply_date']));
+        $data['expire_date'] = date('d-m-Y', strtotime($work_bill_info['expire_date']));
         $data['price'] = $work_bill_info['total_price'];
         $data['credit'] = $work_bill_info['total_price'];
         $data['debit'] = '0';
         $data['total_price'] = $work_bill_info['total_price'];
+
+        if ($work_bill_info['discount_status'] == 1) {
+            $data['discount_status'] = $work_bill_info['discount_status'];
+            $data['special_discount'] = $work_bill_info['special_discount'];
+        }
         $data['created_at'] = Carbon::now();
 
 
@@ -127,7 +132,7 @@ class WorkBillController extends Controller
             $data = array();
             $data['project_id'] = $work_bill->project_id;
             $data['ref'] = $request->ref;
-            $data['billing_date'] = $request->billing_date;
+            $data['billing_date'] = date('d-m-Y', strtotime($request->billing_date));
             $data['equipment_list'] = json_encode($work_bill->equipment_list);
             $data['quantity'] = json_encode($work_bill->quantity);
             $data['unit_price'] = json_encode($work_bill->unit_price);
@@ -138,9 +143,12 @@ class WorkBillController extends Controller
             $data['expire_date'] = $work_bill->expire_date;
 
             $data['price'] = $work_bill->total_price;
-            $data['credit'] = $work_bill->credit - $request->total_price;
+            $data['credit'] = '0';
             $data['debit'] = $request->total_price;
-            $data['total_price'] = $work_bill->credit - $request->total_price;
+            $data['total_price'] = $work_bill->total_price - $request->total_price;
+
+            $data['discount_status'] = $work_bill->discount_status;
+            $data['special_discount'] = $work_bill->special_discount;
             $data['created_at'] = Carbon::now();
             // dd($request->all());
 
@@ -152,5 +160,15 @@ class WorkBillController extends Controller
             $notification = array('messege' => 'Work Bill Create Successfully !', 'alert-type' => 'success');
             return redirect()->route('work_bill_submit')->with($notification);
         }
+    }
+
+
+    // Single Worrk bill View
+    public function Work_Bill_Details($id)
+    {
+        $Work_Bill_Details_view = DB::table($this->db_work_bill)
+            ->where('id', $id)
+            ->first();
+        return response()->json($Work_Bill_Details_view);
     }
 }

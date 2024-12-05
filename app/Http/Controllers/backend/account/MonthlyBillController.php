@@ -26,7 +26,18 @@ class MonthlyBillController extends Controller
     public function Monthly_Bill_Create()
     {
         $project_list = DB::table($this->db_project_list)->get();
-        return view('backend.account.monthly_bill.create_bill', compact('project_list'));
+
+        // Get the last inserted serial number
+        $lastRecord = DB::table('monthly_bill')
+            ->latest('id')
+            ->first();
+
+        // Extract the last serial number or set to 1 if no records
+        $lastSerial = $lastRecord ? (int) str_replace('EEBD/MB/', '', $lastRecord->billing_id) : 0;
+
+        // Increment the serial number
+        $newSerial = str_pad($lastSerial + 1, 4, '0', STR_PAD_LEFT);
+        return view('backend.account.monthly_bill.create_bill', compact('project_list', 'newSerial'));
     }
 
     public function Add_Session_Data_For_Monthly_Bill(Request $request)

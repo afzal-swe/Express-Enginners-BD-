@@ -21,12 +21,27 @@ class ProjectListController extends Controller
         $this->db_monthly_bill = "monthly_bill";
     }
 
-    // View All Project List
+    //view project list 
     public function Project_List()
     {
+        // Retrieve all records from the 'project_list' table ordered by descending 'id'
         $project_list = DB::table($this->db_project_list)->orderBy('id', 'DESC')->get();
-        return view('backend.account.project.view_list', compact('project_list'));
+
+        // Retrieve the most recent record from the 'project_list' table
+        $lastRecord = DB::table('project_list')
+            ->latest('id')
+            ->first();
+
+        // Extract the last serial number, defaulting to 0 if no records exist
+        $lastSerial = $lastRecord ? (int) str_replace('', '', $lastRecord->project_sl) : 0;
+
+        // Generate a new serial number by incrementing the last serial and padding with leading zeros to 4 digits
+        $newSerial = str_pad($lastSerial + 1, 4, '0', STR_PAD_LEFT);
+
+        // Return the 'view_list' Blade template, passing the project list and last serial number
+        return view('backend.account.project.view_list', compact('project_list', 'lastSerial'));
     }
+
 
     // Project create Function 
     public function Project_Create(Request $request)

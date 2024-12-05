@@ -140,13 +140,10 @@
                         </div>
                         <div class="col col-lg-12 col-xl-12">
                             <div class="form-group">
-                                <label for="">Project SL/Number (4) <samp class="text-danger" >*</samp></label>
-                                <input type="text" name="project_sl" class="form-control @error('project_sl') is-invalid @enderror" placeholder="5415" value="{{ old('project_sl')}}">
+                                <label for="">Project SL/Number <samp class="text-danger" >*</samp></label>
+                                <input type="text" name="project_sl" class="form-control" value="{{ $lastSerial }}">
                                 
                             </div>
-                            @error('project_sl')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
                         </div>
 
                         <div class="col col-lg-12 col-xl-12">

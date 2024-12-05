@@ -75,13 +75,13 @@
                                             </div>
 
 
-
+                                          
                     
                                             <div class="row">
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <div class="form-group">
                                                         <label for="">Billing ID : <span class="text-danger">*</span></label>
-                                                        <input type="text" name="billing_id" class="form-control" value="EEBD/MB/{{ mt_rand(0, 100) }}" placeholder="Billing ID" required>
+                                                        <input type="text" name="billing_id" class="form-control" value="EEBD/MB/{{ $newSerial }}" placeholder="Billing ID" required>
                                                     </div>
                                                 </div>
                                             

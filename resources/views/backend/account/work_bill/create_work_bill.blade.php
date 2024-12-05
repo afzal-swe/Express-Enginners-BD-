@@ -65,7 +65,7 @@
 
                                                 <div class="form-group col-sm-4 col-lg-4 col-md-4">
                                                     <label for="">Billing Ref : <span class="text-danger">*</span></label>
-                                                    <input type="text" name="ref" class="form-control @error('ref') is-invalid @enderror" value="EEBD/WB/{{ mt_rand(0, 100) }}">
+                                                    <input type="text" name="ref" class="form-control @error('ref') is-invalid @enderror" value="EEBD/WB/{{ $newSerial }}">
                                                     @error('ref')
                                                     <samp class="text-danger">{{ $message }}</samp>
                                                 @enderror

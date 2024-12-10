@@ -141,8 +141,10 @@
                         <div class="col col-lg-12 col-xl-12">
                             <div class="form-group">
                                 <label for="">Project SL/Number <samp class="text-danger" >*</samp></label>
-                                <input type="text" name="project_sl" class="form-control" value="{{ $lastSerial }}">
-                                
+                                <input type="text" name="project_sl" class="form-control @error('project_sl') is-invalid @enderror" value="{{ $lastSerial }}">
+                                @error('project_sl')
+                                    <samp class="text-danger">{{ $message }}</samp>
+                                @enderror
                             </div>
                         </div>
 
@@ -212,8 +214,8 @@
 
                     <div class="form-group col-sm-12 col-lg-12 col-md-12">
                         <label for="exampleInputFile">Generator : <span class="text-danger">*</span></label>
-                        <select name="generator_status" class="form-control" id="generator_status" required>
-                            <option disabled selected>== Choose Option ==</option>
+                        <select name="generator_status" class="form-control" id="generator_status">
+                            
                             <option value="0">No</option>
                             <option value="1">Yes</option>
                         </select>

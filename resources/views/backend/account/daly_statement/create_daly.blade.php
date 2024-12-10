@@ -96,8 +96,7 @@
                                             <div class="col col-lg-6 col-xl-6" >
                                               <div class="form-group">
                                                 <label for="">Project Name</label>
-                                                {{-- <input type="text" name="project_name" class="form-control @error('project_name') is-invalid @enderror" placeholder="Project Name" value="{{ old('project_name')}}">  --}}
-                                                 <!-- Dropdown with projects -->
+                                               
                                                 <select name="project_id" id="project-dropdown" class="form-control @error('project_id') is-invalid @enderror">
                                                   <option value="" selected disabled>== Choose Option ==</option>
                                                   @foreach ($project_list as $row)
@@ -153,20 +152,10 @@
                                                 </div>
                                               </div>
   
-                                              {{-- <div class="col col-lg-6 col-xl-6">
-                                                <div class="form-group">
-                                                  <label>Total Price <span class="text-danger">*</span></label>
-                                                  <input type="text" name="total_price" class="form-control" placeholder="Total Price" required>
-                                                </div>
-                                              </div> --}}
+                                             
                                             </div>
 
-                                            {{-- <div class="col col-lg-12 col-xl-12">
-                                              <div class="form-group">
-                                                <label for="">In Word <span class="text-danger">*</span></label>
-                                                <input type="text" name="in_word" class="form-control" placeholder="Only" required>
-                                              </div>
-                                            </div> --}}
+                                           
                                           </div>
                                     
                                         <br><hr>
@@ -218,7 +207,6 @@
                                           <div class="col col-lg-6 col-xl-6">
                                             <div class="form-group">
                                               <label>Expense Date  <span class="text-danger">*</span></label>
-                                              {{-- <input type="date" class="form-control" name="expense_date" value="{{ old('expense_date') }}" required> --}}
                                               <input type="date" class="form-control date" name="expense_date" value="{{ old('expense_date') }}" required>
                                             </div>
                                           </div>
@@ -246,6 +234,92 @@
                                               <input type="text" class="form-control" name="expense_amount" value="{{ old('expense_amount') }}" placeholder="Amount" required>
                                             </div>
                                           </div>
+                                        </div><hr>
+
+                                        <div class="col col-lg-6 col-xl-6" >
+                                          <div class="form-group">
+                                            <label for="exampleInputFile">Employee</label>
+                                            <select name="employee_status" class="form-control" id="employee_status">
+                                                <option disabled selected>== Choose Option ==</option>
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="row" id="employee" style="display: none">
+                                          <div class="col col-lg-6 col-xl-6">
+                                            <div class="form-group">
+                                              <label for="">Employee ID : <span class="text-danger">*</span></label>
+                                                  <input type="text" name="employee_id" class="form-control" placeholder="Employee id">
+                                            </div>
+                                          </div>
+
+                                          <div class="col col-lg-3 col-xl-3">
+                                            <div class="form-group">
+                                              <label for="">Reason : <span class="text-danger">*</span></label>
+                                              <select name="reason" id="reason" class="form-control">
+                                                <option selected disabled>Choose Reason</option>
+                                                <option value="sallary">Sallary</option>
+                                                <option value="convenance">Convenance</option>
+                                                <option value="over_time">Over Time</option>
+                                                <option value="puscles">puscles</option>
+                                                <option value="bonus">Bonus</option>
+                                                <option value="loan">loan</option>
+                                            </select>
+                                            @error('reason')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group col-sm-3 col-lg-3 col-md-3" id="sallary" style="display: none">
+                                            <div class="form-group">
+                                                <label for="">Sallary Month<span class="text-danger">*</span></label>
+                                                <input type="text" name="sallary_month" class="form-control" value="{{ old('sallary_month') }}">
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-3 col-lg-3 col-md-3" id="convenance" style="display: none">
+                                            <div class="form-group">
+                                                <label for="">Convenance Month<span class="text-danger">*</span></label>
+                                                <input type="text" name="convenance_month" class="form-control" value="{{ old('convenance_month') }}">
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-3 col-lg-3 col-md-3" id="over_time" style="display: none">
+                                            <div class="form-group">
+                                                <label for="">Over Time Month<span class="text-danger">*</span></label>
+                                                <input type="text" name="over_time_month" class="form-control" value="{{ old('over_time_month') }}">
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-3 col-lg-3 col-md-3" id="bonus" style="display: none">
+                                            <div class="form-group">
+                                                <label for="">Eid Bonus<span class="text-danger">*</span></label>
+                                                <input type="text" name="eid_bonus" class="form-control" value="{{ old('eid_bonus') }}">
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-3 col-lg-3 col-md-3" id="puscles" style="display: none">
+                                            <div class="form-group">
+                                                <label for="">Project<span class="text-danger">*</span></label>
+                                                <input type="text" name="puscles_project" class="form-control" value="{{ old('puscles_project') }}">
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-3 col-lg-3 col-md-3" id="loan" style="display: none">
+                                            <div class="form-group">
+                                                <label for="">Purpose<span class="text-danger">*</span></label>
+                                                <input type="text" name="loan_purpose" class="form-control" value="{{ old('loan_purpose') }}">
+                                               
+                                            </div>
+                                        </div>
                                         </div>
 
                                       <br><hr>
@@ -303,6 +377,60 @@
             }
         });
     });// Project added
+
+
+    // Employee Section
+     // General Terams Yes or No Code Start
+     $(document).ready(function() {
+        $('#employee_status').on('change', function() {
+            if (this.value === '1') { // 'Yes' selected
+                $('#employee').show();
+            } else { // 'No' selected or default
+                $('#employee').hide();
+            }
+        });
+    });// General Terams Yes or No Code End
+
+
+    $(document).ready(function() {
+        $('#reason').on('change', function() {
+            if (this.value === 'sallary') { // 'Yes' selected
+                $('#sallary').show();
+            }else { // 'No' selected or default
+                $('#sallary').hide();
+            }
+
+            if (this.value === 'convenance') { // 'Yes' selected
+                $('#convenance').show();
+            }else { // 'No' selected or default
+                $('#convenance').hide();
+            }
+
+            if (this.value === 'over_time') { // 'Yes' selected
+                $('#over_time').show();
+            }else { // 'No' selected or default
+                $('#over_time').hide();
+            }
+
+            if (this.value === 'bonus') { // 'Yes' selected
+                $('#bonus').show();
+            } else { // 'No' selected or default
+                $('#bonus').hide();
+            }
+
+            if (this.value === 'puscles') { // 'Yes' selected
+                $('#puscles').show();
+            } else { // 'No' selected or default
+                $('#puscles').hide();
+            }
+
+            if (this.value === 'loan') { // 'Yes' selected
+                $('#loan').show();
+            } else { // 'No' selected or default
+                $('#loan').hide();
+            }
+        });
+    });// General Terams Yes or No Code End
 
 </script>
 

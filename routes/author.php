@@ -218,6 +218,7 @@ Route::middleware(['Supper_Admin', 'auth'])->group(function () {
                     // Route::get('/status/{id}', 'Project_Status')->name('project.status');
                     Route::get('/single-view/{id}', 'Work_Bill_Details')->name('work_bill_details');
                     Route::get('/delete/{id}', 'work_bill_delete')->name('work_bill_delete');
+                    Route::get('/print/{id}', 'Work_Bill_Print')->name('work_bill_print');
                 });
             });
 
@@ -233,6 +234,7 @@ Route::middleware(['Supper_Admin', 'auth'])->group(function () {
                     Route::get('/submit', 'Monthly_Bill_Submit')->name('monthly_bill_submit');
                     Route::post('/monthly-submit', 'Submit_Monthly_Billing')->name('submit_monthly_billing');
                     Route::get('/details/{id}', 'Monthly_Bill_Details')->name('monthly_bill.details');
+                    Route::get('/details/print/{id}', 'Monthly_Bill_Print')->name('monthly_bill_details.print');
                 });
             });
 

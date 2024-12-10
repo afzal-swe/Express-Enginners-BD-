@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('daly_income_statement', function (Blueprint $table) {
             $table->id();
             $table->string('income_date')->nullable();
-            $table->text('income_particulars')->nullable();
-            $table->string('income_reason')->nullable();
-            $table->string('income_amount')->nullable();
-            $table->string('income_total')->nullable();
+            $table->text('income_details')->nullable();
+
             $table->timestamps();
         });
     }

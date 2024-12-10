@@ -95,6 +95,7 @@ class EmployeeBillController extends Controller
         $data['credit'] = $request->credit;
         $data['debit'] = "0";
         $data['total'] = $request->credit;
+
         $data['updated_at'] = Carbon::now();
 
         DB::table($this->db_employee_bill)->where('id', $id)->update($data);

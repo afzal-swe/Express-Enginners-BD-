@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('daly_expense_statement', function (Blueprint $table) {
             $table->id();
             $table->string('expense_date')->nullable();
-            $table->text('expense_particulars')->nullable();
-            $table->string('expense_reason')->nullable();
-            $table->string('expense_amount')->nullable();
-            $table->string('expense_total')->nullable();
+            $table->text('expense_details')->nullable();
             $table->timestamps();
         });
     }

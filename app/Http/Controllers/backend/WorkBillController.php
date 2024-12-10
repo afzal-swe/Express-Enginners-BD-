@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class WorkBillController extends Controller
 {
@@ -182,5 +184,21 @@ class WorkBillController extends Controller
             ->where('id', $id)
             ->first();
         return response()->json($Work_Bill_Details_view);
+    }
+
+    // Work Bill Print
+
+    public function Work_Bill_Print($id)
+    {
+        $print = DB::table($this->db_work_bill)->where('id', $id)->first();
+        // dd($print);
+
+
+        try {
+
+            return view('backend.account.work_bill.data_print', compact('print'));
+        } catch (\Exception $e) {
+            return redirect()->back();
+        }
     }
 }

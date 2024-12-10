@@ -178,4 +178,12 @@ class MonthlyBillController extends Controller
             ->first();
         return response()->json($monthly_Bill_Details_view);
     }
+
+    // Monthly Billl Print Function
+    public function Monthly_Bill_Print($id)
+    {
+
+        $print = DB::table($this->db_monthly_bill)->where('id', $id)->first();
+        return view('backend.account.monthly_bill.details_print', compact('print'));
+    }
 }

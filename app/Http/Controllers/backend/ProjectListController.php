@@ -49,7 +49,7 @@ class ProjectListController extends Controller
 
         $validate = $request->validate([
             "project_name" => "required",
-            "project_sl" => "required|unique:project_list|max:4",
+            "project_sl" => "required|unique:project_list|max:5",
         ]);
 
         // dd($request->all());
@@ -58,8 +58,8 @@ class ProjectListController extends Controller
         $data['project_name'] = $request->project_name;
         $data['project_sl'] = $request->project_sl;
         $data['address'] = $request->address;
-        $data['name'] = json_encode($request->name);
-        $data['phone'] = json_encode($request->phone);
+        $data['name'] = json_encode($request->name) ?? '';
+        $data['phone'] = json_encode($request->phone) ?? '';
         $data['lift_quanitiy'] = $request->lift_quanitiy;
         $data['unit_price'] = $request->unit_price;
         $data['in_word'] = $request->in_word;

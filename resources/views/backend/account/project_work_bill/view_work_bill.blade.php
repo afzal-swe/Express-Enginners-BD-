@@ -87,7 +87,7 @@
                                       
                                       
                                       <td>
-                                          <a href="#" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a>
+                                          <a href="{{ route('work_bill_print',$row->id) }}" class="btn btn-success btn-xs" title="Print"><i class="fa fa-print"></i></a>
                                           <a href="{{ route('work_bill_details',$row->id) }}" class="btn btn-info btn-xs view-btn" data-id="{{ $row->id }}" data-bs-toggle="modal" data-target="#ProjectDetails" title="View"><i class="fa fa-eye"></i></a>
                                           <a href="{{ route('work_bill_delete',$row->id) }}" class="btn btn-danger btn-xs " id="delete" title="Delete"><i class="fa fa-trash"></i></a>
                                       </td>
